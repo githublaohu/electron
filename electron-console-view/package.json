@@ -1,0 +1,82 @@
+{
+  "name": "console-view",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/main.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier && pretty-quick --staged && npm run lintfix"
+    }
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "mock": "tm mock -s -d ./mock -p 8900 -a ./",
+    "dev": "tm s",
+    "build": "npm run lintfix && tm b && npm run build:url",
+    "lint": "eslint --quiet --ext .js,.vue src",
+    "lintfix": "eslint --quiet --fix --ext .js,.vue src",
+    "build:union": "tm build -e union",
+    "build:test": "tm build -e test",
+    "build:url": "tm url -d ./doc",
+    "prettier": "prettier --write './src/**'"
+  },
+  "dependencies": {
+    "@xsyx/easy-api-h5": "^3.0.0-beta.4",
+    "@xsyx/hanzo-element": "0.1.0-beta.3",
+    "@xsyx/x-monitor-web": "^2.0.1",
+    "axios": "^0.18.0",
+    "clipboard": "2.0.4",
+    "echarts": "^4.8.0",
+    "element-ui": "2.13.0",
+    "fuse.js": "3.4.4",
+    "husky": "^4.2.3",
+    "js-cookie": "^2.2.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "normalize.css": "7.0.0",
+    "nprogress": "0.2.0",
+    "path-to-regexp": "2.4.0",
+    "prettier": "^2.0.1",
+    "pretty-quick": "^2.0.1",
+    "qs": "^6.6.0",
+    "screenfull": "4.2.0",
+    "vue": "2.5.17",
+    "vue-echarts": "^5.0.0-beta.0",
+    "vue-router": "3.0.1",
+    "vuex": "3.0.1",
+    "vuex-persistedstate": "^2.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.0.1",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^7.1.0",
+    "webpack": "^5.36.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "keywords": [
+    "tm-element-admin",
+    "tm-element",
+    "element"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,10 @@
+{
+  "rspCode": "success",
+  "rspDesc": null,
+  "data": {
+    "userName": "张三",
+    "userPhoneNumber": "15995465421",
+    "createDate": "2019-05-01",
+    "status": true
+  }
+}

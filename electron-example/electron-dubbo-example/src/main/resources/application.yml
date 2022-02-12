@@ -1,0 +1,26 @@
+
+dubbo:
+  scan:
+    base-packages: com.lamp.electron.dubbo.example
+  application:
+    name: dubbo-example
+    owner: dome
+    logger: slf4j
+
+  protocol:
+    name: dubbo
+    port: 20000
+    accesslog: true
+
+  consume:
+    timeout: 30000
+    retries: 0
+
+  registry:
+    address: N/A
+    register: true
+    subscribe: true
+electron:
+    registry: 127.0.0.1:2379
+    applicationName: test-dubbo
+    

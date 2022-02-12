@@ -1,0 +1,9 @@
+{
+  "rspCode": "success",
+  "rspDesc": "成功",
+  "data": {
+    "token": "appToken123456",
+    "name": "tom",
+    "sex": 1
+  }
+}

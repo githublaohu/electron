@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.lampup</groupId>
+		<artifactId>electron</artifactId>
+		<version>${revision}</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<groupId>electron</groupId>
+	<artifactId>electron-client</artifactId>
+	<name>client</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>electron</groupId>
+			<artifactId>electron-base-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>electron</groupId>
+			<artifactId>electron-register</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.netflix.eureka</groupId>
+					<artifactId>eureka-client</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.ecwid.consul</groupId>
+					<artifactId>consul-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>io.etcd</groupId>
+					<artifactId>jetcd-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.alibaba.nacos</groupId>
+					<artifactId>nacos-client</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.etcd</groupId>
+			<artifactId>jetcd-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.0.4.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.7.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<testIncludes>
+						<testInclude>none</testInclude>
+					</testIncludes>
+					<!-- <annotationProcessorPaths> <path> <groupId>org.mapstruct</groupId> 
+						<artifactId>mapstruct-processor</artifactId> <version>${mapstruct.version}</version> 
+						</path> <path> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
+						<version>${lombok.version}</version> </path> </annotationProcessorPaths> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

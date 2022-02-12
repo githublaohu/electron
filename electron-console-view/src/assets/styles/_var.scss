@@ -1,0 +1,63 @@
+@charset "UTF-8";
+//sidebar
+$menuBg: #304156;
+$subMenuBg: #1f2d3d;
+$menuHover: #001528;
+
+// Color
+$primary-color: #108cee;
+$link-color: $primary-color;
+$blue-color: #108cee; //info
+$green-color: #13ce66; //success
+$yellow-color: #ffae00; //warn
+$red-color: #e11617; //error
+$white-color: #ffffff;
+
+$blue: #324157;
+$light-blue: #3a71a8;
+$red: #c03639;
+$pink: #e65d6e;
+$green: #30b08f;
+$tiffany: #4ab7bd;
+$yellow: #fec171;
+$panGreen: #30b08f;
+// fonts
+$font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+  "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+//Dark, Gray 1-4 more
+$dark-color: #333333;
+$dark1-color: #555555;
+$dark2-color: #666666;
+$gray-color: #999999;
+$gray1-color: #d3d3d3;
+$gray2-color: #eeeeee;
+$gray3-color: #f3f3f3;
+$gray4-color: #f9f9f9;
+
+// sidebar
+$menuTheme: #2b2f3a;
+$menuText: #dddddd;
+$menuActiveText: #409eff;
+$menuBg: $menuTheme;
+
+$menuHover: #1e1e28;
+$subMenuActiveText: #f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+$subMenuBg: #1e1e28;
+$subMenuHover: #001528;
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuTheme: $menuTheme;
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

@@ -1,0 +1,2 @@
+register: etcd://localhost:2379
+      

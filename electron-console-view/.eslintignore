@@ -1,0 +1,10 @@
+*.sh
+node_modules/
+dist/
+mock/
+static/
+doc/
+*.md
+*.scss
+*.woff
+*.ttf
