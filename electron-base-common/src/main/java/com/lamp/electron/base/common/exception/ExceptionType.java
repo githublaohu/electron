@@ -16,6 +16,7 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.HttpResponseStatus;
+import lombok.Getter;
 
 /**
  * 容器异常，异常状态码1000开始<br/>
@@ -28,6 +29,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
  * @author laohu
  *
  */
+@Getter
 public enum ExceptionType {
 
 	REQUEST_RESOURCE_NOT_FIND(2500 ,"404", "The request could not find the corresponding resource"),
@@ -71,8 +73,7 @@ public enum ExceptionType {
 	}
 	
 	public ElectronResponse wrapper(ElectronRequest electronRequest,HttpResponseStatus httpResponseStatus, Object... message) {
-		electronRequest.electronResponse(httpResponseStatus, null, createMessage(message), null);
-		return null;
+		return electronRequest.electronResponse(httpResponseStatus, null, createMessage(message), null);
 	}
 	public ElectronResponse wrapper(ElectronRequest electronRequest,HttpResponseStatus httpResponseStatus,ByteBuf byteBuf,  Object... message) {
 		electronRequest.electronResponse(httpResponseStatus, null, byteBuf, null);

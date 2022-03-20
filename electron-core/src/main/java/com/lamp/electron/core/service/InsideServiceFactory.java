@@ -131,7 +131,7 @@ public class InsideServiceFactory {
 			LongRangeWrapper longRangeWapper = longRangeMap.get(insideMap.get(method));
 			if (longRangeWapper.getNetworkAddress().size() == 0) {
 				ServiceAgreementResponse<Object> agreement = (ServiceAgreementResponse) args[0];
-				agreement.reply(null);
+				agreement.reply(null,null);
 			}
 
 			ServiceElectronRequest serviceElectronRequest = new ServiceElectronRequest();
@@ -154,7 +154,7 @@ public class InsideServiceFactory {
 
 		@Override
 		@SuppressWarnings("unchecked")
-		public void reply(ElectronResponse electronResponse) {
+		public void reply(ElectronResponse electronResponse,ElectronRequest electronRequest) {
 			Throwable throwable = electronResponse.throwable();
 			if (Objects.isNull(throwable)) {
 				T object = (T) JSON.parseObject(electronResponse.contentString(), type);

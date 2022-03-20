@@ -14,6 +14,8 @@ package com.lamp.electron.core.container.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
@@ -23,6 +25,7 @@ import com.alibaba.fastjson.JSON;
 import com.lamp.electron.base.common.constant.ElectronConstant;
 import com.lamp.electron.base.common.register.data.TrafficDetails;
 import com.lamp.electron.core.container.ContainerTiming;
+import com.lamp.electron.rpc.message.DefaultMQProducerFactory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +38,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TrafficDetailsBean implements ContainerTiming {
 
-	private DefaultMQProducer defaultMQProducer;
+	@Resource
+	private DefaultMQProducerFactory defaultMQProducerFactory;
 
 	private List<TrafficDetailsThreadLocal> trafficDetailsThreadLocalList = new ArrayList<>();
 
@@ -58,7 +62,7 @@ public class TrafficDetailsBean implements ContainerTiming {
 		if (immediately) {
 			Message message = new Message(ElectronConstant.MEESGAE_TOPIC_TRAFFIC_DETAILS_TOPIC,JSON.toJSONBytes(trafficDetails));
 			try {
-				defaultMQProducer.sendOneway(message);
+				defaultMQProducerFactory.getDefaultMQProducer().sendOneway(message);
 			} catch (MQClientException | RemotingException | InterruptedException e) {
 				log.error(e.getMessage(), e);
 			}
@@ -84,7 +88,7 @@ public class TrafficDetailsBean implements ContainerTiming {
 		for (TrafficDetailsThreadLocal detailsThreadLocal : trafficDetailsThreadLocalList) {
 			Message message = new Message(ElectronConstant.MEESGAE_TOPIC_TRAFFIC_DETAILS_BATCH_TOPIC,JSON.toJSONBytes(detailsThreadLocal.spareTrafficDetailsList));
 			try {
-				defaultMQProducer.sendOneway(message);
+				defaultMQProducerFactory.getDefaultMQProducer().sendOneway(message);
 			} catch (MQClientException | RemotingException | InterruptedException e) {
 				log.error(e.getMessage(), e);
 			}

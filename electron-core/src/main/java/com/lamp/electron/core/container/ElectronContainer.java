@@ -20,8 +20,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
-
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.enums.ProtocolEnum;
 import com.lamp.electron.base.common.perception.ConfigPerceptionFactory;
@@ -78,21 +76,21 @@ public class ElectronContainer {
 		this.perceptionFactory = new ConfigPerceptionFactory();
 		this.crateBeanFactory();
 		this.function();
-		this.monitorAndRegister();
 		this.crateRpcServerAndClient();
+		this.monitorAndRegister();
 		serviceFactory.setElectronRpcHandle(electronRpcHandle);
 		serviceFactory.setInterfaceManage(interfaceManage);
-		abilityManage.init();
 	}
 
 	private void crateBeanFactory() throws IllegalArgumentException, IllegalAccessException {
 		
 		containerBeanFactory = new ContainerBeanFactory();
-		
+		containerBeanFactory.setBean(containerBeanFactory);
+		containerBeanFactory.setBean(this.perceptionFactory);
 		NodeBase nodeBase = new NodeBase();
-		nodeBase.setNetworkAddress(containerConfig.getRokcetNameServer());
-		nodeBase.setName("");
-		DefaultMQProducer defaultMQProducerFactory = new DefaultMQProducerFactory(null,null).createDefaultMQProducer();
+		nodeBase.setNetworkAddress(containerConfig.getRocketMQNameServcie());
+		nodeBase.setName("core");
+		DefaultMQProducerFactory defaultMQProducerFactory = new DefaultMQProducerFactory(nodeBase,null);
 		containerBeanFactory.setBean(defaultMQProducerFactory);
 		StatisticsCentre statisticsCentre = new StatisticsCentre();
 		containerBeanFactory.setBean(statisticsCentre);
@@ -114,6 +112,8 @@ public class ElectronContainer {
 		exampleManage = new ExampleManage(electronClientFactory);
 		interfaceManage = new InterfaceManage(electronClientFactory);
 		abilityManage = new AbilityManage(exampleManage, interfaceManage,null);
+		containerBeanFactory.rely(abilityManage);
+		abilityManage.init();
 		abilityManage.setServiceFactory(serviceFactory);
 		abilityManage.setContainerBeanFactory(containerBeanFactory);
 	}

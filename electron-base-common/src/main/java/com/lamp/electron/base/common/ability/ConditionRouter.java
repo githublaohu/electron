@@ -22,8 +22,6 @@ import lombok.Data;
 @Data
 @AbiltiyData(chinaName = "条件路由",abiltiyScope=AbiltiyScope.DISCERN, overallSituation = true , childDataName = "conditions")
 public class ConditionRouter {
-
-	
 	
 	private List<Condition> conditions;
 	

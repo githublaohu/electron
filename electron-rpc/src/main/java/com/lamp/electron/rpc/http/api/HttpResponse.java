@@ -47,6 +47,11 @@ public class HttpResponse extends HttpBehavior implements ElectronResponse{
 		if (Objects.nonNull(defaultFullHttpResponse) && !this.isPerceptionContent) {
 			return defaultFullHttpResponse;
 		}
+		if( getHttpHeaders() == null) {
+			 return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
+						this.isPerceptionContent ? HttpResponseStatus.OK : responseStatus, content());
+		}
+		
 		return new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
 				this.isPerceptionContent ? HttpResponseStatus.OK : responseStatus, content(), getHttpHeaders(),
 				getHttpHeaders());

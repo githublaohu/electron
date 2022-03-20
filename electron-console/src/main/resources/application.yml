@@ -1,5 +1,5 @@
 server:
-  port: 9990
+  port: 9991
   servlet:
     context-path: "/lamp/electron"
  

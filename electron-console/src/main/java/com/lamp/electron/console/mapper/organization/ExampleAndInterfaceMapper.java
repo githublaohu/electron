@@ -40,10 +40,17 @@ public interface ExampleAndInterfaceMapper {
 	 * @return
 	 */
 	@Insert({
-		INSERT_SQL,"()value()"
+			"insert into example_info(application_id , application_english_name,organization_type,networkAddress,port,protocol,language,example_type,rpc_type,version,client_version,gater_date)",
+			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{exampleType},#{RPCType},#{version},#{clientVersion},#{gaterDate})",
 	})
 	public Integer insertNodeBase(NodeBase nodeBase);
 
+	@Insert({
+			"insert into  interface_info (application_id,application_english_name,organization_type,networkAddress,port,protocol,language,example_type,rpc_type,version,client_version,path,http_method_type,module_name,interace_name,method_name,class_name,gater_date)",
+			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{exampleType},#{RPCType},#{version},#{clientVersion},#{path},#{httpMethodTypeString},'electron','interaceName',#{methodName},#{className},#{gaterDate})",
+	})
+	public Integer insertInterface(NodeBase nodeBase);
+	
 	/**
 	 * 修改
 	 * 
@@ -83,6 +90,11 @@ public interface ExampleAndInterfaceMapper {
 	 * @return
 	 */
 	@ResultType(InterfaceInfo.class)
+	@Select({"select * from example_info where application_english_name = #{organizationEnglistName} order by gater_date desc"})
 	public List<NodeBase> queryNodeBaseListByFrom(NodeBase nodeBase);
 
+	@ResultType(InterfaceInfo.class)
+	@Select({"select * from interface_info where application_english_name = #{organizationEnglistName} = #{organizationId}"})
+	public List<NodeBase> queryInterfaceInfoListByFrom(NodeBase nodeBase);
+ 
 }

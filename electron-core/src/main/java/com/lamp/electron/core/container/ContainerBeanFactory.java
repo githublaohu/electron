@@ -49,10 +49,11 @@ public class ContainerBeanFactory {
 			relyRelationship = beanRelyRelationship.computeIfAbsent(clazz, key -> {
 				RelyRelationship newRelyRelationship = new RelyRelationship();
 				List<RelationshipMapper> list = new ArrayList<>();
-				for (Field field : clazz.getFields()) {
+				for (Field field : clazz.getDeclaredFields()) {
 					Resource resource = field.getAnnotation(Resource.class);
-					if (Objects.isNull(resource)) {
+					if (Objects.nonNull(resource)) {
 						RelationshipMapper relationshipMapper = new RelationshipMapper();
+						field.setAccessible(true);
 						relationshipMapper.accessibleObject = field;
 						relationshipMapper.relyClass = field.getType();
 						list.add(relationshipMapper);

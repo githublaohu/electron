@@ -13,6 +13,7 @@ package com.lamp.electron.client;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -50,6 +51,8 @@ public abstract class AbstractGather {
 	private ProtocolEnum protocol;
 
 	private String rpcFrameName;
+	
+	protected String RPCType;
 
 	protected AbstractGather(String rpcFrameName) {
 		this.rpcFrameName = rpcFrameName;
@@ -132,9 +135,11 @@ public abstract class AbstractGather {
 		exampleInfo.setName(electronProperties.getApplicationName());
 		exampleInfo.setNetworkAddress(networkAddress);
 		exampleInfo.setPort(port.toString());
+		exampleInfo.setRPCType(RPCType);
 		exampleInfo.setProtocol(protocol);
 		exampleInfo.setVersion(electronProperties.getVersion());
 		exampleInfo.setOrganizationTypeEnum(OrganizationTypeEnum.EXAMPLE);
+		exampleInfo.setGaterDate(new Date().toString());
 		ExampleRegister exampleRegister = registerServerFocusCall.createExampleRegister();
 		exampleRegister.register(exampleInfo);
 	}

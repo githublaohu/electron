@@ -20,7 +20,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Resource;
 
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 
@@ -33,6 +32,7 @@ import com.lamp.electron.base.common.constant.ElectronConstant;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.register.data.StatisticsDTO;
 import com.lamp.electron.core.container.ContainerTiming;
+import com.lamp.electron.rpc.message.DefaultMQProducerFactory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,7 +59,7 @@ public class StatisticsCentre implements ContainerTiming {
 	}
 	
 	@Resource
-	private DefaultMQProducer defaultMQProducer;
+	private DefaultMQProducerFactory defaultMQProducerFactory;
 
 	public ArrayMetric createStatisticsObject(OrganizationTypeEnum organizationTypeEnum, String uniqueName) {
 
@@ -111,9 +111,9 @@ public class StatisticsCentre implements ContainerTiming {
 		// 发送
 		try {
 			Message message = new Message(ElectronConstant.MESSAGE_TOPIC_STATISTIC,JSON.toJSONBytes(appLicationDTO.values()));
-			defaultMQProducer.sendOneway(message);
+			defaultMQProducerFactory.getDefaultMQProducer().sendOneway(message);
 			message = new Message(ElectronConstant.MESSAGE_TOPIC_STATISTIC,JSON.toJSONBytes(interaceDTO.values()));
-			defaultMQProducer.sendOneway(message);
+			defaultMQProducerFactory.getDefaultMQProducer().sendOneway(message);
 			log.error("统计数据发送成功");
 		} catch (MQClientException | RemotingException | InterruptedException e) {
 			log.error(e.getMessage(),e);

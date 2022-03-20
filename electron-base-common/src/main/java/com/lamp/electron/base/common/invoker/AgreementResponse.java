@@ -13,5 +13,5 @@ package com.lamp.electron.base.common.invoker;
 
 public interface AgreementResponse {
 
-	public void reply(ElectronResponse electronResponse);
+	public void reply(ElectronResponse electronResponse, ElectronRequest electronRequest);
 }

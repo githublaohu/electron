@@ -53,6 +53,8 @@ public class NodeBase extends RegisterBase implements NetworkAddress {
 	private String realize;
 	
 	private Invoker invoker;
+	
+	private String gaterDate;
 
 
 	@Override

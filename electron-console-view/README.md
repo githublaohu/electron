@@ -1,41 +1,6 @@
 # tpl-admin-vue
 
-中后台 vue+element+tm-cli 系统模板项目
-
-#### node 环境安装必要工具：tm-cli [工具文档](http://4g.gitee.io/tm-cli/)
-
-#### 环境版本要求
-
-- tm-cli v0.2.0-beta.10 +
-- node v10.15.3 +
-- npm v6.4.1 +
-- vue 2.5.17
-- vue-template-compiler: 2.5.17
-
-## 安装依赖开发
-
-```bash
-# 全局安装tm-cli
-npm i -g tm-cli
-
-# 建议不要用cnpm  安装有各种诡异的bug 可以通过如下操作解决npm速度慢的问题
-npm install --registry=https://registry.npm.taobao.org
-
-# 开启本地api mock localhost:8900服务
-npm run mock
-
-# 开启开发服务 localhost:9090
-npm run dev
-```
-
-### 发布打包
-
-```
-npm run build
-```
-
 ## 目录结构
-
 ```
 ├─mock                               // 本地模拟数据服务
 ├─src                                // 源代码
@@ -45,7 +10,7 @@ npm run build
 │  │  ├─404_images
 │  │  ├─icons                        // 项目所有 svg icons
 │  │  └─styles
-│  ├─config                           // 项目api请求等配置
+│  ├─config                           // 项目api请求等配置          
 │  ├─common
 │  │  ├─directive                    // 全局指令
 │  │  ├─filters                      // 全局 filter
@@ -54,22 +19,46 @@ npm run build
 │  ├─components                      // 全局公用组件
 │  ├─router                          // 路由
 │  ├─store                           // 全局 store管理
-│  └─views                           // 所有页面
+│  └─views                           // 所有页面 
 └─static                             // 第三方不打包资源
 
 ```
 
-#### 注意！
+## 安装依赖开发
+- 必要的环境: node8.12.0+，npm6.4.1+
 
-- api 是基于前端统一请求库 [@xsyx/easy-api-h5](https://www.npmjs.com/package/@xsyx/easy-api-h5) (包含了 axios 请求库) 定义,
+```bash
+# 全局安装tm-cli
+npm i -g tm-cli
+
+# 建议不要用cnpm  安装有各种诡异的bug 可以通过如下操作解决npm速度慢的问题
+npm install --registry=https://registry.npm.taobao.org
+
+# 开启本地api mock localhost:5000服务
+npm run mock:server
+
+# 开启开发服务 localhost:9090
+npm run dev
+```
+### 发布打包
 
 ```
-// 后端api 返回响应结果必须是以下格式
-{
-  "rspCode": "success",
-  "rspDesc": '',
-  "data": {}
-}
+# 打包联调环境
+npm run build:union
+
+# 打包测试环境
+npm run build:test
+
+# 打包正式生产环境
+npm run build
+
 ```
 
-- config 文件夹内包含了 应用的所有配置项目：路由拦截器、请求拦截器、常量配置
+#### 注意修改地方
+- /common/utils/request.js 每个项目对应的api请求状态码不相同，注意修改里面的拦截器
+- tm.config.js 为tm-cli 自定义配置项目 proxyTable 为常用开发api代理转发
+- http://127.0.0.1:9090/#/demo 为不带侧边栏页面
+- http://127.0.0.1:9090/#/dashboard 带侧边栏页面(具体配置参考路由)
+
+#### 模板参考文档
+- [路由文档](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html#%E9%85%8D%E7%BD%AE%E9%A1%B9)

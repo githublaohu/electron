@@ -46,6 +46,7 @@ public class DubboEventGather extends AbstractGather implements EnvironmentAware
 
 	@PostConstruct
 	private void init() {
+		this.RPCType = "dubbo";
 		if (Objects.nonNull(electronProperties)) {
 			String port = environment.getProperty("dubbo.protocol.port");
 			this.setPort(port != null ? Integer.valueOf(port):null);

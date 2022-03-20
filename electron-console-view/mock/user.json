@@ -1,9 +1,11 @@
-{
-  "rspCode": "success",
-  "rspDesc": "成功",
-  "data": {
-    "token": "appToken123456",
-    "name": "tom",
-    "sex": 1
+[
+  {
+    "method": "get",
+    "url": "/users/:id*",
+    "response": {
+      "id": 1,
+      "name": "tom",
+      "level": 3
+    }
   }
-}
+]

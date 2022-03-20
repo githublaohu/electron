@@ -83,7 +83,7 @@ public class AbilityInvoker implements Invoker {
 					continue;
 				} else {
 					// TODO 返回一定的结果,报警
-					electronRequest.getAgreementResponse().reply(electronResponse);
+					electronRequest.getAgreementResponse().reply(electronResponse,electronRequest);
 					break;
 				}
 
@@ -91,7 +91,7 @@ public class AbilityInvoker implements Invoker {
 			currentAbility = currentAbility.getNextAbility();
 			// 如果链路为空，那么链路已经执行完了。执行完成只能使用 electronResponse
 			if (Objects.isNull(currentAbility)) {
-				electronRequest.getAgreementResponse().reply(electronResponse);
+				electronRequest.getAgreementResponse().reply(electronResponse,electronRequest);
 				break;
 				/*
 				 * if (!isPostposition) { isPostposition = true; currentAbility = nextAbility =

@@ -54,6 +54,7 @@ public class SpringMVCGather extends AbstractGather
 	
 	public SpringMVCGather() {
 		super("spring boot web container");
+		this.RPCType = "springmvc";
 	}
 
 	@Override

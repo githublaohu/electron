@@ -21,11 +21,13 @@ import com.lamp.electron.base.common.exception.ExceptionType;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
-import com.lamp.electron.core.ability.discern.ConditionAbility;
+import com.lamp.electron.core.ability.discern.ConditionRouterAbility;
 import com.lamp.electron.core.manage.AbilityManage;
 import com.lamp.electron.core.manage.ExampleManage;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
+
+import io.netty.handler.codec.http.HttpResponseStatus;
 
 public class AbilityInvokerManage {
 
@@ -37,7 +39,7 @@ public class AbilityInvokerManage {
 
 	private ExampleManage exampleManage;
 
-	private ConditionAbility conditionAbility;
+	private ConditionRouterAbility conditionAbility;
 
 	public AbilityInvokerManage(AbilityManage abilityManage, InterfaceManage interfaceManage,
 			ExampleManage exampleManage) {
@@ -55,7 +57,7 @@ public class AbilityInvokerManage {
 		if (Objects.isNull(longRangeWrapper)) {//
 			String applicationName = conditionAbility.discern(electronRequest);
 			if (Objects.isNull(applicationName)) {
-				electronResponse = ExceptionType.REQUEST_RESOURCE_NOT_FIND.wrapper(electronRequest);
+				electronResponse = ExceptionType.REQUEST_RESOURCE_NOT_FIND.wrapper(electronRequest,HttpResponseStatus.NOT_FOUND);
 			}else {
 			// 获得服务实例
 				longRangeWrapper = exampleManage.getExampleInfos(applicationName);
@@ -68,7 +70,8 @@ public class AbilityInvokerManage {
 			electronResponse = ExceptionType.REQUSET_NOT_INSTANCE.wrapper(electronRequest, longRangeWrapper.getApplicationName());
 		}
 		if(Objects.nonNull(electronResponse)) {
-			electronRequest.getAgreementResponse().reply(electronResponse);
+			electronRequest.getAgreementResponse().reply(electronResponse,electronRequest);
+			return null;
 		}
 		return interfaceAndAbility(electronRequest, longRangeWrapper);
 	}

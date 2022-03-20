@@ -1,25 +1,20 @@
-/** *
- * 新增store可能，热更新无效，需要重启
- */
-import Vue from "vue";
-import Vuex from "vuex";
-import getters from "./getters";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import app from './modules/app'
+import user from './modules/user'
+import tagsView from './modules/tagsView'
+// getters
+import getters from './getters'
 
-Vue.use(Vuex);
-
-const modulesFiles = require.context("./modules", true, /\.js$/);
-/* eslint-disable */
-const modules = modulesFiles.keys().reduce((modules, modulePath) => {
-  // set './app.js' => 'app'
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, "$1");
-  const value = modulesFiles(modulePath);
-  modules[moduleName] = value.default;
-  return modules;
-}, {});
+Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  modules,
-  getters,
-});
+  modules: {
+    app,
+    tagsView,
+    user
+  },
+  getters
+})
 
-export default store;
+export default store

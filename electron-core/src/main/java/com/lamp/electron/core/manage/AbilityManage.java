@@ -21,6 +21,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+import javax.annotation.Resource;
+
 import com.alibaba.fastjson.JSONObject;
 import com.lamp.electron.base.common.ability.Authentication;
 import com.lamp.electron.base.common.ability.LoadBalancing;
@@ -40,7 +42,7 @@ import com.lamp.electron.core.ability.ExecuteAbility;
 import com.lamp.electron.core.ability.collect.RequestRecordAbility;
 import com.lamp.electron.core.ability.collect.StatisticsAbility;
 import com.lamp.electron.core.ability.config.ConfigAbility;
-import com.lamp.electron.core.ability.discern.ConditionAbility;
+import com.lamp.electron.core.ability.discern.ConditionRouterAbility;
 import com.lamp.electron.core.ability.discern.ExampleinfoRegisterAbility;
 import com.lamp.electron.core.ability.discern.InterfaceRegisterAbiltiy;
 import com.lamp.electron.core.ability.discern.ResourcesRegisterAbility;
@@ -95,11 +97,13 @@ public class AbilityManage implements AbilityRelationRegister {
 	
 	private InsideServiceFactory serviceFactory;
 
+	@Resource
 	private ConfigPerceptionFactory configPerceptionFactory;
 	
+	@Resource
 	private ContainerBeanFactory containerBeanFactory;
 
-	{
+	private void initAbility(){
 		invokingAbility = new InvokingAbility();
 		invokingAbility.setAbilityTypeEnum(AbilityType.INVOKING);
 		invokingAbility.setOrganizationTypeEnum(OrganizationTypeEnum.INTERFACE);
@@ -140,7 +144,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		abiltiyClass.put(AbilityType.STATISTICS, StatisticsAbility.class);
 		abiltiyClass.put(AbilityType.REQUESTRECORD, RequestRecordAbility.class);
 
-		abiltiyClass.put(AbilityType.CONDITIONROUTE, ConditionAbility.class);
+		abiltiyClass.put(AbilityType.CONDITIONROUTE, ConditionRouterAbility.class);
 
 		abiltiyClass.put(AbilityType.INTERFACERESGISTER, InterfaceRegisterAbiltiy.class);
 		abiltiyClass.put(AbilityType.RESOURCESRESGISTER, ResourcesRegisterAbility.class);
@@ -197,10 +201,11 @@ public class AbilityManage implements AbilityRelationRegister {
 		this.exampleManage = exampleManage;
 		this.interfaceManage = interfaceManage;
 		this.configPerceptionFactory = configPerceptionFactory;
-		this.createOverallSituation();
 	}
 	
 	public void init() {
+		this.initAbility();
+		this.createOverallSituation();
 		// TODO 测试用 代码
 		//testAbility();
 	}
@@ -211,7 +216,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		Map<AbilityType, Ability> overallSituationMap = new HashMap<>();
 		overallSituation.put("organization", overallSituationMap);
 
-		overallSituationMap.put(AbilityType.CONDITIONROUTE, new ConditionAbility());
+		overallSituationMap.put(AbilityType.CONDITIONROUTE, new ConditionRouterAbility());
 
 		overallSituationMap.put(AbilityType.INTERFACERESGISTER, new InterfaceRegisterAbiltiy());
 		overallSituationMap.put(AbilityType.EXAMPLEINFOREGISTER, new ExampleinfoRegisterAbility());

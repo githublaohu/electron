@@ -14,6 +14,7 @@ package com.lamp.electron.rpc.http;
 import java.util.Objects;
 
 import com.lamp.electron.base.common.enums.DataSpot;
+import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.rpc.api.AbstractAgreementResponse;
 
@@ -25,9 +26,9 @@ import io.netty.handler.codec.http.HttpHeaderValues;
 public class HttpAgreementResponse extends AbstractAgreementResponse<ChannelHandlerContext>{
 
 	@Override
-	public void reply(ElectronResponse electronResponse) {
+	public void reply(ElectronResponse electronResponse, ElectronRequest electronRequest) {
 		ChannelFuture	channelFuture= t.writeAndFlush(electronResponse.original());
-		if(Objects.isNull(electronResponse.data(DataSpot.HEADER, HttpHeaderValues.KEEP_ALIVE.toString()))) {
+		if(Objects.isNull(electronRequest.data(DataSpot.HEADER, HttpHeaderValues.KEEP_ALIVE.toString()))) {
 			channelFuture.addListener(ChannelFutureListener.CLOSE);
 		}
 	}

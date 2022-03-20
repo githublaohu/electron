@@ -11,7 +11,9 @@
  */
 package com.lamp.electron.rpc.http.api;
 
+import java.nio.charset.Charset;
 import java.util.Map;
+import java.util.Objects;
 
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.invoker.AgreementResponse;
@@ -20,6 +22,7 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.register.data.NetworkAddress;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpResponseStatus;
@@ -91,7 +94,20 @@ public class HttpRequest extends HttpBehavior implements ElectronRequest {
 
 	@Override
 	public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus, Object headers, Object connet,Throwable throwable) {
-		return new HttpResponse(httpResponseStatus,(ByteBuf) connet,(HttpHeaders)headers,throwable);
+		return new HttpResponse(httpResponseStatus,createConnetByteBuf(connet),(HttpHeaders)headers,throwable);
+	}
+	
+	private ByteBuf createConnetByteBuf( Object connet) {
+		if(Objects.isNull(connet)) {
+			return Unpooled.EMPTY_BUFFER;
+		}
+		if(connet instanceof String) {
+			ByteBuf buf = Unpooled.buffer();
+			buf.writeCharSequence((String)connet, Charset.defaultCharset());
+			return buf;
+		}
+		return (ByteBuf)connet;
+		
 	}
 
 	@Override

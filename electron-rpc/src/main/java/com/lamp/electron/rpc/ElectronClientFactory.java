@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.annotation.Resource;
+
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
@@ -46,6 +48,7 @@ public class ElectronClientFactory {
 
 	private Map<ProtocolEnum, RpcClientCreate> rpcClientCreateMap = new HashMap<>();
 
+	@Resource
 	private ConfigPerceptionFactory perceptionFactory;
 
 	private RpcHandle rpcHandle;

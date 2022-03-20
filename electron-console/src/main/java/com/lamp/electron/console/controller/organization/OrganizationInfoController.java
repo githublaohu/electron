@@ -12,6 +12,7 @@
 package com.lamp.electron.console.controller.organization;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -103,7 +104,10 @@ public class OrganizationInfoController {
 	 * @return
 	 */
 	@PostMapping("/insertOrganizationInfo")
-	public Integer insertOrganizationInfo(@RequestBody @Validated OrganizationInfo organizationInfo) {
+	public Integer insertOrganizationInfo(@RequestBody OrganizationInfo organizationInfo) {
+		if(Objects.isNull(organizationInfo.getOiSuperiorId())) {
+			organizationInfo.setOiSuperiorId(0L);
+		}
 		UserInfo userInfo = SessionFactory.getInstance().getUserInfo();
 		organizationInfo.setOiCreaterId(userInfo.getUiId());
 		organizationInfo.setOiCreaterName(userInfo.getUiNickname());

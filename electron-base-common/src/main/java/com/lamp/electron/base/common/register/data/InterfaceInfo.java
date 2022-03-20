@@ -29,6 +29,8 @@ public class InterfaceInfo extends NodeBase {
 	private String path;
 
 	private String[] httpMethodType;
+	
+	private String httpMethodTypeString;
 
 	private String className;
 

@@ -48,7 +48,7 @@ public class MessageMiddlewareClient extends AbstractRpcBase implements Invoker 
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
-		DefaultMQProducer producer = defaultMQProducerFactory.createDefaultMQProducer();
+		DefaultMQProducer producer = defaultMQProducerFactory.getDefaultMQProducer();
 		if (Objects.isNull(producer)) {
 
 		}
@@ -108,7 +108,7 @@ public class MessageMiddlewareClient extends AbstractRpcBase implements Invoker 
 	}
 
 	public void send(byte[] content, boolean isOneway) {
-		DefaultMQProducer producer = defaultMQProducerFactory.createDefaultMQProducer();
+		DefaultMQProducer producer = defaultMQProducerFactory.getDefaultMQProducer();
 		if (Objects.isNull(producer)) {
 			log.error("producer create fail factrory is {}", defaultMQProducerFactory.toString());
 			return;

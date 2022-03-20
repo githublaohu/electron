@@ -17,6 +17,14 @@
 		<module>electron-core</module>
 	</modules>
 
+	<licenses>
+		<license>
+			<name>MulanPubL-2.0</name>
+			<url>http://license.coscl.org.cn/MulanPubL-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<properties>
 		<!-- Test libs -->
 		<!-- Build args -->
@@ -237,7 +245,7 @@
 						<includes>
 							<include>**/*Test*.java</include>
 						</includes>
-						<excludes/>
+						<excludes />
 					</configuration>
 				</plugin>
 				<plugin>

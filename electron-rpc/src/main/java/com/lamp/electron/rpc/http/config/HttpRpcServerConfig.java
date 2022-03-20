@@ -15,7 +15,7 @@ import com.lamp.electron.rpc.api.RpcConfig;
 
 public class HttpRpcServerConfig extends RpcConfig{
 	
-	private int port = 8080;
+	private int port = 9990;
 	
 	private int bossThreadNum = BASE_NUM;
 	

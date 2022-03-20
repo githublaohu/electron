@@ -48,7 +48,7 @@ public class DefaultMQProducerFactory {
 		this.producer = null;
 	}
 
-	public DefaultMQProducer createDefaultMQProducer() {
+	public DefaultMQProducer getDefaultMQProducer() {
 		DefaultMQProducer producer = this.producer;
 		if (Objects.nonNull(producer)) {
 			return producer;
