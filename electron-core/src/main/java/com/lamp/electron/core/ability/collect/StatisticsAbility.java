@@ -17,8 +17,8 @@ import javax.annotation.Resource;
 
 import com.alibaba.csp.sentinel.slots.statistic.metric.ArrayMetric;
 import com.lamp.electron.base.common.ability.Statistics;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -26,7 +26,7 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ResultAbility;
 import com.lamp.electron.core.ability.function.statistics.StatisticsCentre;
 
-@AbiltiyAction(abilityType = AbilityType.STATISTICS)
+@AbilityAction(abilityType = AbilityTypeEnum.STATISTICS)
 public class StatisticsAbility extends AbstractChainAbility<Statistics> implements ResultAbility{
 
 	@Resource

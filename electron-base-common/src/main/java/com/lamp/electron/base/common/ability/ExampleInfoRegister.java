@@ -13,8 +13,8 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.register.data.ExampleInfo;
 
 import lombok.Data;
@@ -25,7 +25,7 @@ import lombok.Data;
  *
  */
 @Data
-@AbiltiyData(chinaName = "实例注册",abiltiyScope=AbiltiyScope.REGISTER)
+@AbilityData(chinaName = "实例注册", abilityScope = AbilityScope.REGISTER)
 public class ExampleInfoRegister{
 	
 	private List<ExampleInfo> exampleInfoList;

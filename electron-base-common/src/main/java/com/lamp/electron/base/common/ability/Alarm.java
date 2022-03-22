@@ -11,13 +11,13 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(abiltiyScope = AbiltiyScope.ERRER, chinaName = "警告")
+@AbilityData(abilityScope = AbilityScope.ERROR, chinaName = "警告")
 public class Alarm {
 
 }

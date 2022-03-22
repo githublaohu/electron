@@ -39,7 +39,7 @@ public class AbilityManageTest {
 		AbilityRelation newAbilityRelation =  JSON.parseObject(str, AbilityRelation.class);
 		System.out.println(newAbilityRelation);
 		JSONObject object = (JSONObject)newAbilityRelation.getAbility();
-		ConditionRouter conditionRouter = (ConditionRouter) object.toJavaObject(AbilityTypeEnum.CONDITIONROUTE.getAbiltiyObject());
+		ConditionRouter conditionRouter = (ConditionRouter) object.toJavaObject(AbilityTypeEnum.CONDITIONROUTE.getAbilityObject());
 		System.out.println(conditionRouter);
 	}
 	

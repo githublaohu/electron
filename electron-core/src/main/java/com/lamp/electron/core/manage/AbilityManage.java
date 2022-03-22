@@ -26,7 +26,7 @@ import javax.annotation.Resource;
 import com.alibaba.fastjson.JSONObject;
 import com.lamp.electron.base.common.ability.Authentication;
 import com.lamp.electron.base.common.ability.LoadBalancing;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.enums.EffectPoint;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
@@ -44,7 +44,7 @@ import com.lamp.electron.core.ability.collect.StatisticsAbility;
 import com.lamp.electron.core.ability.config.ConfigAbility;
 import com.lamp.electron.core.ability.discern.ConditionRouterAbility;
 import com.lamp.electron.core.ability.discern.ExampleinfoRegisterAbility;
-import com.lamp.electron.core.ability.discern.InterfaceRegisterAbiltiy;
+import com.lamp.electron.core.ability.discern.InterfaceRegisterAbility;
 import com.lamp.electron.core.ability.discern.ResourcesRegisterAbility;
 import com.lamp.electron.core.ability.error.ErrorResultAbiliby;
 import com.lamp.electron.core.ability.extend.ErrorAbility;
@@ -57,7 +57,7 @@ import com.lamp.electron.core.ability.invoking.InvokingAbility;
 import com.lamp.electron.core.ability.result.AlarmAbility;
 import com.lamp.electron.core.ability.result.DataInjectionAbility;
 import com.lamp.electron.core.ability.route.HotStandbyAbility;
-import com.lamp.electron.core.ability.route.LoadBalancingAbiltiy;
+import com.lamp.electron.core.ability.route.LoadBalancingAbility;
 import com.lamp.electron.core.ability.route.PartitionAbility;
 import com.lamp.electron.core.ability.security.AuthenticationAbility;
 import com.lamp.electron.core.ability.security.ParemVerifcationAbility;
@@ -85,11 +85,11 @@ public class AbilityManage implements AbilityRelationRegister {
 	@SuppressWarnings("rawtypes")
 	private AbstractChainAbility invokingAbility;
 
-	private Map<OrganizationTypeEnum/* organization */ , Map<String/* id */, Map<AbilityType, Ability>>> organizationAbility = new ConcurrentHashMap<>();
+	private Map<OrganizationTypeEnum/* organization */ , Map<String/* id */, Map<AbilityTypeEnum, Ability>>> organizationAbility = new ConcurrentHashMap<>();
 
-	private Map<AbilityType, Class<?>> abiltiyClass = new HashMap<>();
+	private Map<AbilityTypeEnum, Class<?>> abilityClass = new HashMap<>();
 
-	private Map<EffectPoint, List<AbilityType>> effectPointAbiltiyList = new HashMap<>();
+	private Map<EffectPoint, List<AbilityTypeEnum>> effectPointAbilityList = new HashMap<>();
 
 	private InterfaceManage interfaceManage;
 
@@ -105,7 +105,7 @@ public class AbilityManage implements AbilityRelationRegister {
 
 	private void initAbility(){
 		invokingAbility = new InvokingAbility();
-		invokingAbility.setAbilityTypeEnum(AbilityType.INVOKING);
+		invokingAbility.setAbilityTypeEnum(AbilityTypeEnum.INVOKING);
 		invokingAbility.setOrganizationTypeEnum(OrganizationTypeEnum.INTERFACE);
 
 		for (OrganizationTypeEnum organizationTypeEnum : OrganizationTypeEnum.values()) {
@@ -114,59 +114,59 @@ public class AbilityManage implements AbilityRelationRegister {
 
 		// TODO 以后用其他方式吧，实在没有时间
 
-		List<AbilityType> abilityTypeEnum = new ArrayList<>();
-		abilityTypeEnum.add(AbilityType.DATAINJECTION);
-		abilityTypeEnum.add(AbilityType.AUTHENTICATION);
-		abilityTypeEnum.add(AbilityType.PAREMVERIFCATION);
-		abilityTypeEnum.add(AbilityType.TRAFFISSAFETY);
-		abilityTypeEnum.add(AbilityType.SECKILL);
-		abilityTypeEnum.add(AbilityType.LOADBALANCING);
-		abilityTypeEnum.add(AbilityType.PARTITION);
-		abilityTypeEnum.add(AbilityType.HOTSTANDBY);
-		abilityTypeEnum.add(AbilityType.STATISTICS);
-		effectPointAbiltiyList.put(EffectPoint.DATA, abilityTypeEnum);
+		List<AbilityTypeEnum> abilityTypeEnum = new ArrayList<>();
+		abilityTypeEnum.add(AbilityTypeEnum.DATAINJECTION);
+		abilityTypeEnum.add(AbilityTypeEnum.AUTHENTICATION);
+		abilityTypeEnum.add(AbilityTypeEnum.PAREMVERIFCATION);
+		abilityTypeEnum.add(AbilityTypeEnum.TRAFFISSAFETY);
+		abilityTypeEnum.add(AbilityTypeEnum.SECKILL);
+		abilityTypeEnum.add(AbilityTypeEnum.LOADBALANCING);
+		abilityTypeEnum.add(AbilityTypeEnum.PARTITION);
+		abilityTypeEnum.add(AbilityTypeEnum.HOTSTANDBY);
+		abilityTypeEnum.add(AbilityTypeEnum.STATISTICS);
+		effectPointAbilityList.put(EffectPoint.DATA, abilityTypeEnum);
 
 		abilityTypeEnum = new ArrayList<>();
-		effectPointAbiltiyList.put(EffectPoint.POST, abilityTypeEnum);
+		effectPointAbilityList.put(EffectPoint.POST, abilityTypeEnum);
 
 		abilityTypeEnum = new ArrayList<>();
-		abilityTypeEnum.add(AbilityType.ERRERRESULT);
-		effectPointAbiltiyList.put(EffectPoint.ERROR, abilityTypeEnum);
+		abilityTypeEnum.add(AbilityTypeEnum.ERRERRESULT);
+		effectPointAbilityList.put(EffectPoint.ERROR, abilityTypeEnum);
 
 		abilityTypeEnum = new ArrayList<>();
-		abilityTypeEnum.add(AbilityType.STATISTICS);
-		abilityTypeEnum.add(AbilityType.ALARM);
-		abilityTypeEnum.add(AbilityType.DATAINJECTION);
-		effectPointAbiltiyList.put(EffectPoint.RESULT, abilityTypeEnum);
+		abilityTypeEnum.add(AbilityTypeEnum.STATISTICS);
+		abilityTypeEnum.add(AbilityTypeEnum.ALARM);
+		abilityTypeEnum.add(AbilityTypeEnum.DATAINJECTION);
+		effectPointAbilityList.put(EffectPoint.RESULT, abilityTypeEnum);
 
 		// TODO 以后用其他方式吧，实在没有时间
 
-		abiltiyClass.put(AbilityType.STATISTICS, StatisticsAbility.class);
-		abiltiyClass.put(AbilityType.REQUESTRECORD, RequestRecordAbility.class);
+		abilityClass.put(AbilityTypeEnum.STATISTICS, StatisticsAbility.class);
+		abilityClass.put(AbilityTypeEnum.REQUESTRECORD, RequestRecordAbility.class);
 
-		abiltiyClass.put(AbilityType.CONDITIONROUTE, ConditionRouterAbility.class);
+		abilityClass.put(AbilityTypeEnum.CONDITIONROUTE, ConditionRouterAbility.class);
 
-		abiltiyClass.put(AbilityType.INTERFACERESGISTER, InterfaceRegisterAbiltiy.class);
-		abiltiyClass.put(AbilityType.RESOURCESRESGISTER, ResourcesRegisterAbility.class);
-		abiltiyClass.put(AbilityType.EXAMPLEINFOREGISTER, ExampleinfoRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.INTERFACERESGISTER, InterfaceRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.RESOURCESRESGISTER, ResourcesRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.EXAMPLEINFOREGISTER, ExampleinfoRegisterAbility.class);
 
-		abiltiyClass.put(AbilityType.HOTSTANDBY, HotStandbyAbility.class);
-		abiltiyClass.put(AbilityType.PARTITION, PartitionAbility.class);
-		abiltiyClass.put(AbilityType.LOADBALANCING, LoadBalancingAbiltiy.class);
+		abilityClass.put(AbilityTypeEnum.HOTSTANDBY, HotStandbyAbility.class);
+		abilityClass.put(AbilityTypeEnum.PARTITION, PartitionAbility.class);
+		abilityClass.put(AbilityTypeEnum.LOADBALANCING, LoadBalancingAbility.class);
 
-		abiltiyClass.put(AbilityType.SECKILL, SeckillAbility.class);
-		abiltiyClass.put(AbilityType.TRAFFISSAFETY, TraffisSafetyAbility.class);
-		abiltiyClass.put(AbilityType.INTERFACERESGISTER, InterfaceRegisterAbiltiy.class);
-		abiltiyClass.put(AbilityType.AUTHENTICATION, AuthenticationAbility.class);
-		abiltiyClass.put(AbilityType.PAREMVERIFCATION, ParemVerifcationAbility.class);
+		abilityClass.put(AbilityTypeEnum.SECKILL, SeckillAbility.class);
+		abilityClass.put(AbilityTypeEnum.TRAFFISSAFETY, TraffisSafetyAbility.class);
+		abilityClass.put(AbilityTypeEnum.INTERFACERESGISTER, InterfaceRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.AUTHENTICATION, AuthenticationAbility.class);
+		abilityClass.put(AbilityTypeEnum.PAREMVERIFCATION, ParemVerifcationAbility.class);
 
-		abiltiyClass.put(AbilityType.ERRERRESULT, ErrorResultAbiliby.class);
-		abiltiyClass.put(AbilityType.ALARM, AlarmAbility.class);
+		abilityClass.put(AbilityTypeEnum.ERRERRESULT, ErrorResultAbiliby.class);
+		abilityClass.put(AbilityTypeEnum.ALARM, AlarmAbility.class);
 
-		abiltiyClass.put(AbilityType.DATAINJECTION, DataInjectionAbility.class);
+		abilityClass.put(AbilityTypeEnum.DATAINJECTION, DataInjectionAbility.class);
 
 		AbstractChainAbility<Object> ability = (AbstractChainAbility<Object>) getChainAbility(
-				AbilityType.LOADBALANCING, OrganizationTypeEnum.SYSTEM_DEFAULT,
+				AbilityTypeEnum.LOADBALANCING, OrganizationTypeEnum.SYSTEM_DEFAULT,
 				OrganizationTypeEnum.SYSTEM_DEFAULT.name());
 		LoadBalancing loadBalancing = new LoadBalancing();
 		loadBalancing.setName(LoadBalancingEnum.RANDOM);
@@ -178,7 +178,7 @@ public class AbilityManage implements AbilityRelationRegister {
 
 	void testAbility() {
 		AbilityRelation abilityRelation = new AbilityRelation();
-		abilityRelation.setAbilityTypeEnum(AbilityType.AUTHENTICATION);
+		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.AUTHENTICATION);
 		abilityRelation.setOrganizationName("test-springmvc");
 		abilityRelation.setOrganizationTypeEnum(OrganizationTypeEnum.APPLICATION);
 		Authentication authentication = new Authentication();
@@ -211,17 +211,17 @@ public class AbilityManage implements AbilityRelationRegister {
 	}
 
 	private void createOverallSituation() {
-		Map<String/* id */, Map<AbilityType, Ability>> overallSituation = organizationAbility
+		Map<String/* id */, Map<AbilityTypeEnum, Ability>> overallSituation = organizationAbility
 				.get(OrganizationTypeEnum.APPLICATION);
-		Map<AbilityType, Ability> overallSituationMap = new HashMap<>();
+		Map<AbilityTypeEnum, Ability> overallSituationMap = new HashMap<>();
 		overallSituation.put("organization", overallSituationMap);
 
-		overallSituationMap.put(AbilityType.CONDITIONROUTE, new ConditionRouterAbility());
+		overallSituationMap.put(AbilityTypeEnum.CONDITIONROUTE, new ConditionRouterAbility());
 
-		overallSituationMap.put(AbilityType.INTERFACERESGISTER, new InterfaceRegisterAbiltiy());
-		overallSituationMap.put(AbilityType.EXAMPLEINFOREGISTER, new ExampleinfoRegisterAbility());
-		overallSituationMap.put(AbilityType.RESOURCESRESGISTER, new ResourcesRegisterAbility());
-		overallSituationMap.put(AbilityType.CONFIG, new ConfigAbility());
+		overallSituationMap.put(AbilityTypeEnum.INTERFACERESGISTER, new InterfaceRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.EXAMPLEINFOREGISTER, new ExampleinfoRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.RESOURCESRESGISTER, new ResourcesRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.CONFIG, new ConfigAbility());
 		for (Ability ability : overallSituationMap.values()) {
 			if (ability instanceof InterfaceAware) {
 				((InterfaceAware) ability).setInterfaceManage(interfaceManage);
@@ -277,17 +277,17 @@ public class AbilityManage implements AbilityRelationRegister {
 	 */
 	private ExecuteAbility getAbility(ExecuteAbility executeAbility, EffectPoint effectPoint,
 			LongRangeWrapper longRangeWrapper) {
-		List<AbilityType> abilityTypeEnumList = effectPointAbiltiyList.get(effectPoint);
-		for (AbilityType abilityTypeEnum : abilityTypeEnumList) {
+		List<AbilityTypeEnum> abilityTypeEnumList = effectPointAbilityList.get(effectPoint);
+		for (AbilityTypeEnum abilityTypeEnum : abilityTypeEnumList) {
 			executeAbility = getExecuteAbility(abilityTypeEnum, executeAbility, longRangeWrapper, effectPoint);
 		}
 		return executeAbility;
 	}
 
-	public ExecuteAbility getExecuteAbility(AbilityType abilityTypeEnum, ExecuteAbility executeAbility,
-			LongRangeWrapper longRangeWrapper, EffectPoint effectPoint) {
+	public ExecuteAbility getExecuteAbility(AbilityTypeEnum abilityTypeEnum, ExecuteAbility executeAbility,
+											LongRangeWrapper longRangeWrapper, EffectPoint effectPoint) {
 		List<AbstractChainAbility<Object>> list = new ArrayList<>();
-		for (OrganizationTypeEnum organizationTypeEnum : abilityTypeEnum.getAbiltityBindRelation()) {
+		for (OrganizationTypeEnum organizationTypeEnum : abilityTypeEnum.getAbilityBindRelation()) {
 			AbstractChainAbility<Object> ability = (AbstractChainAbility<Object>) getChainAbility(abilityTypeEnum,
 					organizationTypeEnum, abilityId(longRangeWrapper, organizationTypeEnum));
 			if (effectPoint.equals(EffectPoint.ERROR) && ability instanceof ErrorAbility) {
@@ -302,7 +302,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		return new ExecuteAbility(list, executeAbility, null);
 	}
 
-	public <T> T getOverallSituationAbility(AbilityType abilityTypeEnum) {
+	public <T> T getOverallSituationAbility(AbilityTypeEnum abilityTypeEnum) {
 		return (T) getAbilityMap(abilityTypeEnum, null, null).get(abilityTypeEnum);
 	}
 
@@ -311,18 +311,18 @@ public class AbilityManage implements AbilityRelationRegister {
 				abilityRelation.getOrganizationName());
 	}
 
-	private Ability getChainAbility(AbilityType abilityTypeEnum, OrganizationTypeEnum organizationTypeEnum,
-			String id) {
-		Map<AbilityType, Ability> abilityTypeEnumMap = getAbilityMap(abilityTypeEnum, organizationTypeEnum, id);
+	private Ability getChainAbility(AbilityTypeEnum abilityTypeEnum, OrganizationTypeEnum organizationTypeEnum,
+									String id) {
+		Map<AbilityTypeEnum, Ability> abilityTypeEnumMap = getAbilityMap(abilityTypeEnum, organizationTypeEnum, id);
 		Ability chainAbility = abilityTypeEnumMap.get(abilityTypeEnum);
 		if (Objects.isNull(chainAbility)) {
 			chainAbility = abilityTypeEnumMap.computeIfAbsent(abilityTypeEnum,
-					new Function<AbilityType, Ability>() {
+					new Function<AbilityTypeEnum, Ability>() {
 
 						@Override
-						public Ability apply(AbilityType abilityTypeEnum) {
+						public Ability apply(AbilityTypeEnum abilityTypeEnum) {
 							try {
-								Class<?> clazz = abiltiyClass.get(abilityTypeEnum);
+								Class<?> clazz = abilityClass.get(abilityTypeEnum);
 								AbstractAbility<Object> ability = (AbstractAbility<Object>) clazz.newInstance();
 								ability.setAbilityTypeEnum(abilityTypeEnum);
 								ability.setOrganizationTypeEnum(organizationTypeEnum);
@@ -340,15 +340,15 @@ public class AbilityManage implements AbilityRelationRegister {
 		return chainAbility;
 	}
 
-	private Map<AbilityType, Ability> getAbilityMap(AbilityType abilityTypeEnum,
-			OrganizationTypeEnum organizationTypeEnum, String id) {
+	private Map<AbilityTypeEnum, Ability> getAbilityMap(AbilityTypeEnum abilityTypeEnum,
+														OrganizationTypeEnum organizationTypeEnum, String id) {
 		if (abilityTypeEnum.isOverallSituation()) {
 			organizationTypeEnum = OrganizationTypeEnum.APPLICATION;
 			id = "organization";
 		}
-		Map<String, Map<AbilityType, Ability>> organizationAbilityMap = organizationAbility
+		Map<String, Map<AbilityTypeEnum, Ability>> organizationAbilityMap = organizationAbility
 				.get(organizationTypeEnum);
-		Map<AbilityType, Ability> abilityTypeEnumMap = organizationAbilityMap.get(id);
+		Map<AbilityTypeEnum, Ability> abilityTypeEnumMap = organizationAbilityMap.get(id);
 		if (Objects.isNull(abilityTypeEnumMap)) {
 			abilityTypeEnumMap = organizationAbilityMap.computeIfAbsent(id, k -> new ConcurrentHashMap<>());
 		}
@@ -363,7 +363,7 @@ public class AbilityManage implements AbilityRelationRegister {
 	 */
 	private Object serializeAbility(AbilityRelation abilityRelation) {
 		JSONObject object = (JSONObject) abilityRelation.getAbility();
-		return object.toJavaObject(abilityRelation.getAbilityTypeEnum().getAbiltiyObject());
+		return object.toJavaObject(abilityRelation.getAbilityTypeEnum().getAbilityObject());
 	}
 
 	private String abilityId(LongRangeWrapper longRangeWrapper, OrganizationTypeEnum organizationTypeEnum) {

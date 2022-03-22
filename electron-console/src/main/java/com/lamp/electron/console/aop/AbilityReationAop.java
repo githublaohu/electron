@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.register.RegisterServerFocusCall;
 import com.lamp.electron.base.common.register.data.AbilityInfo;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
@@ -51,7 +51,7 @@ public class AbilityReationAop {
 	@Autowired
 	private RegisterObject registerObject;
 	
-	private Map<AbilityType,String> abilityTypeByChildDataName = new ConcurrentHashMap<>();
+	private Map<AbilityTypeEnum,String> abilityTypeByChildDataName = new ConcurrentHashMap<>();
 	
 	@AfterReturning(returning = "returning", value = "execution(* com.lamp.electron.console.service.ability.AbilityInfoService.insertAbilityInfo(..)) || "
 			+ "execution(* com.lamp.electron.console.service.ability.AbilityInfoService.updateAbilityInfoStatus(..)) ||"
@@ -130,7 +130,7 @@ public class AbilityReationAop {
 			String chilDataName = abilityTypeByChildDataName.get(parentAbilityInfo.getAiAbilityType());
 			if(Objects.isNull(chilDataName)) {
 				chilDataName = parentAbilityInfo.getAiAbilityType().getChildDataName();
-				for(Field field : parentAbilityInfo.getAiAbilityType().getAbiltiyObject().getDeclaredFields()) {
+				for(Field field : parentAbilityInfo.getAiAbilityType().getAbilityObject().getDeclaredFields()) {
 					if(List.class.equals(field.getDeclaringClass())){
 						chilDataName = field.getName();
 					}

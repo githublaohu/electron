@@ -12,14 +12,14 @@
 package com.lamp.electron.core.ability.collect;
 
 import com.lamp.electron.base.common.ability.LinkTrack;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
-@AbiltiyAction(abilityType = AbilityType.LINKTRACK)
+@AbilityAction(abilityType = AbilityTypeEnum.LINKTRACK)
 public class LinkTrackAbility extends AbstractChainAbility<LinkTrack>{
 
 	@Override

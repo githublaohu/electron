@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.exception.ExceptionType;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
@@ -46,7 +46,7 @@ public class AbilityInvokerManage {
 		this.abilityManage = abilityManage;
 		this.interfaceManage = interfaceManage;
 		this.exampleManage = exampleManage;
-		this.conditionAbility = abilityManage.getOverallSituationAbility(AbilityType.CONDITIONROUTE);
+		this.conditionAbility = abilityManage.getOverallSituationAbility(AbilityTypeEnum.CONDITIONROUTE);
 	}
 
 	public AbilityInvoker getAbilityInvoker(ElectronRequest electronRequest) {

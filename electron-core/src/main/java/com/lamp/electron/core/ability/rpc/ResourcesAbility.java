@@ -12,8 +12,8 @@
 package com.lamp.electron.core.ability.rpc;
 
 import com.lamp.electron.base.common.ability.ResourcesRegister;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.core.ability.OverallSituationAbility;
 import com.lamp.electron.core.manage.InterfaceManage;
@@ -25,7 +25,7 @@ import com.lamp.electron.core.manage.aware.InterfaceAware;
  * @author laohu
  *
  */
-@AbiltiyAction(abilityType = AbilityType.RESOURCESRESGISTER)
+@AbilityAction(abilityType = AbilityTypeEnum.RESOURCESRESGISTER)
 public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister> implements InterfaceAware {
 
 	String defaultPath;

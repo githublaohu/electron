@@ -11,15 +11,18 @@
  */
 package com.lamp.electron.base.common.enums;
 
-public enum AbiltiyScope {
+/**
+ * @author jelly
+ */
+public enum AbilityScope {
 	
 	COLLECT("收集",""),
 	DISCERN("识别",""),
 	CHOICE("路由",""),
 	SECURITY("安全",""),
 	RPC("RPC配置",""),
-	ERRER("异常处理",""),
-	INVOK("invok处理",""),
+	ERROR("异常处理",""),
+	INVOKE("invoke处理",""),
 	SECURITY_SURROUND("","",false),
 	SURROUND("","",false),
 	CONFIG("配置",""),
@@ -33,12 +36,12 @@ public enum AbiltiyScope {
 	
 	private boolean tree = true;
 	
-	AbiltiyScope(String label, String explain ){
+	AbilityScope(String label, String explain ){
 		this.label = label;
 		this.explain = explain;
 	}
 	
-	AbiltiyScope(String label, String explain,boolean tree ){
+	AbilityScope(String label, String explain, boolean tree ){
 		this.label = label;
 		this.explain = explain;
 		this.tree = tree;

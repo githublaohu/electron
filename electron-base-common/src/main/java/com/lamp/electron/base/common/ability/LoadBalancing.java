@@ -11,15 +11,15 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.enums.ability.LoadBalancingEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "负载均衡",abiltiyScope=AbiltiyScope.CHOICE,abiltityBindRelation= {OrganizationTypeEnum.APPLICATION,OrganizationTypeEnum.SYSTEM_DEFAULT})
+@AbilityData(chinaName = "负载均衡", abilityScope = AbilityScope.CHOICE, abilityBindRelation = {OrganizationTypeEnum.APPLICATION,OrganizationTypeEnum.SYSTEM_DEFAULT})
 public class LoadBalancing {
 
 	private LoadBalancingEnum name;

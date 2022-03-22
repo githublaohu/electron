@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.lamp.electron.base.common.ability.LoadBalancing;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.ability.LoadBalancingEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
@@ -29,8 +29,8 @@ import com.lamp.electron.core.ability.function.loadBalancing.LoadBalancingSelect
 import com.lamp.electron.core.ability.function.loadBalancing.RandomLoadBalancingSelect;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
-@AbiltiyAction(abilityType = AbilityType.LOADBALANCING)
-public class LoadBalancingAbiltiy extends AbstractChainAbility<LoadBalancing>{
+@AbilityAction(abilityType = AbilityTypeEnum.LOADBALANCING)
+public class LoadBalancingAbility extends AbstractChainAbility<LoadBalancing>{
 
 	private static final Map<LoadBalancingEnum, LoadBalancingSelect>  loadBalancingSelectMap = new HashMap<>();
 	

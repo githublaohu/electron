@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import com.lamp.electron.base.common.ability.RedisRPC;
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.perception.Perception;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.base.common.register.data.ExampleInfo;
@@ -27,7 +27,7 @@ import com.lamp.electron.core.manage.aware.ElectronClientAware;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
-@AbiltiyAction(abilityType = AbilityType.REDISRPC)
+@AbilityAction(abilityType = AbilityTypeEnum.REDISRPC)
 public class RedisRPCAbility extends AbstractAbility<RedisRPC> implements InterfaceAware, ElectronClientAware {
 
 	private InterfaceManage interfaceManage;

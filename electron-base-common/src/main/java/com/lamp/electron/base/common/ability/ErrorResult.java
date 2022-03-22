@@ -11,14 +11,14 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(abiltiyScope = AbiltiyScope.ERRER, chinaName = "异常返回")
-public class ErrerResult {
+@AbilityData(abilityScope = AbilityScope.ERROR, chinaName = "异常返回")
+public class ErrorResult {
 
 	private Integer basicsCode;
 

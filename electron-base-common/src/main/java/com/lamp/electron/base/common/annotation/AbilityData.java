@@ -18,17 +18,17 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 @Retention(RUNTIME)
 @Target({ TYPE, METHOD })
-public @interface AbiltiyData {
+public @interface AbilityData {
 	
 	/**
 	 * 动作作用域
 	 */
-	AbiltiyScope[] abiltiyScope();
+	AbilityScope[] abilityScope();
 
 	/**
 	 * 动作名
@@ -71,7 +71,7 @@ public @interface AbiltiyData {
 	/**
 	 * 绑定维度
 	 */
-	OrganizationTypeEnum[] abiltityBindRelation() default OrganizationTypeEnum.APPLICATION;
+	OrganizationTypeEnum[] abilityBindRelation() default OrganizationTypeEnum.APPLICATION;
 
 	String childDataName() default "";
 	

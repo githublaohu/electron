@@ -1,13 +1,10 @@
 package com.lamp.electron.console;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
-import com.lamp.electron.base.common.enums.AbilityTypeEnum;
+//import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.enums.ProtocolConfigEnum;
 import com.lamp.electron.base.common.register.data.AbilityRelation;

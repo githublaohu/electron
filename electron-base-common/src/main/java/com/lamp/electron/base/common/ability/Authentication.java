@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.enums.ProtocolEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(abiltiyScope = AbiltiyScope.SECURITY, chinaName = "认证")
+@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "认证")
 public class Authentication {
 
 	private ProtocolEnum protocolEnum;

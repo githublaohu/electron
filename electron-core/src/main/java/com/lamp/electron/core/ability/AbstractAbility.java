@@ -13,7 +13,7 @@ package com.lamp.electron.core.ability;
 
 import java.util.Objects;
 
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 
@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 public abstract class AbstractAbility<T> implements Ability{
 
-	protected AbilityType abilityTypeEnum;
+	protected AbilityTypeEnum abilityTypeEnum;
 	
 	protected OrganizationTypeEnum organizationTypeEnum;
 	

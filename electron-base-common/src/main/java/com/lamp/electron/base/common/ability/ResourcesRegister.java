@@ -13,8 +13,8 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.viewmodel.BehaviorOperation;
 import com.lamp.electron.base.common.viewmodel.BehaviorType;
 import com.lamp.electron.base.common.viewmodel.DataModeBehavior;
@@ -30,7 +30,7 @@ import lombok.Data;
  */
 @Data
 @ViewModel(slaveName = "resourcesInfo")
-@AbiltiyData(chinaName = "资源注册", abiltiyScope = AbiltiyScope.REGISTER, childDataName = "resourcesInfo")
+@AbilityData(chinaName = "资源注册", abilityScope = AbilityScope.REGISTER, childDataName = "resourcesInfo")
 public class ResourcesRegister {
 
 	@BehaviorOperation(update = false, query = false, queryForm = false)

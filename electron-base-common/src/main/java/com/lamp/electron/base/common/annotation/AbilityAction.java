@@ -18,14 +18,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.EffectPoint;
 
 @Retention(RUNTIME)
 @Target({ TYPE, METHOD })
-public @interface AbiltiyAction {
+public @interface AbilityAction {
 
-	AbilityType abilityType();
+	AbilityTypeEnum abilityType();
 	
 	EffectPoint[] effectPoint() default EffectPoint.DATA ;
 }

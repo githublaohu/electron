@@ -16,9 +16,9 @@ import java.util.Objects;
 import javax.annotation.Resource;
 
 import com.lamp.electron.base.common.ability.Authentication;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
+import com.lamp.electron.base.common.annotation.AbilityAction;
 import com.lamp.electron.base.common.constant.ElectronConstant;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.exception.ExceptionType;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
@@ -38,7 +38,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@AbiltiyAction(abilityType = AbilityType.AUTHENTICATION)
+@AbilityAction(abilityType = AbilityTypeEnum.AUTHENTICATION)
 public class AuthenticationAbility extends AbstractChainAbility<Authentication> implements InsideServiceFactoryAware {
 
 	@Resource

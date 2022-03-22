@@ -14,8 +14,8 @@ package com.lamp.electron.base.common.ability;
 import java.util.List;
 
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@AbiltiyData(abiltiyScope = AbiltiyScope.RPC, chinaName = "MessageMiddlewareRPC", abiltityBindRelation = OrganizationTypeEnum.INTERFACE)
+@AbilityData(abilityScope = AbilityScope.RPC, chinaName = "MessageMiddlewareRPC", abilityBindRelation = OrganizationTypeEnum.INTERFACE)
 public class MessageMiddlewareRPC extends RpcRequestConfig {
 
 	private MessageMiddlewareSendType sendType;

@@ -15,7 +15,7 @@ import com.lamp.electron.base.common.ability.Alarm;
 import com.lamp.electron.base.common.ability.Authentication;
 import com.lamp.electron.base.common.ability.ConditionRouter;
 import com.lamp.electron.base.common.ability.DataInjection;
-import com.lamp.electron.base.common.ability.ErrerResult;
+import com.lamp.electron.base.common.ability.ErrorResult;
 import com.lamp.electron.base.common.ability.ExampleInfoRegister;
 import com.lamp.electron.base.common.ability.HotStandby;
 import com.lamp.electron.base.common.ability.InterfaceRegister;
@@ -35,7 +35,7 @@ import com.lamp.electron.base.common.ability.Statistics;
 import com.lamp.electron.base.common.ability.Template;
 import com.lamp.electron.base.common.ability.TraffisSafety;
 import com.lamp.electron.base.common.ability.config.Config;
-import com.lamp.electron.base.common.annotation.AbiltiyData;
+import com.lamp.electron.base.common.annotation.AbilityData;
 
 /**
  * <P>
@@ -51,7 +51,7 @@ import com.lamp.electron.base.common.annotation.AbiltiyData;
  * @author laohu
  *
  */
-public enum AbilityType {
+public enum AbilityTypeEnum {
 	
 	
 	STATISTICS(Statistics.class),
@@ -76,7 +76,7 @@ public enum AbilityType {
 
 	INVOKING(Invoking.class),
 	
-	ERRERRESULT(ErrerResult.class),
+	ERRERRESULT(ErrorResult.class),
 	ALARM(Alarm.class),
 	
 	DATAINJECTION(DataInjection.class),
@@ -94,58 +94,58 @@ public enum AbilityType {
 	;
 
 	
-	private AbiltiyData abiltiyData;
+	private AbilityData abilityData;
 	
 	private Class<?> clazz;
 	
 
-	AbilityType(Class<?> clazz) {
+	AbilityTypeEnum(Class<?> clazz) {
 		this.clazz = clazz;
-		abiltiyData = clazz.getAnnotation(AbiltiyData.class);
+		abilityData = clazz.getAnnotation(AbilityData.class);
 	}
 	
-	public AbiltiyScope[] getAbiltiyScope() {
-		return abiltiyData.abiltiyScope();
+	public AbilityScope[] getAbilityScope() {
+		return abilityData.abilityScope();
 	}
 
 	public String getName() {
 		return clazz.getSimpleName();
 	}
 
-	public Class<?> getAbiltiyObject() {
+	public Class<?> getAbilityObject() {
 		return clazz;
 	}
 	
 	public String getChildName() {
-		return abiltiyData.chinaName();
+		return abilityData.chinaName();
 	}
 
 	public boolean isManyBind() {
-		return abiltiyData.manyBind();
+		return abilityData.manyBind();
 	}
 
 	public boolean isOverallSituation() {
-		return abiltiyData.overallSituation();
+		return abilityData.overallSituation();
 	}
 	
 	public boolean isExecuteMany() {
-		return abiltiyData.executeMany();
+		return abilityData.executeMany();
 	}
 	
-	public OrganizationTypeEnum[] getAbiltityBindRelation() {
-		return abiltiyData.abiltityBindRelation();
+	public OrganizationTypeEnum[] getAbilityBindRelation() {
+		return abilityData.abilityBindRelation();
 	}
 
 	public String getExplain() {
-		return abiltiyData.explain();
+		return abilityData.explain();
 	}
 
 	public String getEffect() {
-		return abiltiyData.effect();
+		return abilityData.effect();
 	}
 
 	public String getChildDataName() {
-		return abiltiyData.childDataName();
+		return abilityData.childDataName();
 	}
 	
 	public String getRetrySpot() {
@@ -153,7 +153,7 @@ public enum AbilityType {
 	}
 	
 	public OrganizationTypeEnum[] getOrganizationTypeEnum() {
-		return abiltiyData.abiltityBindRelation();
+		return abilityData.abilityBindRelation();
 	}
 
 }

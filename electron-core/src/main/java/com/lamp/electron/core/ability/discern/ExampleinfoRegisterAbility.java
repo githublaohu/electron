@@ -14,15 +14,15 @@ package com.lamp.electron.core.ability.discern;
 import java.util.Objects;
 
 import com.lamp.electron.base.common.ability.ExampleInfoRegister;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.register.data.ExampleInfo;
 import com.lamp.electron.core.ability.OverallSituationAbility;
 import com.lamp.electron.core.manage.ExampleManage;
 import com.lamp.electron.core.manage.aware.ExampleAware;
 
 
-@AbiltiyAction(abilityType = AbilityType.EXAMPLEINFOREGISTER)
+@AbilityAction(abilityType = AbilityTypeEnum.EXAMPLEINFOREGISTER)
 public class ExampleinfoRegisterAbility extends OverallSituationAbility<ExampleInfoRegister> implements ExampleAware{
 
 	private ExampleManage exampleManage;

@@ -19,7 +19,7 @@ import com.lamp.electron.core.ability.OverallSituationAbility;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 
-public class InterfaceRegisterAbiltiy extends OverallSituationAbility<InterfaceRegister> implements InterfaceAware {
+public class InterfaceRegisterAbility extends OverallSituationAbility<InterfaceRegister> implements InterfaceAware {
 
 	private InterfaceManage interfaceManage;
 

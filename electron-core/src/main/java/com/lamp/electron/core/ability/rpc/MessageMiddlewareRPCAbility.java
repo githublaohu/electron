@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import com.lamp.electron.base.common.ability.MessageMiddlewareRPC;
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.perception.Perception;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.base.common.register.data.ExampleInfo;
@@ -27,7 +27,7 @@ import com.lamp.electron.core.manage.aware.ElectronClientAware;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
-@AbiltiyAction(abilityType = AbilityType.MESSAGE_MIDDLEWARE_RPC)
+@AbilityAction(abilityType = AbilityTypeEnum.MESSAGE_MIDDLEWARE_RPC)
 public class MessageMiddlewareRPCAbility implements Ability, InterfaceAware, ElectronClientAware {
 
 	private InterfaceManage interfaceManage;

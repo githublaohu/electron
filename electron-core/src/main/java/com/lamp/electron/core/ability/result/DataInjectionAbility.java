@@ -13,8 +13,8 @@ package com.lamp.electron.core.ability.result;
 
 import com.lamp.electron.base.common.ability.DataInjection;
 import com.lamp.electron.base.common.ability.DataInjection.ResultDataDisposeInfo;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.enums.EffectPoint;
 import com.lamp.electron.base.common.invoker.ElectronBehavior;
@@ -29,7 +29,7 @@ import com.lamp.electron.core.ability.extend.ResultAbility;
  * @author laohu
  *
  */
-@AbiltiyAction(abilityType = AbilityType.DATAINJECTION, effectPoint = EffectPoint.RESULT)
+@AbilityAction(abilityType = AbilityTypeEnum.DATAINJECTION, effectPoint = EffectPoint.RESULT)
 public class DataInjectionAbility extends AbstractChainAbility<DataInjection> implements ResultAbility {
 
 	@Override

@@ -14,8 +14,8 @@ package com.lamp.electron.core.ability.collect;
 import javax.annotation.Resource;
 
 import com.lamp.electron.base.common.ability.RequestRecord;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -25,7 +25,7 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.container.bean.TrafficDetailsBean;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
-@AbiltiyAction(abilityType = AbilityType.REQUESTRECORD)
+@AbilityAction(abilityType = AbilityTypeEnum.REQUESTRECORD)
 public class RequestRecordAbility extends AbstractChainAbility<RequestRecord> {
 
 	@Resource
