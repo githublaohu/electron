@@ -9,12 +9,14 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.core.manage.aware;
+package com.lamp.electron.base.common.register.server;
 
-import com.lamp.electron.core.manage.ExampleManage;
+import com.lamp.electron.base.common.register.data.ResourceInstance;
+import com.lamp.electron.register.api.Register;
+import com.lamp.electron.register.api.RegisterServer;
 
-public interface ExampleAware {
+@Register(node= {"organizationName","networkAddress","port"},persistence = true)
+public interface ResourceInstanceRegister extends RegisterServer<ResourceInstance>{
+
 	
-	public void setExampleManage(ExampleManage exampleManage );
-
 }

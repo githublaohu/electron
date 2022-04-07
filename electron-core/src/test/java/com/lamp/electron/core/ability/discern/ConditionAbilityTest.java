@@ -30,7 +30,7 @@ import com.lamp.electron.base.common.register.data.AbilityRelation;
 public class ConditionAbilityTest {
 
 	@Spy
-	private ConditionAbility conditionAbility = new ConditionAbility();
+	private ConditionRouterAbility conditionAbility = new ConditionRouterAbility();
 
 	@Mock
 	private ElectronRequest electronRequest;
@@ -44,7 +44,7 @@ public class ConditionAbilityTest {
 	@Before
 	public void before() {
 
-		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONDITIONROUTE);
+		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONDITION_ROUTER);
 		abilityRelation.setOrganizationTypeEnum(OrganizationTypeEnum.APPLICATION);
 		abilityRelation.setOrganizationName("electron");
 
@@ -97,19 +97,23 @@ public class ConditionAbilityTest {
 	public void urlTest() {
 		Mockito.when(electronRequest.path()).thenReturn("/a/electron/before");
 		String name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern /a/electron/before TO : " + name);
 		Assert.assertNull(name);
 
 		conditionAbility.addAbilityObject(this.abilityRelation);
 		name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern /a/electron/before TO : " + name);
 		Assert.assertNull(name);
 
 		Mockito.when(electronRequest.path()).thenReturn("/electron/before");
 		name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern /electron/before TO : " + name);
 		Assert.assertEquals(name, abilityRelation.getOrganizationName());
+
 	}
 
 	@Test
-	public void rewriteValusTest() {
+	public void rewriteValueTest() {
 
 		conditionAbility.addAbilityObject(abilityRelation);
 		Mockito.when(electronRequest.path()).thenReturn("/electron/before");
@@ -124,26 +128,23 @@ public class ConditionAbilityTest {
 		conditionAbility.discern(electronRequest);
 		Mockito.verify(electronRequest,Mockito.times(0)).path(Mockito.anyString());
 		
-		Mockito.doAnswer(new Answer<String>() {
-			@Override
-			public String answer(InvocationOnMock invocation) throws Throwable {
-				Assert.assertEquals( invocation.getArgument(0), "/before");
-				return invocation.getArgument(0);
-			}
+		Mockito.doAnswer((Answer<String>) invocation -> {
+			Assert.assertEquals( invocation.getArgument(0), "/before");
+			return invocation.getArgument(0);
 		}).when(electronRequest).path(Mockito.any());
 		condition.setRewrite(Rewrite.DETELE_KEY);
-		conditionAbility.discern(electronRequest);
-		
-		Mockito.doAnswer(new Answer<String>() {
-			@Override
-			public String answer(InvocationOnMock invocation) throws Throwable {
-				Assert.assertEquals(invocation.getArgument(0), "/electron/core/before");
-				return invocation.getArgument(0);
-			}
+		String name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern : " + name);
+
+		Mockito.doAnswer((Answer<String>) invocation -> {
+			Assert.assertEquals(invocation.getArgument(0), "/electron/core/before");
+			return invocation.getArgument(0);
 		}).when(electronRequest).path(Mockito.any());
 		condition.setRewrite(Rewrite.REWRITE_KEY);
 		condition.setRewriteValue("/electron/core");
-		conditionAbility.discern(electronRequest);
+		name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern : " + name);
+
 	}
 
 	@Test
@@ -158,18 +159,21 @@ public class ConditionAbilityTest {
 		
 		Mockito.when(electronRequest.data(Mockito.any(),Mockito.anyString())).thenReturn(abilityRelation.getOrganizationName());
 		String name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern : " + name);
 		Assert.assertEquals(name,abilityRelation.getOrganizationName());
-		
+
 		Mockito.when(electronRequest.data(Mockito.any(),Mockito.anyString())).thenReturn("");
 		name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern : " + name);
 		Assert.assertNull(name);
-		
+
 		condition.setValue("core");
 		
 		Mockito.when(electronRequest.data(Mockito.any(),Mockito.anyString())).thenReturn("core");
 		name = conditionAbility.discern(electronRequest);
+		System.out.println("conditionAbility discern : " + name);
 		Assert.assertEquals(name,abilityRelation.getOrganizationName());
-		
-		
+
+
 	}
 }

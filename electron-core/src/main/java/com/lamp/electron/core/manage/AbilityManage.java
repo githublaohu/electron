@@ -43,10 +43,10 @@ import com.lamp.electron.core.ability.collect.RequestRecordAbility;
 import com.lamp.electron.core.ability.collect.StatisticsAbility;
 import com.lamp.electron.core.ability.config.ConfigAbility;
 import com.lamp.electron.core.ability.discern.ConditionRouterAbility;
-import com.lamp.electron.core.ability.discern.ExampleinfoRegisterAbility;
+import com.lamp.electron.core.ability.discern.InstanceInfoRegisterAbility;
 import com.lamp.electron.core.ability.discern.InterfaceRegisterAbility;
 import com.lamp.electron.core.ability.discern.ResourcesRegisterAbility;
-import com.lamp.electron.core.ability.error.ErrorResultAbiliby;
+import com.lamp.electron.core.ability.error.ErrorResultAbility;
 import com.lamp.electron.core.ability.extend.ErrorAbility;
 import com.lamp.electron.core.ability.extend.ErrorAbilityWrapper;
 import com.lamp.electron.core.ability.extend.PostAbility;
@@ -60,12 +60,12 @@ import com.lamp.electron.core.ability.route.HotStandbyAbility;
 import com.lamp.electron.core.ability.route.LoadBalancingAbility;
 import com.lamp.electron.core.ability.route.PartitionAbility;
 import com.lamp.electron.core.ability.security.AuthenticationAbility;
-import com.lamp.electron.core.ability.security.ParemVerifcationAbility;
+import com.lamp.electron.core.ability.security.ParamVerificationAbility;
 import com.lamp.electron.core.ability.security.SeckillAbility;
 import com.lamp.electron.core.ability.security.TraffisSafetyAbility;
 import com.lamp.electron.core.container.ContainerBeanFactory;
 import com.lamp.electron.core.manage.aware.ConfigPerceptionAware;
-import com.lamp.electron.core.manage.aware.ExampleAware;
+import com.lamp.electron.core.manage.aware.InstanceAware;
 import com.lamp.electron.core.manage.aware.InsideServiceFactoryAware;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 import com.lamp.electron.core.service.InsideServiceFactory;
@@ -73,7 +73,8 @@ import com.lamp.electron.core.service.InsideServiceFactory;
 import lombok.Setter;
 
 /**
- * 要排除OrganizationTypeEnum.INTERFACE_EXAMPLE
+ * 能力管理类
+ * 要排除OrganizationTypeEnum.INTERFACE_INSTANCE
  * 
  * @author laohu
  *
@@ -93,7 +94,7 @@ public class AbilityManage implements AbilityRelationRegister {
 
 	private InterfaceManage interfaceManage;
 
-	private ExampleManage exampleManage;
+	private InstanceManage instanceManage;
 	
 	private InsideServiceFactory serviceFactory;
 
@@ -117,12 +118,12 @@ public class AbilityManage implements AbilityRelationRegister {
 		List<AbilityTypeEnum> abilityTypeEnum = new ArrayList<>();
 		abilityTypeEnum.add(AbilityTypeEnum.DATAINJECTION);
 		abilityTypeEnum.add(AbilityTypeEnum.AUTHENTICATION);
-		abilityTypeEnum.add(AbilityTypeEnum.PAREMVERIFCATION);
-		abilityTypeEnum.add(AbilityTypeEnum.TRAFFISSAFETY);
-		abilityTypeEnum.add(AbilityTypeEnum.SECKILL);
-		abilityTypeEnum.add(AbilityTypeEnum.LOADBALANCING);
+		abilityTypeEnum.add(AbilityTypeEnum.PARAM_VERIFICATION);
+		abilityTypeEnum.add(AbilityTypeEnum.TRAFFIC_SAFETY);
+		abilityTypeEnum.add(AbilityTypeEnum.SEC_KILL);
+		abilityTypeEnum.add(AbilityTypeEnum.LOAD_BALANCING);
 		abilityTypeEnum.add(AbilityTypeEnum.PARTITION);
-		abilityTypeEnum.add(AbilityTypeEnum.HOTSTANDBY);
+		abilityTypeEnum.add(AbilityTypeEnum.HOT_STANDBY);
 		abilityTypeEnum.add(AbilityTypeEnum.STATISTICS);
 		effectPointAbilityList.put(EffectPoint.DATA, abilityTypeEnum);
 
@@ -130,7 +131,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		effectPointAbilityList.put(EffectPoint.POST, abilityTypeEnum);
 
 		abilityTypeEnum = new ArrayList<>();
-		abilityTypeEnum.add(AbilityTypeEnum.ERRERRESULT);
+		abilityTypeEnum.add(AbilityTypeEnum.ERROR_RESULT);
 		effectPointAbilityList.put(EffectPoint.ERROR, abilityTypeEnum);
 
 		abilityTypeEnum = new ArrayList<>();
@@ -142,31 +143,31 @@ public class AbilityManage implements AbilityRelationRegister {
 		// TODO 以后用其他方式吧，实在没有时间
 
 		abilityClass.put(AbilityTypeEnum.STATISTICS, StatisticsAbility.class);
-		abilityClass.put(AbilityTypeEnum.REQUESTRECORD, RequestRecordAbility.class);
+		abilityClass.put(AbilityTypeEnum.REQUEST_RECORD, RequestRecordAbility.class);
 
-		abilityClass.put(AbilityTypeEnum.CONDITIONROUTE, ConditionRouterAbility.class);
+		abilityClass.put(AbilityTypeEnum.CONDITION_ROUTER, ConditionRouterAbility.class);
 
-		abilityClass.put(AbilityTypeEnum.INTERFACERESGISTER, InterfaceRegisterAbility.class);
-		abilityClass.put(AbilityTypeEnum.RESOURCESRESGISTER, ResourcesRegisterAbility.class);
-		abilityClass.put(AbilityTypeEnum.EXAMPLEINFOREGISTER, ExampleinfoRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.INTERFACE_REGISTER, InterfaceRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.RESOURCES_REGISTER, ResourcesRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.INSTANCE_INFO_REGISTER, InstanceInfoRegisterAbility.class);
 
-		abilityClass.put(AbilityTypeEnum.HOTSTANDBY, HotStandbyAbility.class);
+		abilityClass.put(AbilityTypeEnum.HOT_STANDBY, HotStandbyAbility.class);
 		abilityClass.put(AbilityTypeEnum.PARTITION, PartitionAbility.class);
-		abilityClass.put(AbilityTypeEnum.LOADBALANCING, LoadBalancingAbility.class);
+		abilityClass.put(AbilityTypeEnum.LOAD_BALANCING, LoadBalancingAbility.class);
 
-		abilityClass.put(AbilityTypeEnum.SECKILL, SeckillAbility.class);
-		abilityClass.put(AbilityTypeEnum.TRAFFISSAFETY, TraffisSafetyAbility.class);
-		abilityClass.put(AbilityTypeEnum.INTERFACERESGISTER, InterfaceRegisterAbility.class);
+		abilityClass.put(AbilityTypeEnum.SEC_KILL, SeckillAbility.class);
+		abilityClass.put(AbilityTypeEnum.TRAFFIC_SAFETY, TraffisSafetyAbility.class);
+		abilityClass.put(AbilityTypeEnum.INTERFACE_REGISTER, InterfaceRegisterAbility.class);
 		abilityClass.put(AbilityTypeEnum.AUTHENTICATION, AuthenticationAbility.class);
-		abilityClass.put(AbilityTypeEnum.PAREMVERIFCATION, ParemVerifcationAbility.class);
+		abilityClass.put(AbilityTypeEnum.PARAM_VERIFICATION, ParamVerificationAbility.class);
 
-		abilityClass.put(AbilityTypeEnum.ERRERRESULT, ErrorResultAbiliby.class);
+		abilityClass.put(AbilityTypeEnum.ERROR_RESULT, ErrorResultAbility.class);
 		abilityClass.put(AbilityTypeEnum.ALARM, AlarmAbility.class);
 
 		abilityClass.put(AbilityTypeEnum.DATAINJECTION, DataInjectionAbility.class);
 
 		AbstractChainAbility<Object> ability = (AbstractChainAbility<Object>) getChainAbility(
-				AbilityTypeEnum.LOADBALANCING, OrganizationTypeEnum.SYSTEM_DEFAULT,
+				AbilityTypeEnum.LOAD_BALANCING, OrganizationTypeEnum.SYSTEM_DEFAULT,
 				OrganizationTypeEnum.SYSTEM_DEFAULT.name());
 		LoadBalancing loadBalancing = new LoadBalancing();
 		loadBalancing.setName(LoadBalancingEnum.RANDOM);
@@ -189,16 +190,16 @@ public class AbilityManage implements AbilityRelationRegister {
 		authentication.setRedirectData("www.baidu.com");
 		authentication.setUserKey("id");
 		Set<String> acrossPathList = new HashSet<>();
-		acrossPathList.add("/electron/example/example/queryExample");
-		acrossPathList.add("/electron/example/auth/userAuth");
+		acrossPathList.add("/electron/instance/instance/queryInstance");
+		acrossPathList.add("/electron/instance/auth/userAuth");
 		authentication.setAcrossPathList(acrossPathList);
 		abilityRelation.setAbility(authentication);
 		getChainAbility(abilityRelation).addAbilityObject(abilityRelation);
 	}
 
-	public AbilityManage(ExampleManage exampleManage, InterfaceManage interfaceManage,
-			ConfigPerceptionFactory configPerceptionFactory) {
-		this.exampleManage = exampleManage;
+	public AbilityManage(InstanceManage instanceManage, InterfaceManage interfaceManage,
+						 ConfigPerceptionFactory configPerceptionFactory) {
+		this.instanceManage = instanceManage;
 		this.interfaceManage = interfaceManage;
 		this.configPerceptionFactory = configPerceptionFactory;
 	}
@@ -207,7 +208,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		this.initAbility();
 		this.createOverallSituation();
 		// TODO 测试用 代码
-		//testAbility();
+//		testAbility();
 	}
 
 	private void createOverallSituation() {
@@ -216,18 +217,18 @@ public class AbilityManage implements AbilityRelationRegister {
 		Map<AbilityTypeEnum, Ability> overallSituationMap = new HashMap<>();
 		overallSituation.put("organization", overallSituationMap);
 
-		overallSituationMap.put(AbilityTypeEnum.CONDITIONROUTE, new ConditionRouterAbility());
+		overallSituationMap.put(AbilityTypeEnum.CONDITION_ROUTER, new ConditionRouterAbility());
 
-		overallSituationMap.put(AbilityTypeEnum.INTERFACERESGISTER, new InterfaceRegisterAbility());
-		overallSituationMap.put(AbilityTypeEnum.EXAMPLEINFOREGISTER, new ExampleinfoRegisterAbility());
-		overallSituationMap.put(AbilityTypeEnum.RESOURCESRESGISTER, new ResourcesRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.INTERFACE_REGISTER, new InterfaceRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.INSTANCE_INFO_REGISTER, new InstanceInfoRegisterAbility());
+		overallSituationMap.put(AbilityTypeEnum.RESOURCES_REGISTER, new ResourcesRegisterAbility());
 		overallSituationMap.put(AbilityTypeEnum.CONFIG, new ConfigAbility());
 		for (Ability ability : overallSituationMap.values()) {
 			if (ability instanceof InterfaceAware) {
 				((InterfaceAware) ability).setInterfaceManage(interfaceManage);
 			}
-			if (ability instanceof ExampleAware) {
-				((ExampleAware) ability).setExampleManage(exampleManage);
+			if (ability instanceof InstanceAware) {
+				((InstanceAware) ability).setInstanceManage(instanceManage);
 			}
 			if (ability instanceof ConfigPerceptionAware) {
 				((ConfigPerceptionAware) ability).setConfigPerceptionFactory(configPerceptionFactory);
@@ -244,7 +245,7 @@ public class AbilityManage implements AbilityRelationRegister {
 	}
 
 	@Override
-	public int unRegister(AbilityRelation abilityRelation) {
+	public int deregister(AbilityRelation abilityRelation) {
 		getChainAbility(abilityRelation).remoteAbilityObject(abilityRelation);
 		return 0;
 	}

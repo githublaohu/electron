@@ -46,6 +46,10 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Eureka注册模型
+ * @author jellly
+ */
 @Slf4j
 public class EurekaRegister extends AbstractRegisterModel {
 
@@ -97,6 +101,7 @@ public class EurekaRegister extends AbstractRegisterModel {
 		queryClient = eurekaHttpClientFactory.newClient();
 	}
 
+	@Override
 	protected void monitor() {
 		new Thread(new Runnable() {
 			@Override
@@ -126,7 +131,7 @@ public class EurekaRegister extends AbstractRegisterModel {
 				Applications applications = response.getEntity();
 				applications.getRegisteredApplications().forEach(e -> {
 					e.getInstances().forEach(ie -> {
-						registerServers.register(toExampleInfo(ie));
+						registerServers.register(toInstanceInfo(ie));
 					});
 				});
 				log.info("getApplications pull applications info is {}", applications);
@@ -140,9 +145,9 @@ public class EurekaRegister extends AbstractRegisterModel {
 			applications.getRegisteredApplications().forEach(e -> {
 				e.getInstances().forEach(ie -> {
 					if (ActionType.ADDED.equals(ie.getActionType()) || ActionType.MODIFIED.equals(ie.getActionType())) {
-						registerServers.register(toExampleInfo(ie));
+						registerServers.register(toInstanceInfo(ie));
 					} else {
-						registerServers.unRegister(toExampleInfo(ie));
+						registerServers.deregister(toInstanceInfo(ie));
 					}
 				});
 			});
@@ -150,7 +155,7 @@ public class EurekaRegister extends AbstractRegisterModel {
 		}
 	}
 
-	private Object toExampleInfo(InstanceInfo instanceInfo) {
+	private Object toInstanceInfo(InstanceInfo instanceInfo) {
 		JSONObject mapper = new JSONObject();
 		mapper.put("networkAddress", instanceInfo.getIPAddr());
 		mapper.put("port", instanceInfo.getPort());
@@ -165,7 +170,7 @@ public class EurekaRegister extends AbstractRegisterModel {
 	}
 
 	@Override
-	public int unRegister(Object t) {
+	public int deregister(Object t) {
 		return 0;
 	}
 }

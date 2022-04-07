@@ -17,6 +17,6 @@ dubbo:
     register: false
     subscribe: true
 electron:
-    registry: 127.0.0.1:2379
+    registry: etcd://124.223.198.143:2379
     applicationName: test-springmvc
     userInfoClass: com.lamp.electron.example.service.example.UserInfo

@@ -20,6 +20,7 @@ public abstract class OverallSituationAbility<T> extends AbstractAbility<T> {
 
 	protected Map<String, T> abilityDataMap = new ConcurrentHashMap<>();
 
+	@Override
 	protected void doAddAbilityObject(AbilityRelation abilityRelation, T t) {
 		this.addBehavior(abilityRelation,t, abilityDataMap.put(abilityRelation.getOrganizationName(), t));
 
@@ -41,6 +42,7 @@ public abstract class OverallSituationAbility<T> extends AbstractAbility<T> {
 
 	}
 
+	@Override
 	protected void doRemoteAbilityObject(AbilityRelation abilityRelation) {
 		this.deleteBehavior(abilityRelation,abilityDataMap.remove(abilityRelation.getOrganizationName()));
 	}

@@ -19,7 +19,12 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
-@AbilityAction(abilityType = AbilityTypeEnum.HOTSTANDBY)
+/**
+ * TODO
+ * 热备能力模型
+ * @author jellly
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.HOT_STANDBY)
 public class HotStandbyAbility extends AbstractChainAbility<HotStandby> {
 
 	@Override

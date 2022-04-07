@@ -9,15 +9,18 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.data;
+package com.lamp.electron.base.common.register.server;
 
-import com.lamp.electron.base.common.basedata.NodeBase;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
+import com.lamp.electron.register.api.Register;
+import com.lamp.electron.register.api.RegisterServer;
+
 
 /**
- * 在线的直接扔到缓存就行了
- * @author laohu
- *
+ * 实例注册
+ * @author jellly
  */
-public class ExampleInfo extends NodeBase  {
+@Register(node= {"applicationName","networkAddress","port"})
+public interface InstanceRegister extends RegisterServer<InstanceInfo> {
 
 }

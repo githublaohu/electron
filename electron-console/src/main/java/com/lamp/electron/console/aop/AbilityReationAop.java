@@ -96,7 +96,7 @@ public class AbilityReationAop {
 		if (Objects.isNull(abilityRelationList) || abilityRelationList.isEmpty()) {
 			return;
 		}
-		Object object = createAbitityObject(abilityInfoList, parentAbilityInfo);
+		Object object = createAbilityObject(abilityInfoList, parentAbilityInfo);
 		for (AbilityRelation ar : abilityRelationList) {
 			ar.setAbility(object);
 		}
@@ -110,7 +110,7 @@ public class AbilityReationAop {
 		abilityInfo.setAiParentId(abilityRelation.getAiId());
 		List<AbilityInfo> abilityInfoList = abilityInfoService.queryAbilityInfoByParentId(abilityInfo);
 		AbilityInfo parentAbilityInfo = abilityInfoService.queryAbilityInfoById(abilityInfo);
-		Object object = createAbitityObject(abilityInfoList, parentAbilityInfo);
+		Object object = createAbilityObject(abilityInfoList, parentAbilityInfo);
 		abilityRelation.setAbility(object);
 		RegisterServerFocusCall registerServerFocusCall = registerObject.getRegisterServerFocusCall(abilityRelation);
 		registerServerFocusCall.createAbilityRelationRegister().register(abilityRelation);
@@ -118,10 +118,10 @@ public class AbilityReationAop {
 	
 	private void unBindAbilityRelation(AbilityRelation abilityRelation) {
 		RegisterServerFocusCall registerServerFocusCall = registerObject.getRegisterServerFocusCall(abilityRelation);
-		registerServerFocusCall.createAbilityRelationRegister().unRegister(abilityRelation);
+		registerServerFocusCall.createAbilityRelationRegister().deregister(abilityRelation);
 	}
 
-	private Object createAbitityObject(List<AbilityInfo> abilityInfoList, AbilityInfo parentAbilityInfo) {
+	private Object createAbilityObject(List<AbilityInfo> abilityInfoList, AbilityInfo parentAbilityInfo) {
 		String data = parentAbilityInfo.getAiData();
 		JSONObject jsonObject = StringUtils.isEmpty(data) ? new JSONObject() : JSON.parseObject(data);
 

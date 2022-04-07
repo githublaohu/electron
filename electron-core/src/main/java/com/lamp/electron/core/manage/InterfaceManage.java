@@ -57,13 +57,13 @@ public class InterfaceManage implements InterfaceRegister {
 		}
 		// 这里面需要什么？ 配置，rpc工程，配置哪里来？
 		// 需要资源管理器
-		interfaceInfo.setInvoker(electronClientFactory.crateRpcClient(interfaceInfo));
+		interfaceInfo.setInvoker(electronClientFactory.createRpcClient(interfaceInfo));
 		longRangeWrapper.addNetworkAddress(interfaceInfo);
 		return 0;
 	}
 
 	@Override
-	public int unRegister(InterfaceInfo interfaceInfo) {
+	public int deregister(InterfaceInfo interfaceInfo) {
 		String path = interfaceInfo.getPath();
 		LongRangeWrapper longRangeWrapper = pathToInterface.get(path);
 		longRangeWrapper.removeNetworkAddress(interfaceInfo);

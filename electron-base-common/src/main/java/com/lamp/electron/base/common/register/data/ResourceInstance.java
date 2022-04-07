@@ -9,13 +9,19 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.server;
+package com.lamp.electron.base.common.register.data;
 
-import com.lamp.electron.base.common.register.data.CodeExample;
-import com.lamp.electron.register.api.Register;
-import com.lamp.electron.register.api.RegisterServer;
+import com.lamp.electron.base.common.basedata.NodeBase;
 
-@Register(node= {"applicationName","networkAddress","port"})
-public interface CodeExampleRegister extends RegisterServer<CodeExample>  {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class ResourceInstance extends NodeBase {
+
+	private String account;
+
+	private String password;
+	
 }

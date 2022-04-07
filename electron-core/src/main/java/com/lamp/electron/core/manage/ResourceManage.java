@@ -11,23 +11,23 @@
  */
 package com.lamp.electron.core.manage;
 
-import com.lamp.electron.base.common.register.data.ResourceExample;
-import com.lamp.electron.base.common.register.server.ResourceExampleRegister;
+import com.lamp.electron.base.common.register.data.ResourceInstance;
+import com.lamp.electron.base.common.register.server.ResourceInstanceRegister;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
-public class ResourceManage implements ResourceExampleRegister {
+public class ResourceManage implements ResourceInstanceRegister {
 
 	
 	private ElectronClientFactory electronClientFactory;
 	
 	@Override
-	public int register(ResourceExample t) {
+	public int register(ResourceInstance t) {
 		
 		return 0;
 	}
 
 	@Override
-	public int unRegister(ResourceExample t) {
+	public int deregister(ResourceInstance t) {
 		
 		return 0;
 	}

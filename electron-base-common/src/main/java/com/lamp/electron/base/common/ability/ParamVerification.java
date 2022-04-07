@@ -9,19 +9,16 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.data;
+package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.basedata.NodeBase;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
+import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class ResourceExample extends NodeBase {
+@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "参数校验", abilityBindRelation = OrganizationTypeEnum.INTERFACE)
+public class ParamVerification {
 
-	private String account;
-
-	private String password;
-	
 }

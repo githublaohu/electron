@@ -17,7 +17,7 @@ import com.lamp.electron.base.common.enums.AbilityScope;
 import lombok.Data;
 
 @Data
-@AbilityData(abilityScope = AbilityScope.ERROR, chinaName = "警告")
+@AbilityData(abilityScope = AbilityScope.ERROR, chinaName = "告警")
 public class Alarm {
 
 }

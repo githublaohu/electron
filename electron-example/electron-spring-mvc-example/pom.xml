@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>io.github.githublaohu</groupId>
 			<artifactId>dubbo-springmvc</artifactId>
-			<version>0.0.6</version>
+			<version>0.1.4</version>
 			<type>pom</type>
 			<exclusions>
 				<exclusion>
@@ -66,6 +66,29 @@
 					</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-web</artifactId>-->
+<!--            <version>${spring-version}</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.apache.dubbo</groupId>-->
+<!--			<artifactId>dubbo</artifactId>-->
+<!--			<version>2.7.11</version>-->
+<!--			<scope>compile</scope>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring-boot-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot-version}</version>
 		</dependency>
 	</dependencies>
 	<build>

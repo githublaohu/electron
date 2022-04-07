@@ -46,7 +46,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class StatisticsCentre implements ContainerTiming {
+public class StatisticsCenter implements ContainerTiming {
 
 	private Map<OrganizationTypeEnum, Map<String, StatisticsDTO>> statisticsMap = new HashMap<>();
 
@@ -54,8 +54,8 @@ public class StatisticsCentre implements ContainerTiming {
 		statisticsMap.put(OrganizationTypeEnum.APPLICATION, new ConcurrentHashMap<>());
 		statisticsMap.put(OrganizationTypeEnum.INTERFACE, new ConcurrentHashMap<>());
 		// 下面用于限流
-		statisticsMap.put(OrganizationTypeEnum.INTERFACE_EXAMPLE, new ConcurrentHashMap<>());
-		statisticsMap.put(OrganizationTypeEnum.EXAMPLE, new ConcurrentHashMap<>());
+		statisticsMap.put(OrganizationTypeEnum.INTERFACE_INSTANCE, new ConcurrentHashMap<>());
+		statisticsMap.put(OrganizationTypeEnum.INSTANCE, new ConcurrentHashMap<>());
 	}
 	
 	@Resource

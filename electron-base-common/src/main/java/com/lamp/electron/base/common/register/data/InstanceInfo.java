@@ -9,16 +9,15 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.ability;
+package com.lamp.electron.base.common.register.data;
 
-import com.lamp.electron.base.common.annotation.AbilityData;
-import com.lamp.electron.base.common.enums.AbilityScope;
-import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
+import com.lamp.electron.base.common.basedata.NodeBase;
 
-import lombok.Data;
-
-@Data
-@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "参数校验", abilityBindRelation = OrganizationTypeEnum.INTERFACE)
-public class ParemVerifcation {
+/**
+ * 在线的直接扔到缓存就行了
+ * @author laohu
+ *
+ */
+public class InstanceInfo extends NodeBase  {
 
 }

@@ -16,7 +16,7 @@ import com.lamp.electron.base.common.ability.Authentication;
 import com.lamp.electron.base.common.ability.ConditionRouter;
 import com.lamp.electron.base.common.ability.DataInjection;
 import com.lamp.electron.base.common.ability.ErrorResult;
-import com.lamp.electron.base.common.ability.ExampleInfoRegister;
+import com.lamp.electron.base.common.ability.InstanceInfoRegister;
 import com.lamp.electron.base.common.ability.HotStandby;
 import com.lamp.electron.base.common.ability.InterfaceRegister;
 import com.lamp.electron.base.common.ability.Interfaces;
@@ -24,7 +24,7 @@ import com.lamp.electron.base.common.ability.Invoking;
 import com.lamp.electron.base.common.ability.LinkTrack;
 import com.lamp.electron.base.common.ability.LoadBalancing;
 import com.lamp.electron.base.common.ability.MessageMiddlewareRPC;
-import com.lamp.electron.base.common.ability.ParemVerifcation;
+import com.lamp.electron.base.common.ability.ParamVerification;
 import com.lamp.electron.base.common.ability.Partition;
 import com.lamp.electron.base.common.ability.RedisRPC;
 import com.lamp.electron.base.common.ability.RequestRecord;
@@ -33,7 +33,7 @@ import com.lamp.electron.base.common.ability.Seckill;
 import com.lamp.electron.base.common.ability.SetupResult;
 import com.lamp.electron.base.common.ability.Statistics;
 import com.lamp.electron.base.common.ability.Template;
-import com.lamp.electron.base.common.ability.TraffisSafety;
+import com.lamp.electron.base.common.ability.TrafficSafety;
 import com.lamp.electron.base.common.ability.config.Config;
 import com.lamp.electron.base.common.annotation.AbilityData;
 
@@ -55,28 +55,28 @@ public enum AbilityTypeEnum {
 	
 	
 	STATISTICS(Statistics.class),
-	REQUESTRECORD(RequestRecord.class),
-	LINKTRACK(LinkTrack.class),
+	REQUEST_RECORD(RequestRecord.class),
+	LINK_TRACK(LinkTrack.class),
 	
-	INTERFACERESGISTER(InterfaceRegister.class),
-	RESOURCESRESGISTER(ResourcesRegister.class),
-	EXAMPLEINFOREGISTER(ExampleInfoRegister.class),
+	INTERFACE_REGISTER(InterfaceRegister.class),
+	RESOURCES_REGISTER(ResourcesRegister.class),
+	INSTANCE_INFO_REGISTER(InstanceInfoRegister.class),
 
-	CONDITIONROUTE(ConditionRouter.class),
+	CONDITION_ROUTER(ConditionRouter.class),
 	
-	HOTSTANDBY(HotStandby.class),
+	HOT_STANDBY(HotStandby.class),
 	PARTITION(Partition.class),
 //	GRAYSCALE(),
-	LOADBALANCING(LoadBalancing.class),
+	LOAD_BALANCING(LoadBalancing.class),
 
-	SECKILL(Seckill.class),
-	TRAFFISSAFETY(TraffisSafety.class),
-	PAREMVERIFCATION(ParemVerifcation.class),
+	SEC_KILL(Seckill.class),
+	TRAFFIC_SAFETY(TrafficSafety.class),
+	PARAM_VERIFICATION(ParamVerification.class),
 	AUTHENTICATION(Authentication.class),
 
 	INVOKING(Invoking.class),
 	
-	ERRERRESULT(ErrorResult.class),
+	ERROR_RESULT(ErrorResult.class),
 	ALARM(Alarm.class),
 	
 	DATAINJECTION(DataInjection.class),
@@ -86,11 +86,11 @@ public enum AbilityTypeEnum {
 	
 	
 	
-	REDISRPC(RedisRPC.class),
+	REDIS_RPC(RedisRPC.class),
 	MESSAGE_MIDDLEWARE_RPC(MessageMiddlewareRPC.class),
 	TEMPLATE(Template.class),
 	INTERFACES(Interfaces.class),
-	SETUPRESULT(SetupResult.class),
+	SETUP_RESULT(SetupResult.class),
 	;
 
 	

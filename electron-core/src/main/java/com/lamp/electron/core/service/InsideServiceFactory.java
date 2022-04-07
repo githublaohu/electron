@@ -245,7 +245,7 @@ public class InsideServiceFactory {
 		}
 
 		@Override
-		public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus, Object headers, Object connet,
+		public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus, Object headers, Object connect,
 				Throwable throwable) {
 			return null;
 		}

@@ -11,6 +11,11 @@
  */
 package com.lamp.electron.register.nacos;
 
+/**
+ * nacos注册模型
+ * TODO
+ * @author jellly
+ */
 public class NacosRegister {
 
 }

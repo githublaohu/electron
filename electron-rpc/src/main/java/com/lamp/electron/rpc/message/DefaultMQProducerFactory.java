@@ -71,6 +71,7 @@ public class DefaultMQProducerFactory {
 		}
 	}
 
+	@Override
 	public String toString() {
 		return networkAddress.toString();
 	}

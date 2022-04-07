@@ -16,6 +16,10 @@ import com.lamp.electron.register.api.RegisterModel;
 import com.lamp.electron.register.api.RegisterObjectFactory;
 import com.lamp.electron.register.api.RegisterServer;
 
+/**
+ * consul注册工厂
+ * @author jellly
+ */
 public class ConsulRegisterObjectFactory implements RegisterObjectFactory {
 
 	@Override
@@ -24,7 +28,7 @@ public class ConsulRegisterObjectFactory implements RegisterObjectFactory {
 	}
 
 	@Override
-	public String registerCentreName() {
+	public String registerCenterName() {
 		return "consul";
 	}
 

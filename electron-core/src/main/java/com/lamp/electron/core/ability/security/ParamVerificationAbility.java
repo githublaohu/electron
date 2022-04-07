@@ -11,7 +11,7 @@
  */
 package com.lamp.electron.core.ability.security;
 
-import com.lamp.electron.base.common.ability.ParemVerifcation;
+import com.lamp.electron.base.common.ability.ParamVerification;
 import com.lamp.electron.base.common.annotation.AbilityAction;
 import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
@@ -20,8 +20,8 @@ import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
 
-@AbilityAction(abilityType= AbilityTypeEnum.PAREMVERIFCATION)
-public class ParemVerifcationAbility extends AbstractChainAbility<ParemVerifcation> {
+@AbilityAction(abilityType= AbilityTypeEnum.PARAM_VERIFICATION)
+public class ParamVerificationAbility extends AbstractChainAbility<ParamVerification> {
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {

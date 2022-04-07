@@ -24,14 +24,17 @@ public abstract class AbstractChainAbilityWrapper extends AbstractChainAbility<O
 		this.abstractChainAbility = (AbstractChainAbility<Object>) object;
 	}
 	
+	@Override
 	public boolean isNotAbilityObject() {
 		return abstractChainAbility.isNotAbilityObject();
 	}
 
+	@Override
 	public AbilityTypeEnum getAbilityTypeEnum() {
 		return abstractChainAbility.getAbilityTypeEnum();
 	}
 
+	@Override
 	public OrganizationTypeEnum getOrganizationTypeEnum() {
 		return abstractChainAbility.getOrganizationTypeEnum();
 	}

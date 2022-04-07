@@ -37,6 +37,10 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 认证能力
+ * @author jellly
+ */
 @Slf4j
 @AbilityAction(abilityType = AbilityTypeEnum.AUTHENTICATION)
 public class AuthenticationAbility extends AbstractChainAbility<Authentication> implements InsideServiceFactoryAware {

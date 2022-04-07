@@ -25,7 +25,7 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ResultAbility;
 
 /**
- * 
+ * 数据注入能力
  * @author laohu
  *
  */

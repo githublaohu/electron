@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>electron</groupId>
 	<artifactId>electron-core</artifactId>
-	<name>electron-core</name>
+	<name>Electron Core 流量接入层</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<powermock.version>2.0.7</powermock.version>

@@ -31,7 +31,7 @@ import com.lamp.electron.core.ability.OverallSituationAbility;
  * @author laohu
  *
  */
-@AbilityAction(abilityType = AbilityTypeEnum.CONDITIONROUTE)
+@AbilityAction(abilityType = AbilityTypeEnum.CONDITION_ROUTER)
 public class ConditionRouterAbility extends OverallSituationAbility<ConditionRouter> {
 
 	public String discern(ElectronRequest electronRequest) {

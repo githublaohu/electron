@@ -16,7 +16,7 @@ import java.util.List;
 import com.lamp.electron.base.common.annotation.AbilityData;
 import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.DataSpot;
-import com.lamp.electron.base.common.register.data.ExampleInfo;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 
 import lombok.Data;
 
@@ -36,5 +36,5 @@ public class Partition {
 	
 	private Boolean isResources;
 	
-	private List<ExampleInfo> exampleInfoList;
+	private List<InstanceInfo> instanceInfoList;
 }

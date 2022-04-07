@@ -38,11 +38,11 @@ import lombok.Setter;
 
 @Setter
 public class ElectronClientFactory {
-	private static final Map<ProtocolEnum, ProtocolConfigEnum> PROTECONLE_REQUSET_CONFIG = new HashMap<>();
+	private static final Map<ProtocolEnum, ProtocolConfigEnum> PROTECONLE_REQUEST_CONFIG = new HashMap<>();
 
 	static {
 		for (ProtocolConfigEnum protocolConfigEnum : ProtocolConfigEnum.values()) {
-			PROTECONLE_REQUSET_CONFIG.put(protocolConfigEnum.getProtocolEnum(), protocolConfigEnum);
+			PROTECONLE_REQUEST_CONFIG.put(protocolConfigEnum.getProtocolEnum(), protocolConfigEnum);
 		}
 	}
 
@@ -69,15 +69,15 @@ public class ElectronClientFactory {
 		rpcClientCreateMap.get(networkAddress.protocol()).createFactory(networkAddress, rpcConfig);
 	}
 
-	public Invoker crateRpcClient(NetworkAddress networkAddress) {
-		return crateRpcClient(networkAddress, rpcHandle, null);
+	public Invoker createRpcClient(NetworkAddress networkAddress) {
+		return createRpcClient(networkAddress, rpcHandle, null);
 	}
 
-	public Invoker crateRpcClient(NetworkAddress networkAddress, RpcHandle rpcHandle,
-			Perception<RpcRequestConfig> rpcConfig) {
+	public Invoker createRpcClient(NetworkAddress networkAddress, RpcHandle rpcHandle,
+								   Perception<RpcRequestConfig> rpcConfig) {
 		if (Objects.isNull(rpcConfig)) {
 			NodeBase nodeBase = (NodeBase) networkAddress;
-			Class<?> clazz = PROTECONLE_REQUSET_CONFIG.get(nodeBase.getProtocol()).getClazz();
+			Class<?> clazz = PROTECONLE_REQUEST_CONFIG.get(nodeBase.getProtocol()).getClazz();
 			if ( Objects.equals(nodeBase.getApplicationEnglishName(), nodeBase.name())) {
 				if(nodeBase.getProtocol() == ProtocolEnum.HTTP) {
 				rpcConfig = perceptionFactory.getPerception(clazz, networkAddress.name(),

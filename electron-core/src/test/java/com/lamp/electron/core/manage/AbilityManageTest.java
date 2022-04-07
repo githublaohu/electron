@@ -39,14 +39,16 @@ public class AbilityManageTest {
 		AbilityRelation newAbilityRelation =  JSON.parseObject(str, AbilityRelation.class);
 		System.out.println(newAbilityRelation);
 		JSONObject object = (JSONObject)newAbilityRelation.getAbility();
-		ConditionRouter conditionRouter = (ConditionRouter) object.toJavaObject(AbilityTypeEnum.CONDITIONROUTE.getAbilityObject());
+		ConditionRouter conditionRouter = (ConditionRouter) object.toJavaObject(AbilityTypeEnum.CONDITION_ROUTER.getAbilityObject());
 		System.out.println(conditionRouter);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Test
 	public void createOverallSituation() throws Exception {
-		Field organizationAbilityField = abilityManage.getClass().getField("organizationAbility");
+		abilityManage.init();
+		Field organizationAbilityField = abilityManage.getClass().getDeclaredField("organizationAbility");
+		organizationAbilityField.setAccessible(true);
 		Map<OrganizationTypeEnum/* organization */ , Map<String/* id */, Map<AbilityTypeEnum, Ability>>> organizationAbility = (Map<OrganizationTypeEnum , Map<String, Map<AbilityTypeEnum, Ability>>>)organizationAbilityField.get(abilityManage);
 		
 		Map<String/* id */, Map<AbilityTypeEnum, Ability>> overallSituation = organizationAbility

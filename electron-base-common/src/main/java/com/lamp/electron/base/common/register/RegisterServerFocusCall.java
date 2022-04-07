@@ -19,9 +19,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.lamp.electron.base.common.register.server.AbilityRelationRegister;
 import com.lamp.electron.base.common.register.server.BehaviorRegister;
-import com.lamp.electron.base.common.register.server.CodeExampleRegister;
+import com.lamp.electron.base.common.register.server.CodeInstanceRegister;
 import com.lamp.electron.base.common.register.server.ContainerRegister;
-import com.lamp.electron.base.common.register.server.ExampleRegister;
+import com.lamp.electron.base.common.register.server.InstanceRegister;
 import com.lamp.electron.base.common.register.server.InterfaceRegister;
 import com.lamp.electron.base.common.register.server.OrganizationRegister;
 import com.lamp.electron.register.api.DefaultRegisterFactory;
@@ -69,16 +69,16 @@ public class RegisterServerFocusCall {
 		return createRegister(BehaviorRegister.class);
 	}
 	
-	public CodeExampleRegister createCodeExampleRegister() {
-		return createRegister(CodeExampleRegister.class);
+	public CodeInstanceRegister createCodeInstanceRegister() {
+		return createRegister(CodeInstanceRegister.class);
 	}
 	
 	public ContainerRegister createContainerRegister() {
 		return createRegister(ContainerRegister.class);
 	}
 	
-	public ExampleRegister createExampleRegister() {
-		return createRegister(ExampleRegister.class);
+	public InstanceRegister createInstanceRegister() {
+		return createRegister(InstanceRegister.class);
 	}
 
 	public InterfaceRegister createInterfaceRegister() {
@@ -146,8 +146,8 @@ public class RegisterServerFocusCall {
 		}
 
 		@Override
-		public int unRegister(Object t) {
-			registerServerList.forEach(k -> k.unRegister(t));
+		public int deregister(Object t) {
+			registerServerList.forEach(k -> k.deregister(t));
 			return 0;
 		}
 

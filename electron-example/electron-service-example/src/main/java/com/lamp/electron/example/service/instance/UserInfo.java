@@ -1,4 +1,4 @@
-package com.lamp.electron.example.service.example;
+package com.lamp.electron.example.service.instance;
 
 import lombok.Data;
 

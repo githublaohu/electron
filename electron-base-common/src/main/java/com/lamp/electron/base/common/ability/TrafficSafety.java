@@ -9,14 +9,16 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.server;
+package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.register.data.ExampleInfo;
-import com.lamp.electron.register.api.Register;
-import com.lamp.electron.register.api.RegisterServer;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
+import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
+import lombok.Data;
 
-@Register(node= {"applicationName","networkAddress","port"})
-public interface ExampleRegister extends RegisterServer<ExampleInfo> {
+@Data
+@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "限流，熔断", abilityBindRelation = {OrganizationTypeEnum.APPLICATION,OrganizationTypeEnum.INTERFACE})
+public class TrafficSafety {
 
 }

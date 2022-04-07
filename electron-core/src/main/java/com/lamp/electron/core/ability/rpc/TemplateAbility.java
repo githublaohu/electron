@@ -21,6 +21,10 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 
+/**
+ * 模板前置能力
+ * @author jellly
+ */
 @AbilityAction(abilityType = AbilityTypeEnum.TEMPLATE)
 public class TemplateAbility extends AbstractChainAbility<Template> implements InterfaceAware{
 

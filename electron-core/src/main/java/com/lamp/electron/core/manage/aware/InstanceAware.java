@@ -9,10 +9,12 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.data;
+package com.lamp.electron.core.manage.aware;
 
-import com.lamp.electron.base.common.basedata.NodeBase;
+import com.lamp.electron.core.manage.InstanceManage;
 
-public class CodeExample extends NodeBase {
+public interface InstanceAware {
+	
+	public void setInstanceManage(InstanceManage instanceManage);
 
 }

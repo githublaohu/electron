@@ -20,7 +20,7 @@ import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 
 
-@AbilityAction(abilityType = AbilityTypeEnum.SETUPRESULT)
+@AbilityAction(abilityType = AbilityTypeEnum.SETUP_RESULT)
 public class SetupResultAbility extends AbstractAbility<SetupResult> implements InterfaceAware {
 
 	@Override

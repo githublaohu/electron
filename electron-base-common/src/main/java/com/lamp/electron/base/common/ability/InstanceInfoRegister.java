@@ -11,14 +11,23 @@
  */
 package com.lamp.electron.base.common.ability;
 
+import java.util.List;
+
 import com.lamp.electron.base.common.annotation.AbilityData;
 import com.lamp.electron.base.common.enums.AbilityScope;
-import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 
 import lombok.Data;
 
+/**
+ * 有些很老的服务器，没有依赖，没有注册。只能手工注册
+ * @author laohu
+ *
+ */
 @Data
-@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "限流，熔断", abilityBindRelation = {OrganizationTypeEnum.APPLICATION,OrganizationTypeEnum.INTERFACE})
-public class TraffisSafety {
-
+@AbilityData(chinaName = "实例注册", abilityScope = AbilityScope.REGISTER)
+public class InstanceInfoRegister {
+	
+	private List<InstanceInfo> instanceInfoList;
+	
 }

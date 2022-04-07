@@ -12,7 +12,7 @@ import com.lamp.electron.base.common.service.authentication.AuthResponseEnum;
 import com.lamp.electron.base.common.service.authentication.AuthenticationRequestData;
 import com.lamp.electron.base.common.service.authentication.AuthenticationResponseData;
 import com.lamp.electron.base.common.service.authentication.AuthenticationService;
-import com.lamp.electron.example.service.example.UserInfo;
+import com.lamp.electron.example.service.instance.UserInfo;
 
 @RestController
 @RequestMapping("/auth")

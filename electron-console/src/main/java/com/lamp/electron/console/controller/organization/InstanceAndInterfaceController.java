@@ -13,6 +13,7 @@ package com.lamp.electron.console.controller.organization;
 
 import java.util.List;
 
+import com.lamp.electron.console.service.organization.InstanceAndInterfaceServcie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,64 +22,63 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
-import com.lamp.electron.console.service.organization.ExampleAndInterfaceServcie;
 
 @RestController
-@RequestMapping("/exampleAndInterface")
-public class ExampleAndInterfaceController {
+@RequestMapping("/instanceAndInterface")
+public class InstanceAndInterfaceController {
 
 	@Autowired
-	private ExampleAndInterfaceServcie exampleAndInterfaceServcie;
+	private InstanceAndInterfaceServcie instanceAndInterfaceServcie;
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseById")
 	public NodeBase queryNodeBaseById(@RequestBody InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceServcie.queryNodeBaseById(interfaceInfo);
+		return instanceAndInterfaceServcie.queryNodeBaseById(interfaceInfo);
 	}
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseListByOiId")
 	public List<NodeBase> queryNodeBaseListByOiId(@RequestBody InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceServcie.queryNodeBaseListByOiId(interfaceInfo);
+		return instanceAndInterfaceServcie.queryNodeBaseListByOiId(interfaceInfo);
 	}
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseListByFrom")
 	public List<NodeBase> queryNodeBaseListByFrom(@RequestBody InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceServcie.queryNodeBaseListByFrom(interfaceInfo);
+		return instanceAndInterfaceServcie.queryNodeBaseListByFrom(interfaceInfo);
 	}
 
 	/**
 	 * 直接读etcd
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
-	@PostMapping("/queryOnLineExampleByOiName")
-	public List<NodeBase> queryOnLineExampleByOiName(@RequestBody InterfaceInfo interfaceInfo) {
+	@PostMapping("/queryOnLineInstanceByOiName")
+	public List<NodeBase> queryOnLineInstanceByOiName(@RequestBody InterfaceInfo interfaceInfo) {
 		return null;
 	}
 
 	/**
 	 * 直接读etcd
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
-	@PostMapping("/queryOnLineCodeExample")
-	public List<NodeBase> queryOnLineCodeExample(@RequestBody InterfaceInfo interfaceInfo) {
+	@PostMapping("/queryOnLineCodeInstance")
+	public List<NodeBase> queryOnLineCodeInstance(@RequestBody InterfaceInfo interfaceInfo) {
 		return null;
 	}
 }

@@ -41,7 +41,7 @@ public class UserOperationController {
 	private UserInfoServce userInfoSerice;
 
 	/**
-	 * 目前只有账户密码登录
+	 * 目前只有账户密码登录wa
 	 * 
 	 * @param userInfo
 	 * @return

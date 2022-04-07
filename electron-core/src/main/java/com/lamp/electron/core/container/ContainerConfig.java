@@ -24,7 +24,7 @@ public class ContainerConfig {
 	
 	private String register;
 	
-	private String rocketMQNameServcie;
+	private String rocketMQNameService;
 	
 	private String containerName = EnvironmentalBase.DEFAULT_ENVIROMENTAL_NAME;
 	

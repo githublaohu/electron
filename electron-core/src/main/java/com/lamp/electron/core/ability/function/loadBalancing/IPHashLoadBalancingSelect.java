@@ -17,6 +17,11 @@ import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.base.common.register.data.NetworkAddress;
 
+/**
+ * IP哈希均衡模式选择器
+ * TODO
+ * @author jellly
+ */
 public class IPHashLoadBalancingSelect implements LoadBalancingSelect{
 
 	@Override

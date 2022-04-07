@@ -36,6 +36,10 @@ import io.etcd.jetcd.watch.WatchEvent;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
 
+/**
+ * Etcd注册模型
+ * @author jellly
+ */
 public class EtcdRegister extends AbstractRegisterModel {
 
 	private static final Logger log = LoggerFactory.getLogger(EtcdRegister.class);
@@ -67,31 +71,29 @@ public class EtcdRegister extends AbstractRegisterModel {
 	}
 
 	private void getData() {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					log.info("拉取path所有数据");
-					GetOption getOption = GetOption.newBuilder()
-							.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
-					List<KeyValue> keyValues = client.getKVClient()
-							.get(ByteSequence.from(registerData.getPath().getBytes()), getOption).get().getKvs();
-					for (KeyValue kv : keyValues) {
-						Object object = JSON.parseObject(kv.getValue().getBytes(), registerData.getDataClass());
-						registerServers.register(object);
-					}
-					// 拉去所有数据在watcher，防止watcher新数据被path旧数据覆盖
-					watcherListen.watcher();
-				} catch (Exception e) {
-					log.error(e.getMessage(), e);
+		new Thread(() -> {
+			try {
+				log.debug("拉取path所有数据...");
+				GetOption getOption = GetOption.newBuilder()
+						.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
+				List<KeyValue> keyValues = client.getKVClient()
+						.get(ByteSequence.from(registerData.getPath().getBytes()), getOption).get().getKvs();
+				for (KeyValue kv : keyValues) {
+					Object object = JSON.parseObject(kv.getValue().getBytes(), registerData.getDataClass());
+					registerServers.register(object);
 				}
-
+				// 拉取所有数据在watcher，防止watcher新数据被path旧数据覆盖
+				watcherListen.watcher();
+			} catch (Exception e) {
+				log.error(e.getMessage(), e);
 			}
+
 		}).start();
 	}
 
-	public void reRegister() throws Exception {
-		log.warn("reRegister, registerData is {}", registerData);
+	@Override
+	public void deregister() throws Exception {
+		log.warn("deregister, registerData is {}", registerData);
 		this.leaseId = etcdClientFactory.getLeaseId(registerData.getServerUrl());
 		if (Objects.nonNull(registerServers)) {
 			getData();
@@ -122,7 +124,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 	}
 
 	@Override
-	public int unRegister(Object data) {
+	public int deregister(Object data) {
 
 		try {
 			ByteSequence key = ByteSequence.from(getKey(data).getBytes());
@@ -158,7 +160,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 				if (Objects.equals(watchEvent.getEventType(), EventType.PUT)) {
 					registerServers.register(watchEvent.getKeyValue().getValue());
 				} else if (Objects.equals(watchEvent.getEventType(), EventType.DELETE)) {
-					registerServers.unRegister(watchEvent.getPrevKV().getValue());
+					registerServers.deregister(watchEvent.getPrevKV().getValue());
 				}
 			}
 			try {

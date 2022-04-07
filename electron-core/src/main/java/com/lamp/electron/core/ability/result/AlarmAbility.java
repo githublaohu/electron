@@ -21,6 +21,10 @@ import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
 
+/**
+ * 告警能力
+ * @author jellly
+ */
 @AbilityAction(abilityType= AbilityTypeEnum.ALARM , effectPoint = EffectPoint.ERROR)
 public class AlarmAbility extends AbstractChainAbility<Alarm> {
 

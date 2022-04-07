@@ -20,7 +20,7 @@ import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ResultAbility;
 
-@AbilityAction(abilityType = AbilityTypeEnum.SECKILL)
+@AbilityAction(abilityType = AbilityTypeEnum.SEC_KILL)
 public class SeckillAbility extends AbstractChainAbility<Seckill> implements ResultAbility {
 
 	@Override

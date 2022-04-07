@@ -16,7 +16,7 @@ import java.util.List;
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
 
-public interface ExampleAndInterfaceServcie {
+public interface InstanceAndInterfaceServcie {
 
 	/**
 	 * 
@@ -27,7 +27,7 @@ public interface ExampleAndInterfaceServcie {
 
 	/**
 	 * 修改
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public Integer updateNodeBase(InterfaceInfo interfaceInfo);

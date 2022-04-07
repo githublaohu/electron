@@ -25,7 +25,11 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.container.bean.TrafficDetailsBean;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
-@AbilityAction(abilityType = AbilityTypeEnum.REQUESTRECORD)
+/**
+ * 请求记录能力模型
+ * @author jellly
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.REQUEST_RECORD)
 public class RequestRecordAbility extends AbstractChainAbility<RequestRecord> {
 
 	@Resource

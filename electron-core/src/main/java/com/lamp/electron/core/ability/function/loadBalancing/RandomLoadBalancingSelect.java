@@ -20,6 +20,10 @@ import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.base.common.register.data.NetworkAddress;
 
+/**
+ * 随机负载均衡模式选择器
+ * @author jellly
+ */
 public class RandomLoadBalancingSelect implements LoadBalancingSelect {
 
 	@Override

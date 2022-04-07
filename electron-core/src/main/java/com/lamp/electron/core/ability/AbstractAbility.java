@@ -27,6 +27,7 @@ public abstract class AbstractAbility<T> implements Ability{
 	protected OrganizationTypeEnum organizationTypeEnum;
 	
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public  void addAbilityObject(AbilityRelation abilityRelation ) {
 		if(Objects.isNull(abilityTypeEnum)) {
@@ -37,6 +38,7 @@ public abstract class AbstractAbility<T> implements Ability{
 	}
 	
 	
+	@Override
 	public  void remoteAbilityObject(AbilityRelation abilityRelation) {
 		doRemoteAbilityObject(abilityRelation);
 	} 

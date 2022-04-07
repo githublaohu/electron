@@ -4,7 +4,7 @@ package com.lamp.electron.example.register;
 import lombok.Data;
 
 @Data
-public class ExampleInfo {
+public class InstanceInfo {
 
 	private Long id;
 
@@ -14,11 +14,9 @@ public class ExampleInfo {
 
 	private String port;
 
-
 	private String language;
-	
 
-	private String exampleType;
+	private String instanceType;
 
 	private String RPCType;
 

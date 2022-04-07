@@ -25,7 +25,7 @@ import com.lamp.electron.core.manage.aware.InterfaceAware;
  * @author laohu
  *
  */
-@AbilityAction(abilityType = AbilityTypeEnum.RESOURCESRESGISTER)
+@AbilityAction(abilityType = AbilityTypeEnum.RESOURCES_REGISTER)
 public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister> implements InterfaceAware {
 
 	String defaultPath;
@@ -35,7 +35,8 @@ public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister>
 		defaultPath = defaultPath.substring(0, defaultPath.lastIndexOf('/')) + "/resources";
 	}
 
-	protected void addBehavior(AbilityRelation abilityRelation, ResourcesRegister t, ResourcesRegister oldValue) {
+	@Override
+    protected void addBehavior(AbilityRelation abilityRelation, ResourcesRegister t, ResourcesRegister oldValue) {
 		
 		// 获得本地地址
 
@@ -56,6 +57,7 @@ public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister>
 		// LongRangeWrapper
 	}
 
+	@Override
 	protected void deleteBehavior(AbilityRelation abilityRelation, ResourcesRegister t) {
 
 	}

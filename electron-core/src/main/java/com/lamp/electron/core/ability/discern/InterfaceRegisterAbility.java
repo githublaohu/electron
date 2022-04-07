@@ -29,16 +29,18 @@ public class InterfaceRegisterAbility extends OverallSituationAbility<InterfaceR
 
 	}
 
-	protected void addBehavior(InterfaceRegister t, InterfaceRegister oldValue) {
+	@Override
+    protected void addBehavior(InterfaceRegister t, InterfaceRegister oldValue) {
 		if(Objects.nonNull(oldValue)) {
 			this.deleteBehavior(oldValue);
 		}
 		interfaceManage.batchRegister(t.getInterfaceInfoList());
 	}
 
+	@Override
 	protected void deleteBehavior(InterfaceRegister t) {
 		for(InterfaceInfo interfaceInfo : t.getInterfaceInfoList()) {
-			interfaceManage.unRegister(interfaceInfo);
+			interfaceManage.deregister(interfaceInfo);
 		}
 	}
 

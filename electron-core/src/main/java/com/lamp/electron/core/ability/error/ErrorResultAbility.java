@@ -19,8 +19,8 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
-@AbilityAction(abilityType = AbilityTypeEnum.ERRERRESULT)
-public class ErrorResultAbiliby extends AbstractChainAbility<ErrorResult> {
+@AbilityAction(abilityType = AbilityTypeEnum.ERROR_RESULT)
+public class ErrorResultAbility extends AbstractChainAbility<ErrorResult> {
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {

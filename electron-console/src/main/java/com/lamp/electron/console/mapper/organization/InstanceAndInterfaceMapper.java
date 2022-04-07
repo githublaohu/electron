@@ -23,9 +23,9 @@ import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
 
 @Mapper
-public interface ExampleAndInterfaceMapper {
+public interface InstanceAndInterfaceMapper {
 
-	static final String table_name = "<if test='nodeTypeEnum == EXAMPLE'> example_info  </if>"
+	static final String table_name = "<if test='nodeTypeEnum == INSTANCE'> instance_info  </if>"
 			+ "<if test='nodeTypeEnum == INTERFACE'> interface_info  </if>";
 
 	static final String SELECT_SQL = "select * from " + table_name + " where ";
@@ -40,14 +40,14 @@ public interface ExampleAndInterfaceMapper {
 	 * @return
 	 */
 	@Insert({
-			"insert into example_info(application_id , application_english_name,organization_type,networkAddress,port,protocol,language,example_type,rpc_type,version,client_version,gater_date)",
-			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{exampleType},#{RPCType},#{version},#{clientVersion},#{gaterDate})",
+			"insert into instance_info(application_id , application_english_name,organization_type,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,gater_date)",
+			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{instanceType},#{RPCType},#{version},#{clientVersion},#{gaterDate})",
 	})
 	public Integer insertNodeBase(NodeBase nodeBase);
 
 	@Insert({
-			"insert into  interface_info (application_id,application_english_name,organization_type,networkAddress,port,protocol,language,example_type,rpc_type,version,client_version,path,http_method_type,module_name,interace_name,method_name,class_name,gater_date)",
-			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{exampleType},#{RPCType},#{version},#{clientVersion},#{path},#{httpMethodTypeString},'electron','interaceName',#{methodName},#{className},#{gaterDate})",
+			"insert into  interface_info (application_id,application_english_name,organization_type,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,path,http_method_type,module_name,interace_name,method_name,class_name,gater_date)",
+			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{instanceType},#{RPCType},#{version},#{clientVersion},#{path},#{httpMethodTypeString},'electron','interaceName',#{methodName},#{className},#{gaterDate})",
 	})
 	public Integer insertInterface(NodeBase nodeBase);
 	
@@ -90,7 +90,7 @@ public interface ExampleAndInterfaceMapper {
 	 * @return
 	 */
 	@ResultType(InterfaceInfo.class)
-	@Select({"select * from example_info where application_english_name = #{organizationEnglistName} order by gater_date desc"})
+	@Select({"select * from instance_info where application_english_name = #{organizationEnglistName} order by gater_date desc"})
 	public List<NodeBase> queryNodeBaseListByFrom(NodeBase nodeBase);
 
 	@ResultType(InterfaceInfo.class)

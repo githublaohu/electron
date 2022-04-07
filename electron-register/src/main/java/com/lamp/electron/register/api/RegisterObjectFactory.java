@@ -13,7 +13,7 @@ package com.lamp.electron.register.api;
 
 public interface RegisterObjectFactory {
 
-	public String registerCentreName();
+	public String registerCenterName();
 	
 	public default boolean electronRegister() {
 		return false;

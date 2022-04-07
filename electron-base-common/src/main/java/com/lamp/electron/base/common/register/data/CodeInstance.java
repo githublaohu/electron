@@ -9,14 +9,10 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.base.common.register.server;
+package com.lamp.electron.base.common.register.data;
 
-import com.lamp.electron.base.common.register.data.ResourceExample;
-import com.lamp.electron.register.api.Register;
-import com.lamp.electron.register.api.RegisterServer;
+import com.lamp.electron.base.common.basedata.NodeBase;
 
-@Register(node= {"organizationName","networkAddress","port"},persistence = true)
-public interface ResourceExampleRegister extends RegisterServer<ResourceExample>{
+public class CodeInstance extends NodeBase {
 
-	
 }

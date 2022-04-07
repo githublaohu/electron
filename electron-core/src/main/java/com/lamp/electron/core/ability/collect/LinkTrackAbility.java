@@ -19,7 +19,11 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
-@AbilityAction(abilityType = AbilityTypeEnum.LINKTRACK)
+/**
+ * 链路追踪能力模型
+ * @author jellly
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.LINK_TRACK)
 public class LinkTrackAbility extends AbstractChainAbility<LinkTrack>{
 
 	@Override

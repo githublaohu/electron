@@ -24,13 +24,17 @@ import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ResultAbility;
-import com.lamp.electron.core.ability.function.statistics.StatisticsCentre;
+import com.lamp.electron.core.ability.function.statistics.StatisticsCenter;
 
+/**
+ * 统计能力模型
+ * @author jellly
+ */
 @AbilityAction(abilityType = AbilityTypeEnum.STATISTICS)
 public class StatisticsAbility extends AbstractChainAbility<Statistics> implements ResultAbility{
 
 	@Resource
-	private StatisticsCentre statisticsCentre;
+	private StatisticsCenter statisticsCenter;
 	
 	private ArrayMetric arrayMetric;
 	

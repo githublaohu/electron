@@ -33,8 +33,8 @@ import lombok.Getter;
 public enum ExceptionType {
 
 	REQUEST_RESOURCE_NOT_FIND(2500 ,"404", "The request could not find the corresponding resource"),
-	REQUSET_GET_NOT_SERVICE(2501,"example","Failed to get service"),
-	REQUSET_NOT_INSTANCE(2502,"instance","No instance exists, service name is %s"),
+	REQUSET_GET_NOT_SERVICE(2501,"out of instance","Failed to get service"),
+	REQUSET_NOT_INSTANCE(2502,"no instance","No instance exists, service name is %s"),
 	REQUSET_CODE_OUT_TIME(2503 ,"out time","request timeout, service name is %s "),
 	
 	SECURITY_AUTH_TOKEN_NOT_EXIST(10,1,"token is not exsit","token is not exsit"),

@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -24,28 +25,27 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSON;
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
-import com.lamp.electron.base.common.register.data.CodeExample;
-import com.lamp.electron.base.common.register.data.ExampleInfo;
+import com.lamp.electron.base.common.register.data.CodeInstance;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
-import com.lamp.electron.base.common.register.server.CodeExampleRegister;
-import com.lamp.electron.base.common.register.server.ExampleRegister;
+import com.lamp.electron.base.common.register.server.CodeInstanceRegister;
+import com.lamp.electron.base.common.register.server.InstanceRegister;
 import com.lamp.electron.base.common.register.server.InterfaceRegister;
-import com.lamp.electron.console.mapper.organization.ExampleAndInterfaceMapper;
-import com.lamp.electron.console.service.organization.ExampleAndInterfaceServcie;
+import com.lamp.electron.console.mapper.organization.InstanceAndInterfaceMapper;
+import com.lamp.electron.console.service.organization.InstanceAndInterfaceServcie;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 @Transactional
-public class ExampleAndInterfaceServcieImpl implements ExampleAndInterfaceServcie {
+public class InstanceAndInterfaceServcieImpl implements InstanceAndInterfaceServcie {
 
 	void supplement(NodeBase nodeBase) {
 		if (Objects.isNull(nodeBase.getLanguage())) {
 			nodeBase.setLanguage("Java");
 		}
-		if (Objects.isNull(nodeBase.getExampleType())) {
-			nodeBase.setExampleType("business");
+		if (Objects.isNull(nodeBase.getInstanceType())) {
+			nodeBase.setInstanceType("business");
 		}
 		if (Objects.isNull(nodeBase.getRPCType())) {
 			nodeBase.setRPCType("http");
@@ -63,21 +63,21 @@ public class ExampleAndInterfaceServcieImpl implements ExampleAndInterfaceServci
 	}
 
 	@Autowired
-	private ExampleAndInterfaceMapper exampleAndInterfaceMapper;
+	private InstanceAndInterfaceMapper instanceAndInterfaceMapper;
 
 	/**
-	 * 实例与应用（组织）关联，关联id是 1. example 可以通过时间，应用名，时间，ip，端口，建一个唯一建 2. interface 可以通过
+	 * 实例与应用（组织）关联，关联id是 1. Instance 可以通过时间，应用名，时间，ip，端口，建一个唯一建 2. interface 可以通过
 	 * path，版本号，
 	 */
 	public Integer insertNodeBase(NodeBase nodeBase) {
 		try {
 			this.supplement(nodeBase);
 			if (Objects.isNull(nodeBase.getOrganizationTypeEnum())) {
-				return exampleAndInterfaceMapper.insertNodeBase(nodeBase);
+				return instanceAndInterfaceMapper.insertNodeBase(nodeBase);
 			}
-			return Objects.equals(nodeBase.getOrganizationTypeEnum(), OrganizationTypeEnum.EXAMPLE)
-					? exampleAndInterfaceMapper.insertNodeBase(nodeBase)
-					: exampleAndInterfaceMapper.insertInterface(nodeBase);
+			return Objects.equals(nodeBase.getOrganizationTypeEnum(), OrganizationTypeEnum.INSTANCE)
+					? instanceAndInterfaceMapper.insertNodeBase(nodeBase)
+					: instanceAndInterfaceMapper.insertInterface(nodeBase);
 		} catch (Exception e) {
 			log.error(nodeBase.toString());
 			log.error(e.getMessage(), e);
@@ -91,77 +91,77 @@ public class ExampleAndInterfaceServcieImpl implements ExampleAndInterfaceServci
 
 	@Override
 	public Integer updateNodeBase(InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceMapper.updateNodeBase(interfaceInfo);
+		return instanceAndInterfaceMapper.updateNodeBase(interfaceInfo);
 	}
 
 	@Override
 	public NodeBase queryNodeBaseById(InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceMapper.queryNodeBaseById(interfaceInfo);
+		return instanceAndInterfaceMapper.queryNodeBaseById(interfaceInfo);
 	}
 
 	@Override
 	public List<NodeBase> queryNodeBaseListByOiId(InterfaceInfo interfaceInfo) {
-		return exampleAndInterfaceMapper.queryNodeBaseListByOiId(interfaceInfo);
+		return instanceAndInterfaceMapper.queryNodeBaseListByOiId(interfaceInfo);
 	}
 
 	@Override
 	public List<NodeBase> queryNodeBaseListByFrom(InterfaceInfo interfaceInfo) {
-		return Objects.equals(interfaceInfo.getOrganizationTypeEnum(), OrganizationTypeEnum.EXAMPLE)
-				? exampleAndInterfaceMapper.queryNodeBaseListByFrom(interfaceInfo)
-				: exampleAndInterfaceMapper.queryInterfaceInfoListByFrom(interfaceInfo);
+		return Objects.equals(interfaceInfo.getOrganizationTypeEnum(), OrganizationTypeEnum.INSTANCE)
+				? instanceAndInterfaceMapper.queryNodeBaseListByFrom(interfaceInfo)
+				: instanceAndInterfaceMapper.queryInterfaceInfoListByFrom(interfaceInfo);
 	}
 
 	@Component
 	static class ConsoleInterfaceRegister implements InterfaceRegister {
 
 		@Autowired
-		private ExampleAndInterfaceServcie exampleAndInterfaceServcie;
+		private InstanceAndInterfaceServcie instanceAndInterfaceServcie;
 
 		@Override
 		public int register(InterfaceInfo t) {
 			t.setHttpMethodTypeString(JSON.toJSONString(t.getHttpMethodType()));
-			return exampleAndInterfaceServcie.insertNodeBase(t);
+			return instanceAndInterfaceServcie.insertNodeBase(t);
 		}
 
 		@Override
-		public int unRegister(InterfaceInfo t) {
+		public int deregister(InterfaceInfo t) {
 			return 0;
 		}
 
 	}
 
 	@Component
-	static class ConsoleExampleRegister implements ExampleRegister {
+	static class ConsoleInstanceRegister implements InstanceRegister {
 
 		@Autowired
-		private ExampleAndInterfaceServcie exampleAndInterfaceServcie;
+		private InstanceAndInterfaceServcie instanceAndInterfaceServcie;
 
 		@Override
-		public int register(ExampleInfo t) {
+		public int register(InstanceInfo t) {
 
-			return exampleAndInterfaceServcie.insertNodeBase(t);
+			return instanceAndInterfaceServcie.insertNodeBase(t);
 		}
 
 		@Override
-		public int unRegister(ExampleInfo t) {
-			return exampleAndInterfaceServcie.updateNodeOfflineStuats(t);
+		public int deregister(InstanceInfo t) {
+			return instanceAndInterfaceServcie.updateNodeOfflineStuats(t);
 		}
 	}
 
 	@Component
-	static class ConsoleCodeExampleRegister implements CodeExampleRegister {
+	static class ConsoleCodeInstanceRegister implements CodeInstanceRegister {
 
 		@Autowired
-		private ExampleAndInterfaceServcie exampleAndInterfaceServcie;
+		private InstanceAndInterfaceServcie instanceAndInterfaceServcie;
 
 		@Override
-		public int register(CodeExample t) {
-			return exampleAndInterfaceServcie.insertNodeBase(t);
+		public int register(CodeInstance t) {
+			return instanceAndInterfaceServcie.insertNodeBase(t);
 		}
 
 		@Override
-		public int unRegister(CodeExample t) {
-			return exampleAndInterfaceServcie.updateNodeOfflineStuats(t);
+		public int deregister(CodeInstance t) {
+			return instanceAndInterfaceServcie.updateNodeOfflineStuats(t);
 		}
 
 	}

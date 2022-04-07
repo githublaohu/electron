@@ -29,7 +29,11 @@ import com.lamp.electron.core.ability.function.loadBalancing.LoadBalancingSelect
 import com.lamp.electron.core.ability.function.loadBalancing.RandomLoadBalancingSelect;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
-@AbilityAction(abilityType = AbilityTypeEnum.LOADBALANCING)
+/**
+ * 负载均衡能力模型
+ * @author jellly
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.LOAD_BALANCING)
 public class LoadBalancingAbility extends AbstractChainAbility<LoadBalancing>{
 
 	private static final Map<LoadBalancingEnum, LoadBalancingSelect>  loadBalancingSelectMap = new HashMap<>();
