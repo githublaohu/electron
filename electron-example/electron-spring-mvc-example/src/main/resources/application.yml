@@ -20,3 +20,8 @@ electron:
     registry: 127.0.0.1:2379
     applicationName: test-springmvc
     userInfoClass: com.lamp.electron.example.service.example.UserInfo
+nacos:
+   config:
+      server-addr: 127.0.0.1
+      #namespace: electron-test
+      

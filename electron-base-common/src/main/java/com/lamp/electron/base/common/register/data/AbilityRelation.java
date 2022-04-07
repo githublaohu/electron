@@ -13,7 +13,7 @@ package com.lamp.electron.base.common.register.data;
 
 import com.lamp.electron.base.common.basedata.RegisterBase;
 import com.lamp.electron.base.common.enums.AbilityType;
-import com.lamp.electron.base.common.enums.ProtocolConfigEnum;
+import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -45,7 +45,7 @@ public class AbilityRelation extends RegisterBase {
 	/**
 	 * 协议配置类型
 	 */
-	private ProtocolConfigEnum protocelConfigEnum;
+	private ProtocolConfigEnums protocelConfigEnum;
 
 	/**
 	 * 策略内容

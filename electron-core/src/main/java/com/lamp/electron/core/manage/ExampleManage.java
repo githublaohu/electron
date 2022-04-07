@@ -20,25 +20,23 @@ import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.base.common.register.server.ExampleRegister;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
-public class ExampleManage implements ExampleRegister{
+public class ExampleManage implements ExampleRegister {
 
 	private final Map<String/**/ , LongRangeWrapper> nameToExample = new ConcurrentHashMap<>();
-	
-	
+
 	private ElectronClientFactory electronClientFactory;
-	
+
 	public ExampleManage(ElectronClientFactory electronClientFactory) {
 		this.electronClientFactory = electronClientFactory;
 	}
 
-	
 	@Override
 	public synchronized int register(ExampleInfo t) {
 		String name = t.getApplicationEnglishName();
-		
+
 		LongRangeWrapper longRangeWrapper = nameToExample.get(name);
-		if(Objects.isNull(longRangeWrapper)) {
-			longRangeWrapper = new LongRangeWrapper(name,name,null);
+		if (Objects.isNull(longRangeWrapper)) {
+			longRangeWrapper = new LongRangeWrapper(name, name, null);
 			nameToExample.put(name, longRangeWrapper);
 		}
 		t.setInvoker(electronClientFactory.crateRpcClient(t, null, null));
@@ -50,13 +48,13 @@ public class ExampleManage implements ExampleRegister{
 	public synchronized int unRegister(ExampleInfo t) {
 		String name = t.getApplicationEnglishName();
 		LongRangeWrapper longRangeWrapper = nameToExample.get(name);
-		if(Objects.nonNull(longRangeWrapper)) {
+		if (Objects.nonNull(longRangeWrapper)) {
 			longRangeWrapper.removeNetworkAddress(t);
 		}
 		return 1;
 	}
-	
-	public LongRangeWrapper getExampleInfos(String applicationName){
+
+	public LongRangeWrapper getExampleInfos(String applicationName) {
 		return nameToExample.get(applicationName);
 	}
 

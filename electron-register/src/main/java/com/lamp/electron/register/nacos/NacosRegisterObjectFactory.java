@@ -11,6 +11,22 @@
  */
 package com.lamp.electron.register.nacos;
 
-public class NacosRegisterObjectFactory {
+import com.lamp.electron.register.api.RegisterData;
+import com.lamp.electron.register.api.RegisterModel;
+import com.lamp.electron.register.api.RegisterObjectFactory;
+import com.lamp.electron.register.api.RegisterServer;
+
+public class NacosRegisterObjectFactory implements RegisterObjectFactory {
+
+	@Override
+	public String registerCentreName() {
+		return "nacos";
+	}
+
+	@Override
+	public RegisterModel<Object> createRegisterModel(RegisterServer<Object> registerServers,
+			RegisterData registerData) {
+		return new NacosRegister(registerServers, registerData);
+	}
 
 }

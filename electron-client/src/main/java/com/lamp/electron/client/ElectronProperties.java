@@ -26,5 +26,7 @@ public class ElectronProperties {
 	
 	private String userInfoClass;
 	
+	private String netAddress;
+	
 	
 }

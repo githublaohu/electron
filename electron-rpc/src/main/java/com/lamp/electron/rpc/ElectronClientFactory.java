@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
 import com.lamp.electron.base.common.basedata.NodeBase;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
-import com.lamp.electron.base.common.enums.ProtocolConfigEnum;
+import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 import com.lamp.electron.base.common.enums.ProtocolEnum;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.base.common.perception.ConfigPerceptionFactory;
@@ -38,10 +38,10 @@ import lombok.Setter;
 
 @Setter
 public class ElectronClientFactory {
-	private static final Map<ProtocolEnum, ProtocolConfigEnum> PROTECONLE_REQUSET_CONFIG = new HashMap<>();
+	private static final Map<ProtocolEnum, ProtocolConfigEnums> PROTECONLE_REQUSET_CONFIG = new HashMap<>();
 
 	static {
-		for (ProtocolConfigEnum protocolConfigEnum : ProtocolConfigEnum.values()) {
+		for (ProtocolConfigEnums protocolConfigEnum : ProtocolConfigEnums.values()) {
 			PROTECONLE_REQUSET_CONFIG.put(protocolConfigEnum.getProtocolEnum(), protocolConfigEnum);
 		}
 	}

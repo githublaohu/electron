@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.lamp.electron.base.common.basedata.OrganizationBase;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
-import com.lamp.electron.base.common.enums.ProtocolConfigEnum;
+import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 
 public class ConfigPerceptionFactory {
 
@@ -28,7 +28,7 @@ public class ConfigPerceptionFactory {
 	private Map<Class<?>, Map<String, Perception<Object>>> simplePerceptionMap = new ConcurrentHashMap<>();
 
 	{
-		for (ProtocolConfigEnum configEnum : ProtocolConfigEnum.values()) {
+		for (ProtocolConfigEnums configEnum : ProtocolConfigEnums.values()) {
 			configPerceptionMap.put(configEnum.getClazz(), new HashMap<>());
 			for (OrganizationTypeEnum organizationTypeEnum : OrganizationTypeEnum.values()) {
 				configPerceptionMap.get(configEnum.getClazz()).put(organizationTypeEnum, new ConcurrentHashMap<>());

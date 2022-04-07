@@ -32,6 +32,7 @@ import io.etcd.jetcd.KeyValue;
 import io.etcd.jetcd.Watch.Listener;
 import io.etcd.jetcd.options.GetOption;
 import io.etcd.jetcd.options.PutOption;
+import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchEvent;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
@@ -81,7 +82,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 						registerServers.register(object);
 					}
 					// 拉去所有数据在watcher，防止watcher新数据被path旧数据覆盖
-					watcherListen.watcher();
+					client.getWatchClient().watch(watcherListen.byteSequence,WatchOption.newBuilder().withPrefix(watcherListen.byteSequence).build(), watcherListen);
 				} catch (Exception e) {
 					log.error(e.getMessage(), e);
 				}
