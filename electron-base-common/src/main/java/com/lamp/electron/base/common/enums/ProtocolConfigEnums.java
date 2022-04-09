@@ -15,7 +15,7 @@ import com.lamp.electron.base.common.ability.config.http.HttpClientConfig;
 import com.lamp.electron.base.common.ability.config.http.HttpRequestConfig;
 import com.lamp.electron.base.common.ability.config.http.HttpServiceConfig;
 
-public enum ProtocolConfigEnum {
+public enum ProtocolConfigEnums {
 
 	NONE(Object.class, ConfigTypeEnum.NODE, ProtocolEnum.HTTP),
 	HTTP_CLIENT_CONFIG(HttpClientConfig.class, ConfigTypeEnum.CLIENT, ProtocolEnum.HTTP),
@@ -30,7 +30,7 @@ public enum ProtocolConfigEnum {
 
 	private ProtocolEnum protocolEnum;
 
-	ProtocolConfigEnum(Class<?> clazz, ConfigTypeEnum configTypeEnum, ProtocolEnum protocolEnum) {
+	ProtocolConfigEnums(Class<?> clazz, ConfigTypeEnum configTypeEnum, ProtocolEnum protocolEnum) {
 		this.clazz = clazz;
 		this.configTypeEnum = configTypeEnum;
 		this.protocolEnum = protocolEnum;

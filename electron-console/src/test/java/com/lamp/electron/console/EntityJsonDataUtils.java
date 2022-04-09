@@ -6,7 +6,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 //import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
-import com.lamp.electron.base.common.enums.ProtocolConfigEnum;
+import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.console.entity.organization.OrganizationInfo;
 import com.lamp.electron.console.entity.organization.OrganizationPower;
@@ -44,7 +44,7 @@ public class EntityJsonDataUtils {
 		abilityRelation.setAiId(1L);
 		abilityRelation.setAiName("hello");
 		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONFIG);
-		abilityRelation.setProtocelConfigEnum(ProtocolConfigEnum.NONE);
+		abilityRelation.setProtocelConfigEnum(ProtocolConfigEnums.NONE);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationName("1号");

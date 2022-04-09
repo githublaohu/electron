@@ -32,6 +32,7 @@ import io.etcd.jetcd.KeyValue;
 import io.etcd.jetcd.Watch.Listener;
 import io.etcd.jetcd.options.GetOption;
 import io.etcd.jetcd.options.PutOption;
+import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchEvent;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
@@ -71,23 +72,26 @@ public class EtcdRegister extends AbstractRegisterModel {
 	}
 
 	private void getData() {
-		new Thread(() -> {
-			try {
-				log.debug("拉取path所有数据...");
-				GetOption getOption = GetOption.newBuilder()
-						.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
-				List<KeyValue> keyValues = client.getKVClient()
-						.get(ByteSequence.from(registerData.getPath().getBytes()), getOption).get().getKvs();
-				for (KeyValue kv : keyValues) {
-					Object object = JSON.parseObject(kv.getValue().getBytes(), registerData.getDataClass());
-					registerServers.register(object);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					log.info("拉取path所有数据");
+					GetOption getOption = GetOption.newBuilder()
+							.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
+					List<KeyValue> keyValues = client.getKVClient()
+							.get(ByteSequence.from(registerData.getPath().getBytes()), getOption).get().getKvs();
+					for (KeyValue kv : keyValues) {
+						Object object = JSON.parseObject(kv.getValue().getBytes(), registerData.getDataClass());
+						registerServers.register(object);
+					}
+					// 拉去所有数据在watcher，防止watcher新数据被path旧数据覆盖
+					client.getWatchClient().watch(watcherListen.byteSequence,WatchOption.newBuilder().withPrefix(watcherListen.byteSequence).build(), watcherListen);
+				} catch (Exception e) {
+					log.error(e.getMessage(), e);
 				}
-				// 拉取所有数据在watcher，防止watcher新数据被path旧数据覆盖
-				watcherListen.watcher();
-			} catch (Exception e) {
-				log.error(e.getMessage(), e);
-			}
 
+			}
 		}).start();
 	}
 

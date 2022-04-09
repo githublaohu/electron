@@ -30,6 +30,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.lamp.electron.register.consul.ConsulRegisterObjectFactory;
 import com.lamp.electron.register.etcd.EtcdRegisterObjectFactory;
 import com.lamp.electron.register.eureka.EurekaRegisterObjectFactory;
+import com.lamp.electron.register.nacos.NacosRegisterObjectFactory;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,12 +49,15 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		EtcdRegisterObjectFactory etcdRegisterObjectFactory = new EtcdRegisterObjectFactory();
 		registerObjectFactoryMap.put(etcdRegisterObjectFactory.registerCenterName(), etcdRegisterObjectFactory);
 
-		EurekaRegisterObjectFactory eurekaRegisterObjectFactory = new EurekaRegisterObjectFactory();
-		registerObjectFactoryMap.put(eurekaRegisterObjectFactory.registerCenterName(), eurekaRegisterObjectFactory);
+		registerObjectFactoryMap.put(etcdRegisterObjectFactory.registerCenterName(), etcdRegisterObjectFactory);
+//		registerObjectFactoryMap.put("", etcdRegisterObjectFactory);
 
 		NacosRegisterObjectFactory nacosRegisterObjectFactory = new NacosRegisterObjectFactory();
 		registerObjectFactoryMap.put(nacosRegisterObjectFactory.registerCenterName(), nacosRegisterObjectFactory);
-	}
+
+		EurekaRegisterObjectFactory eurekaRegisterObjectFactory = new EurekaRegisterObjectFactory();
+		registerObjectFactoryMap.put(eurekaRegisterObjectFactory.registerCenterName(), eurekaRegisterObjectFactory);
+}
 
 	/**
 	 * 扩展类
@@ -179,12 +183,8 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		}
 		RegisterObjectFactory registerObjectFactory = registerObjectFactoryMap.get(registerName);
 		if(!registerObjectFactory.electronRegister()) {
-			// 如果是兼容的注册中心，不支持注册
-			if (Objects.nonNull(registerServer)) {
-				return null;
-			}
 			// 兼容的注册中心，只支持实例的注册
-			if (!StringUtils.equals(registerData.getDataClass().getSimpleName(), "InstanceInfo")) {
+			if (!StringUtils.equals(registerData.getDataClass().getSimpleName(), "ExampleInfo")) {
 				return null;
 			}
 		}

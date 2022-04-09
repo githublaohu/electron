@@ -35,7 +35,6 @@ public class InstanceManage implements InstanceRegister {
 		this.electronClientFactory = electronClientFactory;
 	}
 
-	
 	@Override
 	public synchronized int register(InstanceInfo t) {
 		String name = t.getApplicationEnglishName();
@@ -60,7 +59,7 @@ public class InstanceManage implements InstanceRegister {
 		return 1;
 	}
 	
-	public LongRangeWrapper getInstanceInfo(String applicationName){
+	public LongRangeWrapper getInstanceInfo(String applicationName) {
 		return nameToInstance.get(applicationName);
 	}
 

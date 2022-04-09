@@ -22,14 +22,15 @@ import com.lamp.electron.register.api.RegisterServer;
  */
 public class NacosRegisterObjectFactory implements RegisterObjectFactory {
 
+	@Override
+	public RegisterModel<Object> createRegisterModel(RegisterServer<Object> registerServers,
+			RegisterData registerData) {
+		return new NacosRegister(registerServers, registerData);
+	}
+
     @Override
     public String registerCenterName() {
         return "nacos";
     }
 
-    @Override
-    public RegisterModel<Object> createRegisterModel(RegisterServer<Object> registerServers, RegisterData registerData) {
-        // TODO
-        return null;
-    }
 }

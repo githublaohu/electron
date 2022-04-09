@@ -60,6 +60,9 @@ public abstract class AbstractGather {
 
 	protected void setElectronProperties(ElectronProperties electronProperties) {
 		this.electronProperties = electronProperties;
+		if(Objects.nonNull(electronProperties.getNetAddress())) {
+			networkAddress = electronProperties.getNetAddress();
+		}
 	}
 
 	protected void setPort(Integer port) {
