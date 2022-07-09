@@ -40,13 +40,13 @@ public interface InstanceAndInterfaceMapper {
 	 * @return
 	 */
 	@Insert({
-			"insert into instance_info(application_id , application_english_name,organization_type,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,gater_date)",
+			"insert into instance_info(application_id , application_english_name,organization_type_enum,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,create_time)",
 			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{instanceType},#{RPCType},#{version},#{clientVersion},#{gaterDate})",
 	})
 	public Integer insertNodeBase(NodeBase nodeBase);
 
 	@Insert({
-			"insert into  interface_info (application_id,application_english_name,organization_type,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,path,http_method_type,module_name,interace_name,method_name,class_name,gater_date)",
+			"insert into  interface_info (application_id,application_english_name,organization_type_enum,networkAddress,port,protocol,language,instance_type,rpc_type,version,client_version,path,http_method_type,module_name,interace_name,method_name,class_name,create_time)",
 			"values(#{applicationId},#{applicationEnglishName},#{organizationTypeEnum},#{networkAddress},#{port},#{protocol},#{language},#{instanceType},#{RPCType},#{version},#{clientVersion},#{path},#{httpMethodTypeString},'electron','interaceName',#{methodName},#{className},#{gaterDate})",
 	})
 	public Integer insertInterface(NodeBase nodeBase);
@@ -57,7 +57,7 @@ public interface InstanceAndInterfaceMapper {
 	 * @param nodeBase
 	 * @return
 	 */
-	@Update({UPDATE_SQL , "is_detele=1","where network_address = #{networkAddress} and create_time = #{createTime}"})
+	@Update({UPDATE_SQL , "is_delete=1","where network_address = #{networkAddress} and create_time = #{createTime}"})
 	public Integer updateNodeBase(NodeBase nodeBase);
 
 	/**
@@ -90,11 +90,11 @@ public interface InstanceAndInterfaceMapper {
 	 * @return
 	 */
 	@ResultType(InterfaceInfo.class)
-	@Select({"select * from instance_info where application_english_name = #{organizationEnglistName} order by gater_date desc"})
+	@Select({"select * from instance_info where application_english_name = #{organizationEnglishName} order by create_time desc"})
 	public List<NodeBase> queryNodeBaseListByFrom(NodeBase nodeBase);
 
 	@ResultType(InterfaceInfo.class)
-	@Select({"select * from interface_info where application_english_name = #{organizationEnglistName} = #{organizationId}"})
+	@Select({"select * from interface_info where application_english_name = #{organizationEnglishName} = #{organizationId}"})
 	public List<NodeBase> queryInterfaceInfoListByFrom(NodeBase nodeBase);
  
 }

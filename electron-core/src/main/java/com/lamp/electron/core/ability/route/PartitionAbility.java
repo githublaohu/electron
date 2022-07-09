@@ -52,6 +52,7 @@ public class PartitionAbility extends AbstractChainAbility<Partition> {
 						}
 					}
 				} else {
+					// 区分版本
 					String version = partition.getVersion();
 					for (NetworkAddress networkAddress : networkAddressList) {
 						if (Objects.equals(version, networkAddress.version())) {

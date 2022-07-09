@@ -101,6 +101,7 @@ public class AuthenticationAbility extends AbstractChainAbility<Authentication> 
 		Authentication authentication = getAbilityData();
 		ElectronResponse electronResponse;
 		if (authentication.getRedirectSpot() == DataSpot.REDIRECT) {
+			// 重定向
 			electronResponse = exceptionType.wrapper(electronRequest, HttpResponseStatus.FOUND, args);
 			electronResponse.setData(DataSpot.HEADER, HttpHeaderNames.LOCATION.toString(),
 					authentication.getRedirectData());

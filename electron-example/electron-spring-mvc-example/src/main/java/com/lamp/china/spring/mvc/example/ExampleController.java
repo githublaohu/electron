@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lamp.electron.base.common.register.data.InstanceInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lamp.electron.base.common.RemotingUtil;
 import com.lamp.electron.example.service.instance.InstanceInfoService;
 
+@Slf4j
 @RestController
 @RequestMapping("/example")
 public class ExampleController {
@@ -40,6 +42,7 @@ public class ExampleController {
 		for(int i = 0; i< 10 ; i++) {
 			list.add(createExampleInfo());
 		}
+		log.info("queryExampleList catch");
 		return list;
 	}
 	

@@ -42,9 +42,9 @@ public class InterfaceInfo extends NodeBase {
 
 	private String[] parameterNameArray;
 
-	private Integer servierSign;
+	private Integer serverSign;
 
-	public String[] getPrameterNameArray() {
+	public String[] getParameterNameArray() {
 		if (Objects.nonNull(parameter) && Objects.isNull(this.parameterNameArray)) {
 			String[] parameterNameArray = new String[parameter.size()];
 			for (int i = 0; i < parameter.size(); i++) {

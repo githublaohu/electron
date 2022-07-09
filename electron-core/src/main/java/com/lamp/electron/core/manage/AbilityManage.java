@@ -11,21 +11,18 @@
  */
 package com.lamp.electron.core.manage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
 import javax.annotation.Resource;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lamp.electron.base.common.ability.Authentication;
+import com.lamp.electron.base.common.ability.ConditionRouter;
 import com.lamp.electron.base.common.ability.LoadBalancing;
+import com.lamp.electron.base.common.ability.Partition;
 import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.enums.EffectPoint;
@@ -33,6 +30,7 @@ import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.enums.ability.LoadBalancingEnum;
 import com.lamp.electron.base.common.perception.ConfigPerceptionFactory;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.base.common.register.server.AbilityRelationRegister;
 import com.lamp.electron.core.ability.Ability;
@@ -104,6 +102,9 @@ public class AbilityManage implements AbilityRelationRegister {
 	@Resource
 	private ContainerBeanFactory containerBeanFactory;
 
+	/**
+	 * 初始化能力类型
+	 */
 	private void initAbility(){
 		invokingAbility = new InvokingAbility();
 		invokingAbility.setAbilityTypeEnum(AbilityTypeEnum.INVOKING);
@@ -177,7 +178,7 @@ public class AbilityManage implements AbilityRelationRegister {
 		
 	}
 
-	void testAbility() {
+	void testAuthAbility() {
 		AbilityRelation abilityRelation = new AbilityRelation();
 		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.AUTHENTICATION);
 		abilityRelation.setOrganizationName("test-springmvc");
@@ -187,15 +188,67 @@ public class AbilityManage implements AbilityRelationRegister {
 		authentication.setTokenSpot(DataSpot.HEADER);
 		authentication.setTokenName("token");
 		authentication.setRedirectSpot(DataSpot.REDIRECT);
-		authentication.setRedirectData("www.baidu.com");
+		authentication.setRedirectData("http://www.baidu.com");
 		authentication.setUserKey("id");
 		Set<String> acrossPathList = new HashSet<>();
 		acrossPathList.add("/electron/instance/instance/queryInstance");
 		acrossPathList.add("/electron/instance/auth/userAuth");
+//		acrossPathList.add("/electron/example/example/queryExampleList");
 		authentication.setAcrossPathList(acrossPathList);
 		abilityRelation.setAbility(authentication);
 		getChainAbility(abilityRelation).addAbilityObject(abilityRelation);
 	}
+
+	void testPartitionAbility() {
+		AbilityRelation abilityRelation = new AbilityRelation();
+		abilityRelation.setArId(10001L);
+		abilityRelation.setAiId(10001L);
+		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.PARTITION);
+		abilityRelation.setOrganizationName("test-springmvc");
+		abilityRelation.setOrganizationTypeEnum(OrganizationTypeEnum.APPLICATION);
+
+		Partition partition = new Partition();
+		partition.setDataSpot(DataSpot.URL);
+		partition.setValue("/electron");
+		partition.setIsResources(false);
+		partition.setKey("/electron");
+
+		List<InstanceInfo> instanceInfos = new ArrayList<>();
+		InstanceInfo ii = new InstanceInfo();
+		ii.setApplicationName("test-springmvc");
+		ii.setApplicationEnglishName("ts");
+		ii.setName("ts");
+		ii.setNetworkAddress("192.168.28.124");
+		ii.setPort("11110");
+		instanceInfos.add(ii);
+		partition.setInstanceInfoList(instanceInfos);
+
+		abilityRelation.setAbility(partition);
+		getChainAbility(abilityRelation).addAbilityObject(abilityRelation);
+	}
+
+
+	void testConditionRouterAbility() {
+		AbilityRelation abilityRelation = new AbilityRelation();
+		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONDITION_ROUTER);
+		abilityRelation.setOrganizationName("test");
+		abilityRelation.setOrganizationTypeEnum(OrganizationTypeEnum.APPLICATION);
+
+		ConditionRouter conditionRouter = new ConditionRouter();
+
+		ConditionRouter.Condition condition = new ConditionRouter.Condition();
+		condition.setDataSpot(DataSpot.URL);
+		condition.setRewrite(ConditionRouter.Rewrite.UNCHANGED);
+		condition.setKey("/test");
+		condition.setValue("/test-example");
+		condition.setIsResources(false);
+
+		conditionRouter.setConditions(Collections.singletonList(condition));
+		System.out.println(JSON.toJSONString(conditionRouter));
+		abilityRelation.setAbility(conditionRouter);
+		getChainAbility(abilityRelation).addAbilityObject(abilityRelation);
+	}
+
 
 	public AbilityManage(InstanceManage instanceManage, InterfaceManage interfaceManage,
 						 ConfigPerceptionFactory configPerceptionFactory) {
@@ -208,7 +261,9 @@ public class AbilityManage implements AbilityRelationRegister {
 		this.initAbility();
 		this.createOverallSituation();
 		// TODO 测试用 代码
-//		testAbility();
+		testAuthAbility();
+		testPartitionAbility();
+		testConditionRouterAbility();
 	}
 
 	private void createOverallSituation() {

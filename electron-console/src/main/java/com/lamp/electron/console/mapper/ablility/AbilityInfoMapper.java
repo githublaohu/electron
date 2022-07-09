@@ -25,7 +25,7 @@ public interface AbilityInfoMapper {
 
 	@Insert({"insert into ability_info",
 			" (organization_id,organization_name,organization_type_enum,ai_parent_id, ai_name,ai_lable,ai_ability_type,ai_data,ai_relation_status)",
-			" values(#{organizationId},#{organizationName},#{organizationTypeEnum},#{aiParentId},#{aiName},#{aiLable},#{aiAbilityType},#{aiData},#{aiRelationStatus})"})
+			" values(#{organizationId},#{organizationName},#{organizationTypeEnum},#{aiParentId},#{aiName},#{aiLabel},#{aiAbilityType},#{aiData},#{aiRelationStatus})"})
 	public Integer insertAbilityInfo(AbilityInfo abilityInfo);
 
 	@Update({"<script>",

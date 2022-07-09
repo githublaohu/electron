@@ -4,15 +4,15 @@ import SimpleModeClass from '../../simpleMode'
 var simpleMode = new SimpleModeClass("example");
 
 
-simpleMode.queryFormModelRequestInfo("/exampleAndInterface/queryNodeBaseListByFrom");
+simpleMode.queryFormModelRequestInfo("/instanceAndInterface/queryNodeBaseListByFrom");
 
 simpleMode.closeAdd();
 simpleMode.closeUpdate();
 simpleMode.closeQuery();
 
 simpleMode.dataModeBehaviorBuild().title("组织id").key("organizationId").valueExpression("info.oiId");
-simpleMode.dataModeBehaviorBuild().title("组织英文名").key("organizationEnglistName").valueExpression("info.oiEnglishName");
-simpleMode.dataModeBehaviorBuild().title("组织类型").key("organizationTypeEnum").defaultValue("EXAMPLE");
+simpleMode.dataModeBehaviorBuild().title("组织英文名").key("organizationEnglishName").valueExpression("info.oiEnglishName");
+simpleMode.dataModeBehaviorBuild().title("组织类型").key("organizationTypeEnum").defaultValue("INSTANCE");
 simpleMode.dataModeBehaviorBuild().title("网络地址").key("networkAddress").isColumn();
 simpleMode.dataModeBehaviorBuild().title("端口").key("port").isColumn();
 simpleMode.dataModeBehaviorBuild().title("通讯协议").key("protocol").isColumn();

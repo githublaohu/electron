@@ -57,7 +57,7 @@ public class RegisterServerFocusCall {
 		}
 	}
 	
-	public void regisetServer(List<RegisterServer<?>> registerServerList ) throws Exception {
+	public void registerServer(List<RegisterServer<?>> registerServerList ) throws Exception {
 		registerFactory.createMonitorObjectTo(registerServerList);
 	}
 	

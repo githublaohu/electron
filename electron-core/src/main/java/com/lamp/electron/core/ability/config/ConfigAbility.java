@@ -36,7 +36,7 @@ public class ConfigAbility implements Ability, ConfigPerceptionAware {
 	@Override
 	public void remoteAbilityObject(AbilityRelation abilityRelation) {
 		perceptionFactory.remotePerceptionObject(abilityRelation.getOrganizationTypeEnum(),
-				abilityRelation.getOrganizationName(), abilityRelation.getProtocelConfigEnum().getClazz());
+				abilityRelation.getOrganizationName(), abilityRelation.getProtocolConfigEnum().getClazz());
 	}
 
 	@Override

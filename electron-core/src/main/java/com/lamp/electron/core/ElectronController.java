@@ -63,7 +63,7 @@ public class ElectronController {
 		// 实例注册
 		codeInstanceRegister = registerFactory.createRegisterObject(CodeInstanceRegister.class);
 		// 容器注册
-		containerRegister   = registerFactory.createRegisterObject(ContainerRegister.class);
+		containerRegister = registerFactory.createRegisterObject(ContainerRegister.class);
 		// 初始化报警功能
 		
 		

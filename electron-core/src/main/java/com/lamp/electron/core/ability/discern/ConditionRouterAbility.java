@@ -36,6 +36,9 @@ public class ConditionRouterAbility extends OverallSituationAbility<ConditionRou
 
 	public String discern(ElectronRequest electronRequest) {
 		for (Entry<String, ConditionRouter> e : this.abilityDataMap.entrySet()) {
+			if (e.getValue().getConditions() == null) {
+				continue;
+			}
 			for (Condition condition : e.getValue().getConditions()) {
 				if (condition.getDataSpot() == DataSpot.URL) {
 					if (!electronRequest.path().startsWith(condition.getKey())) {

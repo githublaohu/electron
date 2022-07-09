@@ -72,7 +72,7 @@ public class AbilityTypeEnumAnalysis {
 	public void treeAbility(AbilityTypeEnum abilityTypeEnum) {
 		TreeModel treeModel = abilityScopeByTreeModel.get(abilityTypeEnum.getAbilityScope()[0]);
 		TreeModel chlidren = new TreeModel();
-		chlidren.setLabel(abilityTypeEnum.getChildName());
+		chlidren.setLabel(abilityTypeEnum.getChinaName());
 		chlidren.setExplain(abilityTypeEnum.getExplain());
 		chlidren.setType(abilityTypeEnum.name());
 		String path = (new StringBuilder()).append(Character.toLowerCase(abilityTypeEnum.getName().charAt(0))).append(abilityTypeEnum.getName().substring(1)).toString();

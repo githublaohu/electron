@@ -18,6 +18,10 @@ import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * 路由策略实体
+ * @author jellly
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class AbilityRelation extends RegisterBase {
@@ -45,7 +49,7 @@ public class AbilityRelation extends RegisterBase {
 	/**
 	 * 协议配置类型
 	 */
-	private ProtocolConfigEnums protocelConfigEnum;
+	private ProtocolConfigEnums protocolConfigEnum;
 
 	/**
 	 * 策略内容

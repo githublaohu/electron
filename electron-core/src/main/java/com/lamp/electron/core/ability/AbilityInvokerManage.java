@@ -50,27 +50,37 @@ public class AbilityInvokerManage {
 	}
 
 	public AbilityInvoker getAbilityInvoker(ElectronRequest electronRequest) {
-		// 获得接口信息
-		LongRangeWrapper longRangeWrapper = interfaceManage.getLongRangeWrapper(electronRequest.path());
-		// 条件路由
 		ElectronResponse electronResponse = null;
-		if (Objects.isNull(longRangeWrapper)) {
-			String applicationName = conditionAbility.discern(electronRequest);
-			if (Objects.isNull(applicationName)) {
-				electronResponse = ExceptionType.REQUEST_RESOURCE_NOT_FIND.wrapper(electronRequest,HttpResponseStatus.NOT_FOUND);
-			}else {
-			// 获得服务实例
-				longRangeWrapper = instanceManage.getInstanceInfo(applicationName);
-				if (Objects.isNull(longRangeWrapper)) {
-					electronResponse = ExceptionType.REQUSET_GET_NOT_SERVICE.wrapper(electronRequest, applicationName);
+		LongRangeWrapper longRangeWrapper = null;
+		try {
+			// 获得接口信息，先全路径匹配
+			longRangeWrapper = interfaceManage.getLongRangeWrapper(electronRequest.path());
+			// 匹配条件路由
+			if (Objects.isNull(longRangeWrapper)) {
+				String applicationName = conditionAbility.discern(electronRequest);
+				if (Objects.isNull(applicationName)) {
+					electronResponse = ExceptionType.REQUEST_RESOURCE_NOT_FIND.wrapper(electronRequest, HttpResponseStatus.NOT_FOUND);
+				} else {
+					// 获取服务实例
+					longRangeWrapper = instanceManage.getInstanceInfo(applicationName);
+					if (Objects.isNull(longRangeWrapper)) {
+						electronResponse = ExceptionType.REQUEST_GET_NOT_SERVICE.wrapper(electronRequest, applicationName);
+					}
 				}
 			}
-		}
-		if (Objects.nonNull(longRangeWrapper) && !longRangeWrapper.isExistInstance()) {
-			electronResponse = ExceptionType.REQUSET_NOT_INSTANCE.wrapper(electronRequest, longRangeWrapper.getApplicationName());
-		}
-		if(Objects.nonNull(electronResponse)) {
-			electronRequest.getAgreementResponse().reply(electronResponse,electronRequest);
+			if (Objects.nonNull(longRangeWrapper) && !longRangeWrapper.isExistInstance()) {
+				electronResponse = ExceptionType.REQUEST_NOT_INSTANCE.wrapper(electronRequest, longRangeWrapper.getApplicationName());
+			}
+			if (Objects.nonNull(electronResponse)) {
+				// 返回异常
+				electronRequest.getAgreementResponse().reply(electronResponse, electronRequest);
+				return null;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			electronResponse = ExceptionType.UNKNOWN_ERROR.wrapper(electronRequest, "未知异常", e.getMessage());
+			electronRequest.getAgreementResponse().reply(electronResponse, electronRequest);
 			return null;
 		}
 		return interfaceAndAbility(electronRequest, longRangeWrapper);
@@ -92,6 +102,7 @@ public class AbilityInvokerManage {
 		}
 		AbstractElectronBehavior abstractElectronBehavior = (AbstractElectronBehavior)electronRequest;
 		abstractElectronBehavior.setLongRangeWrapper(longRangeWrapper);
+		abstractElectronBehavior.setNetworkAddressList(longRangeWrapper.getNetworkAddressList());
 		return new AbilityInvoker(ability);
 	}
 }

@@ -4,7 +4,7 @@ server:
     context-path: "/lamp/electron"
  
 electron:
-  registerAddress: etcd://124.223.198.143:2379
+  registerAddress: etcd://127.0.0.1:2379
 
 spring:
   servlet: 
@@ -15,9 +15,9 @@ spring:
     name: lamp-electron
   datasource:
     name: vp_coupon
-    url: jdbc:mysql://120.78.148.188:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
-    username: lampup
-    password: Lampup@123
+    url: jdbc:mysql://106.52.191.229:30306/my_database?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    username: mydatabs
+    password: my123456
     # using druid data source
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver

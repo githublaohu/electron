@@ -15,7 +15,7 @@ export default api;
 
 api.queryNodeBaseListByOiId = function(data,page){
     return request({
-        url: '/lamp/electron/exampleAndInterface/queryNodeBaseListByOiId',
+        url: '/instanceAndInterface/queryNodeBaseListByOiId',
         method: 'post',
         data:data
       })
@@ -23,7 +23,7 @@ api.queryNodeBaseListByOiId = function(data,page){
 
 api.queryNodeBaseListByFrom = function(data,page){
     return request({
-        url: '/lamp/electron/exampleAndInterface/queryNodeBaseListByFrom',
+        url: '/instanceAndInterface/queryNodeBaseListByFrom',
         method: 'post',
         data:data
       })

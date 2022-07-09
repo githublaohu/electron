@@ -21,7 +21,7 @@ import com.lamp.electron.base.common.register.data.InstanceInfo;
 import lombok.Data;
 
 @Data
-@AbilityData(chinaName = "隔离", abilityScope = AbilityScope.CHOICE)
+@AbilityData(chinaName = "隔离", abilityScope = AbilityScope.CHOICE, manyBind = true)
 public class Partition {
 	
 	private DataSpot dataSpot;

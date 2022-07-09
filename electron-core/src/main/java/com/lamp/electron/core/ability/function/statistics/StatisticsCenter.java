@@ -71,7 +71,7 @@ public class StatisticsCenter implements ContainerTiming {
 		if (Objects.isNull(statisticsDTO)) {
 			statisticsDTO = statisticsDTOMap.computeIfAbsent(uniqueName, key -> {
 				StatisticsDTO newStatisticsDTO = new StatisticsDTO();
-				newStatisticsDTO.setOrganizationEnglistName(uniqueName);
+				newStatisticsDTO.setOrganizationEnglishName(uniqueName);
 				newStatisticsDTO.setOrganizationTypeEnum(organizationTypeEnum);
 				newStatisticsDTO.setChronoUnit(ChronoUnit.SECONDS);
 				LeapArray<MetricBucket> leapArray = new BucketLeapArray(60, 60 * 1000);

@@ -16,6 +16,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 
+/**
+ * 全局策略实体
+ * @author jellly
+ */
 public abstract class OverallSituationAbility<T> extends AbstractAbility<T> {
 
 	protected Map<String, T> abilityDataMap = new ConcurrentHashMap<>();

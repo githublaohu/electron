@@ -48,7 +48,7 @@ public class LoadBalancingAbility extends AbstractChainAbility<LoadBalancing>{
 		AbstractElectronBehavior abstractElectronBehavior = (AbstractElectronBehavior)electronRequest;
 		
 		LongRangeWrapper longRangeWrapper = abstractElectronBehavior.getLongRangeWrapper();
-		List<NetworkAddress> networkAddressList = longRangeWrapper.getNetworkAddress();
+		List<NetworkAddress> networkAddressList = abstractElectronBehavior.getNetworkAddressList();
 		if(networkAddressList.isEmpty()) {
 			return null;
 		}

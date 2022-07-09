@@ -113,10 +113,10 @@ public abstract class AbstractGather {
 	private InterfaceInfo doCreateInterface(String path, Method method) {
 		InterfaceInfo interfaceInfo = new InterfaceInfo();
 		interfaceInfo.setClassName(method.getDeclaringClass().getName());
-		interfaceInfo.setServierSign(ServiceSign.getIdentification(method.getDeclaringClass()));
+		interfaceInfo.setServerSign(ServiceSign.getIdentification(method.getDeclaringClass()));
 		interfaceInfo.setMethodName(method.getName());
 		interfaceInfo.setPath(path);
-		interfaceInfo.setOrganizationEnglistName(electronProperties.getApplicationName());
+		interfaceInfo.setOrganizationEnglishName(electronProperties.getApplicationName());
 		interfaceInfo.setApplicationEnglishName(electronProperties.getApplicationName());
 		interfaceInfo.setApplicationName(electronProperties.getApplicationName());
 		interfaceInfo.setNetworkAddress(networkAddress);

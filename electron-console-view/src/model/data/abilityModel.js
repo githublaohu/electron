@@ -28,7 +28,7 @@ beforeSupply.push(aiName);
 
 var afterSupply = [];
 
-var aiLabel = simpleMode.getDataModeBehaviorBuild().title("标签").key("aiLable").isColumn().updateBehavior().isDisabled().dataModeBehaviorBuild();
+var aiLabel = simpleMode.getDataModeBehaviorBuild().title("标签").key("aiLabel").isColumn().updateBehavior().isDisabled().dataModeBehaviorBuild();
 afterSupply.push(aiLabel);
 
 var aiAbilityType = simpleMode.getDataModeBehaviorBuild().title("能力类型").key("aiAbilityType").valueExpression(["view.meta.type","bindingData.type"]).queryFormBehavior().isUser().dataModeBehaviorBuild();

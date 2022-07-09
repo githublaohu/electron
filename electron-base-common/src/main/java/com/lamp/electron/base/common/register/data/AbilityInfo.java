@@ -40,7 +40,7 @@ public class AbilityInfo extends BaseEntity {
 	/**
 	 * 标签
 	 */
-	private String aiLable;
+	private String aiLabel;
 
 	/**
 	 * 能力类型

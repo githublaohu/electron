@@ -33,12 +33,14 @@ import lombok.Getter;
 public enum ExceptionType {
 
 	REQUEST_RESOURCE_NOT_FIND(2500 ,"404", "The request could not find the corresponding resource"),
-	REQUSET_GET_NOT_SERVICE(2501,"out of instance","Failed to get service"),
-	REQUSET_NOT_INSTANCE(2502,"no instance","No instance exists, service name is %s"),
-	REQUSET_CODE_OUT_TIME(2503 ,"out time","request timeout, service name is %s "),
+	REQUEST_GET_NOT_SERVICE(2501,"out of instance","Failed to get service"),
+	REQUEST_NOT_INSTANCE(2502,"no instance","No instance exists, service name is %s"),
+	REQUEST_CODE_OUT_TIME(2503 ,"out time","request timeout, service name is %s "),
 	
-	SECURITY_AUTH_TOKEN_NOT_EXIST(10,1,"token is not exsit","token is not exsit"),
+	SECURITY_AUTH_TOKEN_NOT_EXIST(10,1,"token is not exist","token is not exist"),
 	SECURITY_AUTH_TOKEN_NOT_FAIL(10,2,"token is fail %s","token is fail %s"),
+
+	UNKNOWN_ERROR(500 ,"500", "Unknown error"),
 	;
 	
 	private int order;
@@ -69,7 +71,7 @@ public enum ExceptionType {
 	}
 
 	public ElectronResponse wrapper(ElectronRequest electronRequest, Object... message) {
-		return null;
+		return electronRequest.electronResponse(HttpResponseStatus.BAD_REQUEST, null, createMessage(message), null);
 	}
 	
 	public ElectronResponse wrapper(ElectronRequest electronRequest,HttpResponseStatus httpResponseStatus, Object... message) {

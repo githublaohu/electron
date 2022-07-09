@@ -76,7 +76,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 			@Override
 			public void run() {
 				try {
-					log.info("拉取path所有数据");
+					log.info("拉取path[{}]所有数据",registerData.getPath());
 					GetOption getOption = GetOption.newBuilder()
 							.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
 					List<KeyValue> keyValues = client.getKVClient()

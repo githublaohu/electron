@@ -116,7 +116,7 @@ public enum AbilityTypeEnum {
 		return clazz;
 	}
 	
-	public String getChildName() {
+	public String getChinaName() {
 		return abilityData.chinaName();
 	}
 

@@ -37,10 +37,14 @@ import com.lamp.electron.console.service.ability.AbilityRelationService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 策略操作切面
+ * @author jellly
+ */
 @Slf4j
 @Aspect
 @Component
-public class AbilityReationAop {
+public class AbilityRelationAop {
 
 	@Autowired
 	private AbilityRelationService abilityRelationService;
@@ -52,7 +56,8 @@ public class AbilityReationAop {
 	private RegisterObject registerObject;
 	
 	private Map<AbilityTypeEnum,String> abilityTypeByChildDataName = new ConcurrentHashMap<>();
-	
+
+	// TODO 应分开两个切面处理
 	@AfterReturning(returning = "returning", value = "execution(* com.lamp.electron.console.service.ability.AbilityInfoService.insertAbilityInfo(..)) || "
 			+ "execution(* com.lamp.electron.console.service.ability.AbilityInfoService.updateAbilityInfoStatus(..)) ||"
 			+ "execution(* com.lamp.electron.console.service.ability.AbilityRelationService.bindAbilityRelation(..)) ||"
@@ -85,6 +90,7 @@ public class AbilityReationAop {
 	}
 
 	private void sendAbilityInfo(AbilityInfo abilityInfo) {
+
 		List<AbilityInfo> abilityInfoList = abilityInfoService.queryAbilityInfoByParentId(abilityInfo);
 		AbilityInfo parentAbilityInfo = new AbilityInfo();
 		parentAbilityInfo.setAiId(abilityInfo.getAiParentId());
@@ -104,6 +110,10 @@ public class AbilityReationAop {
 		registerServerFocusCall.createAbilityRelationRegister().batchRegister(abilityRelationList);
 	}
 
+	/**
+	 * 绑定能力策略
+	 * @param abilityRelation
+	 */
 	private void bindAbilityRelation(AbilityRelation abilityRelation) {
 		AbilityInfo abilityInfo = new AbilityInfo();
 		abilityInfo.setAiId(abilityRelation.getAiId());
@@ -115,7 +125,11 @@ public class AbilityReationAop {
 		RegisterServerFocusCall registerServerFocusCall = registerObject.getRegisterServerFocusCall(abilityRelation);
 		registerServerFocusCall.createAbilityRelationRegister().register(abilityRelation);
 	}
-	
+
+	/**
+	 * 解绑能力策略
+	 * @param abilityRelation
+	 */
 	private void unBindAbilityRelation(AbilityRelation abilityRelation) {
 		RegisterServerFocusCall registerServerFocusCall = registerObject.getRegisterServerFocusCall(abilityRelation);
 		registerServerFocusCall.createAbilityRelationRegister().deregister(abilityRelation);
@@ -126,25 +140,25 @@ public class AbilityReationAop {
 		JSONObject jsonObject = StringUtils.isEmpty(data) ? new JSONObject() : JSON.parseObject(data);
 
 		
-		if ( (Objects.isNull(abilityInfoList) && abilityInfoList.isEmpty())) {
-			String chilDataName = abilityTypeByChildDataName.get(parentAbilityInfo.getAiAbilityType());
-			if(Objects.isNull(chilDataName)) {
-				chilDataName = parentAbilityInfo.getAiAbilityType().getChildDataName();
+		if ( !(Objects.isNull(abilityInfoList) && abilityInfoList.isEmpty())) {
+			String childDataName = abilityTypeByChildDataName.get(parentAbilityInfo.getAiAbilityType());
+			if(Objects.isNull(childDataName)) {
+				childDataName = parentAbilityInfo.getAiAbilityType().getChildDataName();
 				for(Field field : parentAbilityInfo.getAiAbilityType().getAbilityObject().getDeclaredFields()) {
 					if(List.class.equals(field.getDeclaringClass())){
-						chilDataName = field.getName();
+						childDataName = field.getName();
 					}
 				}
-				abilityTypeByChildDataName.put(parentAbilityInfo.getAiAbilityType(), chilDataName);
+				abilityTypeByChildDataName.put(parentAbilityInfo.getAiAbilityType(), childDataName);
 			}
-			if(StringUtils.isNoneBlank(chilDataName)) {
+			if(StringUtils.isNoneBlank(childDataName)) {
 				return jsonObject;
 			}
 			JSONArray jsonArray = new JSONArray();
 			for (AbilityInfo abilityInfo : abilityInfoList) {
 				jsonArray.add(JSON.parseObject(abilityInfo.getAiData()));
 			}
-			jsonObject.put(chilDataName, jsonArray);
+			jsonObject.put(childDataName, jsonArray);
 		}
 		return jsonObject;
 	}

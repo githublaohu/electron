@@ -24,7 +24,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 			throws Exception {
 		boolean isBoo = false;
 		// 判断url 是否需要认证.不需要认证的可以线缓存
-		if (authenticationAction.isAuthentiction(request)) {
+		if (authenticationAction.isAuthentication(request)) {
 			// 获得token
 			String token = authenticationAction.getToken(request);
 			// 判断用户是否有权限

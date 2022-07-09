@@ -30,7 +30,7 @@ public class EntityJsonDataUtils {
 		OrganizationPower organizationPower = new OrganizationPower();
 		organizationPower.setOrganizationId(1L);
 		organizationPower.setOrganizationName("testtt");
-		organizationPower.setOrganizationEnglistName("dfasdfafaff");
+		organizationPower.setOrganizationEnglishName("dfasdfafaff");
 		organizationPower.setOrganizationTypeEnum(OrganizationTypeEnum.SPACE);
 		organizationPower.setUiId(1L);
 		organizationPower.setUiName("1231111");
@@ -44,7 +44,7 @@ public class EntityJsonDataUtils {
 		abilityRelation.setAiId(1L);
 		abilityRelation.setAiName("hello");
 		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONFIG);
-		abilityRelation.setProtocelConfigEnum(ProtocolConfigEnums.NONE);
+		abilityRelation.setProtocolConfigEnum(ProtocolConfigEnums.NONE);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationName("1号");

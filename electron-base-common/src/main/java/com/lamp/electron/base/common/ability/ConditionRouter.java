@@ -43,6 +43,6 @@ public class ConditionRouter {
 	}
 	
 	public enum Rewrite{
-		UNCHANGED,DETELE_KEY,REWRITE_KEY;
+		UNCHANGED, DELETE_KEY,REWRITE_KEY;
 	}
 }

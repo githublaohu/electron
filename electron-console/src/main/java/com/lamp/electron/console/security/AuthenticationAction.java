@@ -21,7 +21,7 @@ package com.lamp.electron.console.security;
 public interface AuthenticationAction<Q,P> {
 
 	
-	boolean isAuthentiction(Q q);
+	boolean isAuthentication(Q q);
 	
 	String getToken(Q q);
 	

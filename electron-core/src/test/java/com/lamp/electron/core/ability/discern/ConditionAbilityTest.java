@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
@@ -132,7 +131,7 @@ public class ConditionAbilityTest {
 			Assert.assertEquals( invocation.getArgument(0), "/before");
 			return invocation.getArgument(0);
 		}).when(electronRequest).path(Mockito.any());
-		condition.setRewrite(Rewrite.DETELE_KEY);
+		condition.setRewrite(Rewrite.DELETE_KEY);
 		String name = conditionAbility.discern(electronRequest);
 		System.out.println("conditionAbility discern : " + name);
 

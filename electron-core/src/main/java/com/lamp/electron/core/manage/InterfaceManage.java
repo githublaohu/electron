@@ -122,7 +122,7 @@ public class InterfaceManage implements InterfaceRegister {
 	}
 
 	private LongRangeWrapper getLongRangeWrapper(InterfaceInfo interfaceInfo) {
-		Integer servierSign = interfaceInfo.getServierSign();
+		Integer servierSign = interfaceInfo.getServerSign();
 		if (Objects.isNull(servierSign) || servierSign == 0) {
 			return null;
 		}

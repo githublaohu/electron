@@ -47,7 +47,7 @@ public class OrganizationBase extends EnvironmentalBase {
 	/**
 	 * 英文名
 	 */
-	private String organizationEnglistName;
+	private String organizationEnglishName;
 
 	/**
 	 * 组织类型
