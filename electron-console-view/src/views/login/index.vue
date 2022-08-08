@@ -88,8 +88,7 @@ export default {
       this.$refs.loginForm.validate(async valid => {
         if (valid) {
           this.$router.push({ path: this.redirect || '/user' }) // 暂时设置为直接登录
-          // localStorage.setItem('userInfo', JSON.stringify({name: '1111', uiType: 'admin' }))
-          // z
+          localStorage.setItem('userInfo', JSON.stringify({name: '1111', uiType: 'admin' }))
 
           this.loading = true
           try {

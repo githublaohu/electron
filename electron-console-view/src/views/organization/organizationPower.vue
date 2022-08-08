@@ -71,17 +71,17 @@ var vueData = {      dialogTitle: "新增",addVisible: false, updateVisible: fal
 vueData.data = []
 vueData.pagination = {     currentPage: 1 ,pageSize: 10, total: 0 };
 vueData.filter = { oiName : ""};
-vueData.form = { oi.uiId:"",opName : "" , organizationName:"",organizationEnglistName:"",organizationTypeEnum:"",opPower: 0}
-vueData.update =  { opName : "" , organizationName:"",organizationEnglistName:"",organizationTypeEnum:"",opPower: 0}
+vueData.form = { oi.uiId:"",opName : "" , organizationName:"",organizationEnglishName:"",organizationTypeEnum:"",opPower: 0}
+vueData.update =  { opName : "" , organizationName:"",organizationEnglishName:"",organizationTypeEnum:"",opPower: 0}
 vueData.columns = [
   {title:"用户名",key:"opName"},
   {title:"项目名",key:"organizationName"},
-  {title:"项目英文名",key:"organizationEnglistName"},
+  {title:"项目英文名",key:"organizationEnglishName"},
   {title:"项目类型",key:"organizationTypeEnum"},
   {title:"用户权限",key:"opPower"},
   {title:"创建时间",key:"createTime"}
 ]
- 
+
 vueData.rules = {}
 
 vueData.organization = {}

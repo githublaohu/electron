@@ -11,6 +11,7 @@
  */
 package com.lamp.electron.register.nacos;
 
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,11 @@ import com.lamp.electron.register.api.AbstractRegisterModel;
 import com.lamp.electron.register.api.RegisterData;
 import com.lamp.electron.register.api.RegisterServer;
 
+/**
+ * nacos注册模型
+ * TODO
+ * @author jellly
+ */
 public class NacosRegister extends AbstractRegisterModel {
 
 	private static final Logger log = LoggerFactory.getLogger(NacosRegister.class);
@@ -150,7 +156,7 @@ public class NacosRegister extends AbstractRegisterModel {
 					continue;
 				}
 				if (!newHostMap.containsKey(key)) {
-					NacosRegister.this.registerServers.unRegister(this.createExampleInfo(host));
+					NacosRegister.this.registerServers.deregister(this.createExampleInfo(host));
 				}
 			}
 		}
@@ -174,7 +180,7 @@ public class NacosRegister extends AbstractRegisterModel {
 	}
 
 	@Override
-	public int unRegister(Object t) {
+	public int deregister(Object t) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

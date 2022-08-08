@@ -44,7 +44,7 @@ public interface OrganizationInfoMapper {
 		      create_founder bigint unsigned not null default 0 comment '', 
 		      update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
 		      update_founder bigint unsigned not null default 0 comment '', 
-		      is_detele int unsigned not null default 0  comment '数据状态',
+		      is_delete int unsigned not null default 0  comment '数据状态',
 		      primary key (`oi_id`)
 	  	  );
 	 * </code>

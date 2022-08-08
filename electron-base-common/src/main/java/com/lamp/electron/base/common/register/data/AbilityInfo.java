@@ -13,7 +13,7 @@ package com.lamp.electron.base.common.register.data;
 
 import com.lamp.electron.base.common.basedata.BaseEntity;
 import com.lamp.electron.base.common.enums.AbilityPower;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,12 +40,12 @@ public class AbilityInfo extends BaseEntity {
 	/**
 	 * 标签
 	 */
-	private String aiLable;
+	private String aiLabel;
 
 	/**
 	 * 能力类型
 	 */
-	private AbilityType aiAbilityType;
+	private AbilityTypeEnum aiAbilityType;
 
 	/**
 	 * 能力数据

@@ -9,15 +9,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.base.common.perception.ConfigPerceptionFactory;
-import com.lamp.electron.core.ability.discern.ConditionAbility;
+import com.lamp.electron.core.ability.discern.ConditionRouterAbility;
 import com.lamp.electron.core.manage.AbilityManage;
-import com.lamp.electron.core.manage.ExampleManage;
+import com.lamp.electron.core.manage.InstanceManage;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
@@ -30,13 +29,13 @@ public class AbilityInvokerManageTest {
 
 
 	@Mock
-	ConditionAbility conditionAbility;
+	ConditionRouterAbility conditionAbility;
 	
 	ConfigPerceptionFactory perceptionFactory = new ConfigPerceptionFactory();
 
 	InterfaceManage interfaceManage = new InterfaceManage(electronClientFactory);
 
-	ExampleManage exampleManage = new ExampleManage(electronClientFactory);
+	InstanceManage instanceManage = new InstanceManage(electronClientFactory);
 
 	@Mock
 	AbilityManage abilityManage;
@@ -49,7 +48,7 @@ public class AbilityInvokerManageTest {
 		Mockito.when(abilityManage.getOverallSituationAbility(Mockito.any())).thenReturn(conditionAbility);
 		Field conditionAbilityField = FieldUtils.getField(AbilityInvokerManage.class, "conditionAbility",true);
 		
-		abilityInvokerManage = new AbilityInvokerManage(abilityManage, interfaceManage, exampleManage);
+		abilityInvokerManage = new AbilityInvokerManage(abilityManage, interfaceManage, instanceManage);
 
 		Assert.assertEquals(conditionAbility, conditionAbilityField.get(abilityInvokerManage));
 		
@@ -59,9 +58,9 @@ public class AbilityInvokerManageTest {
 	@Test
 	public void getAbilityInvokerTestNull() throws IllegalArgumentException, IllegalAccessException {
 		Invoker invoker = Mockito.mock(Invoker.class);
-		Mockito.when(electronClientFactory.crateRpcClient(Mockito.any(), Mockito.any(), Mockito.any()))
+		Mockito.when(electronClientFactory.createRpcClient(Mockito.any(), Mockito.any(), Mockito.any()))
 				.thenReturn(invoker);
-		Mockito.when(electronClientFactory.crateRpcClient(Mockito.any())).thenReturn(invoker);
+		Mockito.when(electronClientFactory.createRpcClient(Mockito.any())).thenReturn(invoker);
 		
 		ElectronRequest electronRequest = Mockito.mock(ElectronRequest.class);
 		Mockito.when(electronRequest.path()).thenReturn("/electron/before");

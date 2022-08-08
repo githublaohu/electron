@@ -37,8 +37,10 @@ import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.service.asyn.AuthenticationAsynService;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
+import com.lamp.electron.rpc.http.api.HttpResponse;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import lombok.Setter;
 
@@ -245,9 +247,9 @@ public class InsideServiceFactory {
 		}
 
 		@Override
-		public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus, Object headers, Object connet,
+		public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus, Object headers, Object connect,
 				Throwable throwable) {
-			return null;
+			return new HttpResponse(httpResponseStatus, agreementResponse.createConnectByteBuf(connect),(HttpHeaders)headers,throwable);
 		}
 
 	}

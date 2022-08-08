@@ -24,6 +24,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+import com.lamp.electron.register.nacos.NacosRegisterObjectFactory;
 import org.apache.commons.lang3.StringUtils;
 
 import com.lamp.electron.register.consul.ConsulRegisterObjectFactory;
@@ -33,6 +34,9 @@ import com.lamp.electron.register.nacos.NacosRegisterObjectFactory;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 默认注册工厂，支持consul、etcd、eureka
+ */
 @Slf4j
 public class DefaultRegisterFactory implements RegisterFactory{
 
@@ -40,18 +44,20 @@ public class DefaultRegisterFactory implements RegisterFactory{
 
 	static {
 		ConsulRegisterObjectFactory consulRegisterObjectFactory = new ConsulRegisterObjectFactory();
-		registerObjectFactoryMap.put(consulRegisterObjectFactory.registerCentreName(), consulRegisterObjectFactory);
+		registerObjectFactoryMap.put(consulRegisterObjectFactory.registerCenterName(), consulRegisterObjectFactory);
 
 		EtcdRegisterObjectFactory etcdRegisterObjectFactory = new EtcdRegisterObjectFactory();
-		registerObjectFactoryMap.put(etcdRegisterObjectFactory.registerCentreName(), etcdRegisterObjectFactory);
-		registerObjectFactoryMap.put("", etcdRegisterObjectFactory);
-		
+		registerObjectFactoryMap.put(etcdRegisterObjectFactory.registerCenterName(), etcdRegisterObjectFactory);
+
+		registerObjectFactoryMap.put(etcdRegisterObjectFactory.registerCenterName(), etcdRegisterObjectFactory);
+//		registerObjectFactoryMap.put("", etcdRegisterObjectFactory);
+
 		NacosRegisterObjectFactory nacosRegisterObjectFactory = new NacosRegisterObjectFactory();
-		registerObjectFactoryMap.put(nacosRegisterObjectFactory.registerCentreName(), nacosRegisterObjectFactory);
-		
+		registerObjectFactoryMap.put(nacosRegisterObjectFactory.registerCenterName(), nacosRegisterObjectFactory);
+
 		EurekaRegisterObjectFactory eurekaRegisterObjectFactory = new EurekaRegisterObjectFactory();
-		registerObjectFactoryMap.put(eurekaRegisterObjectFactory.registerCentreName(), eurekaRegisterObjectFactory);
-	}
+		registerObjectFactoryMap.put(eurekaRegisterObjectFactory.registerCenterName(), eurekaRegisterObjectFactory);
+}
 
 	/**
 	 * 扩展类
@@ -71,9 +77,10 @@ public class DefaultRegisterFactory implements RegisterFactory{
 	public DefaultRegisterFactory(String register, PrefixFactory prefixFactory, String prefix) {
 		this.register = register;
 		this.prefix = prefixFactory.createPrefix(prefix);
-		log.info("register start , root path is {}" , this.prefix);
+		log.info("register {} start , root path is {}" , this.register, this.prefix);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T createRegisterObject(Class<?> clazz) {
 		try {
@@ -98,6 +105,7 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		}
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public void createMonitorObjectTo(List<RegisterServer<?>> registerServerList) throws Exception {
 		List<RegisterServer<Object>> list = new ArrayList<>();
@@ -105,6 +113,7 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		createMonitorObject(list, this.register, this.prefix);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public void createMonitorObject(RegisterServer<?> registerServerList) throws Exception {
 		List<RegisterServer<Object>> list = new ArrayList<>();
@@ -112,6 +121,7 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		createMonitorObject(list, this.register, this.prefix);
 	}
 
+	@Override
 	public void createMonitorObject(List<RegisterServer<Object>> registerServerList, String url, String prefix)
 			throws Exception {
 		ConcurrentHashMap<Class<?>, CurrencyRegisterServer> clazzMap = new ConcurrentHashMap<>();
@@ -228,8 +238,8 @@ public class DefaultRegisterFactory implements RegisterFactory{
 							registerModel.register(o);
 						}
 					}
-					if ("unRegister".equals(name)) {
-						registerModel.unRegister(object);
+					if ("deregister".equals(name)) {
+						registerModel.deregister(object);
 					}
 				}
 			} catch (Exception e) {
@@ -247,9 +257,9 @@ public class DefaultRegisterFactory implements RegisterFactory{
 		}
 
 		@Override
-		public int unRegister(Object t) {
+		public int deregister(Object t) {
 			for (RegisterServer<Object> registerModel : registerModelList) {
-				registerModel.unRegister(t);
+				registerModel.deregister(t);
 			}
 			return 0;
 		}

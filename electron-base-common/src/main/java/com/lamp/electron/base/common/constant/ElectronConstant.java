@@ -19,9 +19,9 @@ public class ElectronConstant {
 	
 	public static final String USER_KEY = "";
 	
-	public static final String MEESGAE_TOPIC_TRAFFIC_DETAILS_TOPIC = "tpaffic_details";
+	public static final String MEESGAE_TOPIC_TRAFFIC_DETAILS_TOPIC = "traffic_details";
 	
-	public static final String MEESGAE_TOPIC_TRAFFIC_DETAILS_BATCH_TOPIC = "tpaffic_details_batch";
+	public static final String MEESGAE_TOPIC_TRAFFIC_DETAILS_BATCH_TOPIC = "traffic_details_batch";
 	
 	public static final String MESSAGE_TOPIC_STATISTIC = "statistic_dto";
 }

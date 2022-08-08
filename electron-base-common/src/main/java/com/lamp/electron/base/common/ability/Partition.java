@@ -13,15 +13,15 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.DataSpot;
-import com.lamp.electron.base.common.register.data.ExampleInfo;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "隔离",abiltiyScope=AbiltiyScope.CHOICE)
+@AbilityData(chinaName = "隔离", abilityScope = AbilityScope.CHOICE, manyBind = true)
 public class Partition {
 	
 	private DataSpot dataSpot;
@@ -36,5 +36,5 @@ public class Partition {
 	
 	private Boolean isResources;
 	
-	private List<ExampleInfo> exampleInfoList;
+	private List<InstanceInfo> instanceInfoList;
 }

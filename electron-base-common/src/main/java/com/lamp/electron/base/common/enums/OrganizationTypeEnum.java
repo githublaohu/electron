@@ -18,7 +18,7 @@ package com.lamp.electron.base.common.enums;
  */
 public enum OrganizationTypeEnum {
 
-	CODE_EXAMPLE,
+	CODE_INSTANCE,
 	// 系统默认
 	SYSTEM_DEFAULT,
 	// 默认
@@ -32,10 +32,10 @@ public enum OrganizationTypeEnum {
 	// 应用
 	APPLICATION,
 	// 实例
-	EXAMPLE,
+	INSTANCE,
 	// 接口
 	INTERFACE,
 	// 实例接口
-	INTERFACE_EXAMPLE
+	INTERFACE_INSTANCE
 	;
 }

@@ -11,13 +11,13 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "热备",abiltiyScope=AbiltiyScope.CHOICE)
+@AbilityData(chinaName = "热备", abilityScope = AbilityScope.CHOICE)
 public class HotStandby {
 	
 

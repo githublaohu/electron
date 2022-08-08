@@ -20,8 +20,8 @@
 	</properties>
 	<dependencies>
 		<!--eureka server 依赖坐标 -->
-		<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId> 
-			<version>2.1.6.RELEASE</version> <exclusions> <exclusion> <groupId>javax.servlet</groupId> 
+		<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<version>2.1.6.RELEASE</version> <exclusions> <exclusion> <groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId> </exclusion> </exclusions> </dependency> -->
 		<dependency>
 			<groupId>cn.lampup</groupId>
@@ -32,14 +32,14 @@
 			<groupId>electron</groupId>
 			<artifactId>electron-client</artifactId>
 			<version>${revision}</version>
-			<!-- <exclusions> <exclusion> <groupId>com.google.guava</groupId> <artifactId>guava</artifactId> 
+			<!-- <exclusions> <exclusion> <groupId>com.google.guava</groupId> <artifactId>guava</artifactId>
 				</exclusion> </exclusions> -->
 		</dependency>
 
 		<dependency>
 			<groupId>io.github.githublaohu</groupId>
 			<artifactId>dubbo-springmvc</artifactId>
-			<version>0.0.6</version>
+			<version>0.1.4</version>
 			<type>pom</type>
 			<exclusions>
 				<exclusion>
@@ -58,6 +58,17 @@
 			<groupId>com.alibaba.nacos</groupId>
 			<artifactId>nacos-client</artifactId>
 			<version>2.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring-boot-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot-version}</version>
 		</dependency>
 	</dependencies>
 	<build>

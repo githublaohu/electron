@@ -12,15 +12,15 @@
 package com.lamp.electron.core.ability.rpc;
 
 import com.lamp.electron.base.common.ability.SetupResult;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.core.ability.AbstractAbility;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 
 
-@AbiltiyAction(abilityType = AbilityType.SETUPRESULT)
+@AbilityAction(abilityType = AbilityTypeEnum.SETUP_RESULT)
 public class SetupResultAbility extends AbstractAbility<SetupResult> implements InterfaceAware {
 
 	@Override

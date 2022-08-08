@@ -13,8 +13,8 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
@@ -26,8 +26,8 @@ import lombok.Data;
  *
  */
 @Data
-@AbiltiyData(chinaName = "请求记录", abiltityBindRelation = { OrganizationTypeEnum.INTERFACE,
-		OrganizationTypeEnum.APPLICATION }, abiltiyScope = AbiltiyScope.COLLECT)
+@AbilityData(chinaName = "请求记录", abilityBindRelation = { OrganizationTypeEnum.INTERFACE,
+		OrganizationTypeEnum.APPLICATION }, abilityScope = AbilityScope.COLLECT)
 public class RequestRecord {
 
 	private List<String> recordServer;

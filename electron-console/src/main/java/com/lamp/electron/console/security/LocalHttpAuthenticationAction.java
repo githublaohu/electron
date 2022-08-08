@@ -19,7 +19,7 @@ public class LocalHttpAuthenticationAction implements AuthenticationAction<HttpS
 	
 	
 	@Override
-	public boolean isAuthentiction(HttpServletRequest q) {
+	public boolean isAuthentication(HttpServletRequest q) {
 		return false;
 	}
 

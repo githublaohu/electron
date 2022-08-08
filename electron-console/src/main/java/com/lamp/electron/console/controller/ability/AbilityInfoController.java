@@ -31,7 +31,7 @@ import com.lamp.electron.console.service.ability.AbilityInfoService;
 import com.lamp.electron.console.utils.EntityUtils;
 
 @RestController
-@RequestMapping("/abilityInfo")
+	@RequestMapping("/abilityInfo")
 public class AbilityInfoController {
 
 	@Autowired

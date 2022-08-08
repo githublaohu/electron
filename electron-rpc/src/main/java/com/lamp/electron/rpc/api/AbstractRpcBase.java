@@ -81,6 +81,11 @@ public abstract class AbstractRpcBase {
 		rpcHandle.callback(electronRequest, electronResponse, invoker);
 	}
 
+	/**
+	 * 	If you are running on linux you can use EpollEventLoopGroup and so get better performance,
+	 * 	less GC and have more advanced features that are only available on linux.
+	 * @return
+	 */
 	protected boolean useEpoll() {
 		return RemotingUtil.isLinuxPlatform() && Epoll.isAvailable();
 	}

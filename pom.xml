@@ -124,7 +124,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>${maven_source_version}</version>
+						<!--<version>${maven_source_version}</version>-->
 						<executions>
 							<execution>
 								<id>attach-sources</id>

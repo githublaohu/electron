@@ -11,7 +11,7 @@
  */
 package com.lamp.electron.core.ability.extend;
 
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 
@@ -24,14 +24,17 @@ public abstract class AbstractChainAbilityWrapper extends AbstractChainAbility<O
 		this.abstractChainAbility = (AbstractChainAbility<Object>) object;
 	}
 	
+	@Override
 	public boolean isNotAbilityObject() {
 		return abstractChainAbility.isNotAbilityObject();
 	}
 
-	public AbilityType getAbilityTypeEnum() {
+	@Override
+	public AbilityTypeEnum getAbilityTypeEnum() {
 		return abstractChainAbility.getAbilityTypeEnum();
 	}
 
+	@Override
 	public OrganizationTypeEnum getOrganizationTypeEnum() {
 		return abstractChainAbility.getOrganizationTypeEnum();
 	}

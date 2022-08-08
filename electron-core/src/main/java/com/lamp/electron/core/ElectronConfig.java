@@ -17,6 +17,10 @@ import com.lamp.electron.core.container.ContainerConfig;
 
 import lombok.Data;
 
+/**
+ * 配置文件映射实体
+ * @author jellly
+ */
 @Data
 public class ElectronConfig {
 	
@@ -25,12 +29,5 @@ public class ElectronConfig {
 	private ContainerConfig defaults = new ContainerConfig();
 	
 	private List<ContainerConfig> containerConfigs;
-
-
-	
-	
-
-	
-    
     
 }

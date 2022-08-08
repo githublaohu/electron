@@ -11,16 +11,16 @@ import request from '@/common/utils/request'
 
 export function psswordLogin(data) {
   return request({
-    url: '/lamp/electron/userOperation/psswordLogin',
+    url: '/userOperation/psswordLogin',
     method: 'post',
     data:data
   })
 }
 
 export function getInfo(token) {
-  return request({url: '/lamp/electron/user/info',method: 'get', params: { token }})
+  return request({url: '/user/info',method: 'get', params: { token }})
 }
 
 export function signOut() {
-  return request({url: '/lamp/electron/userOperation/signOut', method: 'post'})
+  return request({url: '/userOperation/signOut', method: 'post'})
 }

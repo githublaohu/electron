@@ -11,10 +11,10 @@
  */
 package com.lamp.electron.base.common.ability.config;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 
-@AbiltiyData(abiltiyScope = AbiltiyScope.CONFIG, chinaName = "配置根类")
+@AbilityData(abilityScope = AbilityScope.CONFIG, chinaName = "配置根类")
 public interface Config {
 
 }

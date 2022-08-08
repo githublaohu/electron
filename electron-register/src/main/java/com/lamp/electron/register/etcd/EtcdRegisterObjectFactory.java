@@ -16,12 +16,16 @@ import com.lamp.electron.register.api.RegisterModel;
 import com.lamp.electron.register.api.RegisterObjectFactory;
 import com.lamp.electron.register.api.RegisterServer;
 
+/**
+ * Etcd注册工厂
+ * @author jellly
+ */
 public class EtcdRegisterObjectFactory implements RegisterObjectFactory {
 
 	private EtcdClientFactory etcdClientFactory = new EtcdClientFactory();
 	
 	@Override
-	public String registerCentreName() {
+	public String registerCenterName() {
 		return "etcd";
 	}
 	

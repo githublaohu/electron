@@ -22,6 +22,10 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 
 import com.alibaba.fastjson.JSON;
 
+/**
+ * 注册模型抽象类
+ * @author jellly
+ */
 public abstract class AbstractRegisterModel implements RegisterModel<Object> {
 
 	public static char URL_DIVISION = '/';
@@ -46,15 +50,25 @@ public abstract class AbstractRegisterModel implements RegisterModel<Object> {
 		}
 	}
 
+	/**
+	 * 监控检查
+	 */
 	protected void monitor() {
 
 	}
 
+	/**
+	 * 注册服务
+	 */
 	protected void register() {
 
 	}
 
-	public void reRegister() throws Exception {
+	/**
+	 * 注销、下线服务
+	 * @throws Exception
+	 */
+	public void deregister() throws Exception {
 		
 	}
 	

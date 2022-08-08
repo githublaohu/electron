@@ -12,8 +12,8 @@
 package com.lamp.electron.core.ability.rpc;
 
 import com.lamp.electron.base.common.ability.Interfaces;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -22,7 +22,7 @@ import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 
 
-@AbiltiyAction(abilityType = AbilityType.INTERFACES)
+@AbilityAction(abilityType = AbilityTypeEnum.INTERFACES)
 public class InterfacesAbillity extends AbstractChainAbility<Interfaces> implements InterfaceAware {
 
 	@Override

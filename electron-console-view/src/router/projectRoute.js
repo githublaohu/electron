@@ -115,7 +115,7 @@ projectRoute.routeInfo(authorityRoute);
 
 var resourcesRoute = manage.routeInfo().path("/ability/choice/loadBalancing").names("loadBalancing").viewImport(resourcesRegisterView)
                                                                                 .title("负载功能").icon('el-icon-school')
-                                                                                .meta("type","LOADBALANCING").build();
+                                                                                .meta("type","LOAD_BALANCING").build();
 projectRoute.routeInfo(resourcesRoute);
 
 var partitionRoute = manage.routeInfo().path("/ability/choice/partition").names("partition").viewImport(resourcesRegisterView)
@@ -126,18 +126,18 @@ projectRoute.routeInfo(partitionRoute);
 
 var conditionRoute = manage.routeInfo().path("/ability/discern/condition").names("conditionRouter").viewImport(resourcesRegisterView)
                                                                                 .title("条件路由").icon('el-icon-school')
-                                                                                .meta("type","CONDITIONROUTE").build();
+                                                                                .meta("type","CONDITION_ROUTER").build();
 projectRoute.routeInfo(conditionRoute);
 
 
 var errorRoute = manage.routeInfo().path("/ability/errer/errerResult").names("errerResult").viewImport(resourcesRegisterView)
                                                                                 .title("异常返回").icon('el-icon-school')
-                                                                                .meta("type","ERRERRESULT").build();
+                                                                                .meta("type","ERROR_RESULT").build();
 projectRoute.routeInfo(errorRoute);
 
 var dataInjectionRoute = manage.routeInfo().path("/ability/register/exampleRegister").names("exampleRegister").viewImport(resourcesRegisterView)
                                                                                 .title("实例注入").icon('el-icon-school')
-                                                                                .meta("type","EXAMPLEINFOREGISTER").build();
+                                                                                .meta("type","INSTANCE_INFO_REGISTER").build();
 projectRoute.routeInfo(dataInjectionRoute);
 
 var dataInjectionRoute = manage.routeInfo().path("/ability/result/dataInjection").names("dataInjection").viewImport(resourcesRegisterView)

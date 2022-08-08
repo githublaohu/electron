@@ -53,7 +53,7 @@ public class DubboClient extends AbstractRpcBase implements Invoker {
 			}
 		}
 		CompletableFuture<Object> future = genericService.$invokeAsync(interfaceInfo.getMethodName(),
-				interfaceInfo.getPrameterNameArray(), parameters);
+				interfaceInfo.getParameterNameArray(), parameters);
 		future.whenComplete((retValue, exception) -> {
 			// TODO electronResponse 没有创建 需要创建
 			this.callback(electronRequest, electronRequest.electronResponse(Objects.isNull(exception)?HttpResponseStatus.OK:HttpResponseStatus.INTERNAL_SERVER_ERROR, null, retValue, exception), invoker);

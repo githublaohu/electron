@@ -15,7 +15,10 @@ import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 
-public class PostAbilityWrapper extends  AbstractChainAbilityWrapper	{
+/**
+ * @author jellly
+ */
+public class PostAbilityWrapper extends AbstractChainAbilityWrapper {
 
 	private PostAbility postAbility;
 
