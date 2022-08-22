@@ -13,11 +13,7 @@ package com.lamp.electron.console.mapper.ablility;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 
@@ -47,11 +43,11 @@ public interface AbilityRelationMapper {
 		"</script>" })
 	public List<AbilityRelation> queryAbilityRelationListByOrganizationId(AbilityRelation abilityRelation);
 
-	@Update({ UPDATE_SQL, "ar_relation_status = 2 where ar_id = #{arId}" })
-	public Integer updateAbilityInfoStatus(AbilityRelation abilityRelation);
+	@Update({ UPDATE_SQL, "ar_relation_status = #{arRelationStatus} where ar_id = #{abilityRelation.arId}" })
+	public Integer updateAbilityInfoStatus(@Param("abilityRelation")AbilityRelation abilityRelation, @Param("arRelationStatus") Integer arRelationStatus);
 
 	@Insert({ INSERT_SQL,
-			"(ai_id,ai_name,ability_type_enum,protocel_config_enum,organization_id,organization_name,organization_type,ar_explain,ar_relation_status)",
+			"(ai_id,ai_name,ability_type_enum,protocel_config_enum,organization_id,organization_name,organization_type_enum,ar_explain,ar_relation_status)",
 			"select ai_id,ai_name,ability_type_enum,protocel_config_enum,organization_id,organization_name,organization_type_enum,ar_explain,3",
 			"from ability_relation where ar_id =#{arId}" })
 	public Integer copyAbilityRelation(AbilityRelation abilityRelation);

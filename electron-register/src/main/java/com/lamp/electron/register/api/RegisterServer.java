@@ -25,6 +25,6 @@ public interface RegisterServer<T> {
     
     int register(T t);
 
-    int unRegister(T t);
+    int deregister(T t);
 
 }

@@ -44,6 +44,7 @@ public abstract class AbstractChainAbility<T> extends AbstractAbility<T> impleme
 		}
 	}
 
+	@Override
 	protected void doRemoteAbilityObject(AbilityRelation abilityRelation) {
 		if (abilityRelation.getAbilityTypeEnum().isManyBind()) {
 			if (Objects.nonNull(abilityObjectMap)) {

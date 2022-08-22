@@ -11,7 +11,26 @@
  */
 package com.lamp.electron.base.common.invoker;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+
+import java.nio.charset.Charset;
+import java.util.Objects;
+
 public interface AgreementResponse {
 
 	public void reply(ElectronResponse electronResponse, ElectronRequest electronRequest);
+
+    default ByteBuf createConnectByteBuf(Object connect) {
+        if(Objects.isNull(connect)) {
+            return Unpooled.EMPTY_BUFFER;
+        }
+        if(connect instanceof String) {
+            ByteBuf buf = Unpooled.buffer();
+            buf.writeCharSequence((String)connect, Charset.defaultCharset());
+            return buf;
+        }
+        return (ByteBuf)connect;
+
+    }
 }

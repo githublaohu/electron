@@ -11,6 +11,11 @@
  */
 package com.lamp.electron.base.common.enums;
 
+/**
+ * 影响范围枚举
+ * @author jellly
+ */
+
 public enum EffectPoint {
 
 	DATA,

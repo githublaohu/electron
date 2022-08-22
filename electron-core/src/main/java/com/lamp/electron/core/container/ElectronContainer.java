@@ -27,10 +27,10 @@ import com.lamp.electron.base.common.register.ElectronPrefixFactory;
 import com.lamp.electron.core.ability.AbilityInvokerManage;
 import com.lamp.electron.core.ability.collect.RequestRecordAbility;
 import com.lamp.electron.core.ability.collect.StatisticsAbility;
-import com.lamp.electron.core.ability.function.statistics.StatisticsCentre;
+import com.lamp.electron.core.ability.function.statistics.StatisticsCenter;
 import com.lamp.electron.core.container.bean.TrafficDetailsBean;
 import com.lamp.electron.core.manage.AbilityManage;
-import com.lamp.electron.core.manage.ExampleManage;
+import com.lamp.electron.core.manage.InstanceManage;
 import com.lamp.electron.core.manage.InterfaceManage;
 import com.lamp.electron.core.service.InsideServiceFactory;
 import com.lamp.electron.register.api.DefaultRegisterFactory;
@@ -59,7 +59,7 @@ public class ElectronContainer {
 
 	private AbilityManage abilityManage;
 
-	private ExampleManage exampleManage;
+	private InstanceManage instanceManage;
 
 	private InterfaceManage interfaceManage;
 	
@@ -67,7 +67,10 @@ public class ElectronContainer {
 	
 	private ContainerBeanFactory containerBeanFactory;
 
-	// 提供etcd集群，子节点。基本配置
+	/**
+	 * 提供etcd集群，子节点。基本配置
+	 * @param containerConfig
+	 */
 	public ElectronContainer(ContainerConfig containerConfig) throws Exception {
 		// 初始化对象工厂
 		this.containerConfig = containerConfig;
@@ -76,7 +79,7 @@ public class ElectronContainer {
 		this.perceptionFactory = new ConfigPerceptionFactory();
 		this.crateBeanFactory();
 		this.function();
-		this.crateRpcServerAndClient();
+		this.createRpcServerAndClient();
 		this.monitorAndRegister();
 		serviceFactory.setElectronRpcHandle(electronRpcHandle);
 		serviceFactory.setInterfaceManage(interfaceManage);
@@ -88,13 +91,13 @@ public class ElectronContainer {
 		containerBeanFactory.setBean(containerBeanFactory);
 		containerBeanFactory.setBean(this.perceptionFactory);
 		NodeBase nodeBase = new NodeBase();
-		nodeBase.setNetworkAddress(containerConfig.getRocketMQNameServcie());
+		nodeBase.setNetworkAddress(containerConfig.getRocketMQNameService());
 		nodeBase.setName("core");
 		DefaultMQProducerFactory defaultMQProducerFactory = new DefaultMQProducerFactory(nodeBase,null);
 		containerBeanFactory.setBean(defaultMQProducerFactory);
-		StatisticsCentre statisticsCentre = new StatisticsCentre();
-		containerBeanFactory.setBean(statisticsCentre);
-		containerBeanFactory.rely(statisticsCentre);
+		StatisticsCenter statisticsCenter = new StatisticsCenter();
+		containerBeanFactory.setBean(statisticsCenter);
+		containerBeanFactory.rely(statisticsCenter);
 		TrafficDetailsBean trafficDetailsBean = new TrafficDetailsBean();
 		containerBeanFactory.setBean(trafficDetailsBean);
 		containerBeanFactory.rely(trafficDetailsBean);
@@ -109,9 +112,9 @@ public class ElectronContainer {
 		
 		registerFactory = new DefaultRegisterFactory(containerConfig.getRegister(), ElectronPrefixFactory.PREIFX_FACTORY,
 				containerConfig.getContainerName());
-		exampleManage = new ExampleManage(electronClientFactory);
+		instanceManage = new InstanceManage(electronClientFactory);
 		interfaceManage = new InterfaceManage(electronClientFactory);
-		abilityManage = new AbilityManage(exampleManage, interfaceManage,null);
+		abilityManage = new AbilityManage(instanceManage, interfaceManage,null);
 		containerBeanFactory.rely(abilityManage);
 		abilityManage.init();
 		abilityManage.setServiceFactory(serviceFactory);
@@ -120,7 +123,7 @@ public class ElectronContainer {
 
 	private void monitorAndRegister() throws Exception {
 		List<RegisterServer<?>> registerServerList = new ArrayList<>();
-		registerServerList.add(exampleManage);
+		registerServerList.add(instanceManage);
 		registerServerList.add(interfaceManage);
 		registerServerList.add(abilityManage);
 		registerFactory.createMonitorObjectTo(registerServerList);
@@ -130,12 +133,12 @@ public class ElectronContainer {
 
 	private void function() {
 		AbilityInvokerManage abilityInvokerManage = new AbilityInvokerManage(abilityManage, interfaceManage,
-				exampleManage);
+				instanceManage);
 		electronRpcHandle = new ElectronRpcHandle(threadPoolExecutor, abilityInvokerManage);
 
 	}
 
-	private void crateRpcServerAndClient() {
+	private void createRpcServerAndClient() {
 		if (Objects.nonNull(containerConfig.getHttpRpcServerConfig())) {
 			HttpServer httpServer = new HttpServer(electronRpcHandle, containerConfig.getHttpRpcServerConfig());
 			rpcServerMap.put(httpServer.rpcType(), httpServer);

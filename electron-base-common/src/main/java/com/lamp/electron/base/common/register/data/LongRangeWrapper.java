@@ -75,11 +75,11 @@ public class LongRangeWrapper {
 		}
 	}
 	
-	public boolean isExistenceExample() {
+	public boolean isExistInstance() {
 		if(!networkAddressList.isEmpty()) {
 			return true;
 		}
-		if(Objects.nonNull(agent) && agent.isExistenceExample()) {
+		if(Objects.nonNull(agent) && agent.isExistInstance()) {
 			return true;
 		}
 		return false;

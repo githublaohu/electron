@@ -37,6 +37,10 @@ import io.etcd.jetcd.watch.WatchEvent;
 import io.etcd.jetcd.watch.WatchEvent.EventType;
 import io.etcd.jetcd.watch.WatchResponse;
 
+/**
+ * Etcd注册模型
+ * @author jellly
+ */
 public class EtcdRegister extends AbstractRegisterModel {
 
 	private static final Logger log = LoggerFactory.getLogger(EtcdRegister.class);
@@ -72,7 +76,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 			@Override
 			public void run() {
 				try {
-					log.info("拉取path所有数据");
+					log.info("拉取path[{}]所有数据",registerData.getPath());
 					GetOption getOption = GetOption.newBuilder()
 							.withPrefix(ByteSequence.from(registerData.getPath().getBytes())).build();
 					List<KeyValue> keyValues = client.getKVClient()
@@ -91,8 +95,9 @@ public class EtcdRegister extends AbstractRegisterModel {
 		}).start();
 	}
 
-	public void reRegister() throws Exception {
-		log.warn("reRegister, registerData is {}", registerData);
+	@Override
+	public void deregister() throws Exception {
+		log.warn("deregister, registerData is {}", registerData);
 		this.leaseId = etcdClientFactory.getLeaseId(registerData.getServerUrl());
 		if (Objects.nonNull(registerServers)) {
 			getData();
@@ -123,7 +128,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 	}
 
 	@Override
-	public int unRegister(Object data) {
+	public int deregister(Object data) {
 
 		try {
 			ByteSequence key = ByteSequence.from(getKey(data).getBytes());
@@ -159,7 +164,7 @@ public class EtcdRegister extends AbstractRegisterModel {
 				if (Objects.equals(watchEvent.getEventType(), EventType.PUT)) {
 					registerServers.register(watchEvent.getKeyValue().getValue());
 				} else if (Objects.equals(watchEvent.getEventType(), EventType.DELETE)) {
-					registerServers.unRegister(watchEvent.getPrevKV().getValue());
+					registerServers.deregister(watchEvent.getPrevKV().getValue());
 				}
 			}
 			try {

@@ -13,15 +13,15 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(abiltiyScope = AbiltiyScope.RESULT, chinaName = "数据注入", abiltityBindRelation = {
+@AbilityData(abilityScope = AbilityScope.RESULT, chinaName = "数据注入", abilityBindRelation = {
 		OrganizationTypeEnum.INTERFACE, OrganizationTypeEnum.APPLICATION })
 public class DataInjection {
 

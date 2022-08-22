@@ -15,11 +15,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import com.lamp.electron.base.common.ability.MessageMiddlewareRPC;
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.perception.Perception;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
-import com.lamp.electron.base.common.register.data.ExampleInfo;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.core.ability.Ability;
 import com.lamp.electron.core.manage.InterfaceManage;
@@ -27,7 +27,7 @@ import com.lamp.electron.core.manage.aware.ElectronClientAware;
 import com.lamp.electron.core.manage.aware.InterfaceAware;
 import com.lamp.electron.rpc.ElectronClientFactory;
 
-@AbiltiyAction(abilityType = AbilityType.MESSAGE_MIDDLEWARE_RPC)
+@AbilityAction(abilityType = AbilityTypeEnum.MESSAGE_MIDDLEWARE_RPC)
 public class MessageMiddlewareRPCAbility implements Ability, InterfaceAware, ElectronClientAware {
 
 	private InterfaceManage interfaceManage;
@@ -54,12 +54,12 @@ public class MessageMiddlewareRPCAbility implements Ability, InterfaceAware, Ele
 		LongRangeWrapper longRangeWrapper = new LongRangeWrapper(abilityRelation.getOrganizationName(),
 				abilityRelation.getApplicationName(), new AtomicLong());
 		for (String networkAddressName : messageMiddlewareRPC.getNetworkAddressName()) {
-			ExampleInfo exampleInfo = new ExampleInfo();
-			exampleInfo.setName(networkAddressName);
-			exampleInfo.setNetworkAddress(networkAddressName);
-			electronClientFactory.createFactory(exampleInfo, null);
-			exampleInfo.setInvoker(electronClientFactory.crateRpcClient(exampleInfo, null, perception));
-			longRangeWrapper.addNetworkAddress(exampleInfo);
+			InstanceInfo instanceInfo = new InstanceInfo();
+			instanceInfo.setName(networkAddressName);
+			instanceInfo.setNetworkAddress(networkAddressName);
+			electronClientFactory.createFactory(instanceInfo, null);
+			instanceInfo.setInvoker(electronClientFactory.createRpcClient(instanceInfo, null, perception));
+			longRangeWrapper.addNetworkAddress(instanceInfo);
 		}
 		interfaceManage.register(longRangeWrapper);
 

@@ -11,14 +11,14 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "链路跟踪", abiltityBindRelation = {OrganizationTypeEnum.APPLICATION }, abiltiyScope = AbiltiyScope.COLLECT)
+@AbilityData(chinaName = "链路跟踪", abilityBindRelation = {OrganizationTypeEnum.APPLICATION }, abilityScope = AbilityScope.COLLECT)
 public class LinkTrack {
 
 	private String trackName;

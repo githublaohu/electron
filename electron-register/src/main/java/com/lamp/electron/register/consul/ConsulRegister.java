@@ -43,20 +43,31 @@ public class ConsulRegister extends AbstractRegisterModel {
 		super(registerServers, registerData);
 	}
 	
+	@Override
 	protected void monitor() {
 		ConsulRawClient consulRawClient = new ConsulRawClient(); 
 		healthConsulClient = new HealthConsulClient(consulRawClient);
 		catalogClient = new CatalogConsulClient(consulRawClient);
 		new Thread(new ConsulNotifier()).start();
 	}
-	
+
+	/**
+	 * todo
+	 * @param t
+	 * @return
+	 */
 	@Override
 	public int register(Object t) {
 		return 0;
 	}
 
+	/**
+	 * todo
+	 * @param t
+	 * @return
+	 */
 	@Override
-	public int unRegister(Object t) {
+	public int deregister(Object t) {
 		return 0;
 	}
 	

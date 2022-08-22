@@ -29,7 +29,7 @@ public class EntityJsonDataUtils {
 		OrganizationPower organizationPower = new OrganizationPower();
 		organizationPower.setOrganizationId(1L);
 		organizationPower.setOrganizationName("testtt");
-		organizationPower.setOrganizationEnglistName("dfasdfafaff");
+		organizationPower.setOrganizationEnglishName("dfasdfafaff");
 		organizationPower.setOrganizationTypeEnum(OrganizationTypeEnum.SPACE);
 		organizationPower.setUiId(1L);
 		organizationPower.setUiName("1231111");

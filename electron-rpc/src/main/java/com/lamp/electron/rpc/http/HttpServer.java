@@ -75,9 +75,9 @@ public class HttpServer extends AbstractRpcBase implements RpcServer {
 
 	@Override
 	protected void init() {
-		 HttpRpcServerConfig httpConfig = getRpcConfig();
+		HttpRpcServerConfig httpConfig = getRpcConfig();
 		this.serverBootstrap = new ServerBootstrap();
-		if (!useEpoll()) {
+		if (useEpoll()) {
 			this.eventLoopGroupBoss = new EpollEventLoopGroup(httpConfig.getBossThreadNum(),
 					new IncrementThreadFactory("netty-http-server-eboss-"));
 			this.eventLoopGroupSelector = new EpollEventLoopGroup(httpConfig.getIoThreadNum(),
@@ -93,7 +93,7 @@ public class HttpServer extends AbstractRpcBase implements RpcServer {
 				new IncrementThreadFactory("netty-http-server-handler-"));
 
 		this.serverBootstrap.group(this.eventLoopGroupBoss, this.eventLoopGroupSelector)
-				.channel(!useEpoll() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
+				.channel(useEpoll() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
 				.option(ChannelOption.SO_BACKLOG, 1024).option(ChannelOption.SO_REUSEADDR, true)
 				.option(ChannelOption.SO_KEEPALIVE, false).childOption(ChannelOption.TCP_NODELAY, true)
 				.localAddress(new InetSocketAddress(httpConfig.getPort()))
@@ -110,13 +110,14 @@ public class HttpServer extends AbstractRpcBase implements RpcServer {
 		try {
 			ChannelFuture sync = this.serverBootstrap.bind().sync();
 			InetSocketAddress addr = (InetSocketAddress) sync.channel().localAddress();
-			log.info("http 服务启动成功，本地地址是 ", addr);
+			log.info("http 服务启动成功，本地地址是 {}:{}", addr.getAddress(), addr.getPort());
 		} catch (InterruptedException e1) {
 			throw new RuntimeException("HTTP 服务启动失败 ", e1);
 		}
 
 	}
 
+	@Override
 	public void shutdown() {
 		try {
 			this.serverBootstrap.register();
@@ -142,13 +143,13 @@ public class HttpServer extends AbstractRpcBase implements RpcServer {
 				} else {
 					boolean release = ReferenceCountUtil.release(message);
 					if (!release) {
-						log.error("资源释放失败，资源是 ", message);
+						log.error("资源释放失败，资源是 {}", message);
 					}
 				}
 			} catch (Exception e) {
 				boolean release = ReferenceCountUtil.release(message);
 				if (!release) {
-					log.error("资源释放失败，资源是 ", message);
+					log.error("资源释放失败，资源是 {}", message);
 				}
 				log.error(e.getMessage() ,e);
 			}

@@ -32,5 +32,5 @@ public interface ElectronRequest extends ElectronBehavior{
 	 * @param httpResponseStatus 不重复造轮子
 	 * @return
 	 */
-	public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus ,Object headers, Object connet,Throwable throwable);
+	public ElectronResponse electronResponse(HttpResponseStatus httpResponseStatus ,Object headers, Object connect,Throwable throwable);
 }

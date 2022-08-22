@@ -40,7 +40,7 @@ public class NodeBase extends RegisterBase implements NetworkAddress {
 	
 	private OrganizationTypeEnum nodeTypeEnum;
 
-	private String exampleType;
+	private String instanceType;
 
 	private String RPCType;
 
@@ -48,7 +48,7 @@ public class NodeBase extends RegisterBase implements NetworkAddress {
 
 	private ElectronVersion clientVersion = ElectronVersion.CURRENT;
 	
-	private String registryCentre;
+	private String registryCenter;
 	
 	private String realize;
 	
@@ -77,18 +77,19 @@ public class NodeBase extends RegisterBase implements NetworkAddress {
 		return protocol;
 	}
 
+	@Override
 	public String version() {
 		return version;
 	}
 	
+	@Override
 	public boolean equals(Object object) {
 		if (object instanceof NodeBase) {
 			NodeBase nodeBase = (NodeBase) object;
 			if (this.name != null && nodeBase.name != null) {
 				return name.equals(nodeBase.name);
 			}
-			if (this.networkAddress == null || this.port == null || nodeBase.networkAddress == null
-					|| this.port == null) {
+			if (this.networkAddress == null || this.port == null || nodeBase.networkAddress == null) {
 				return false;
 			}
 			if(this.networkAddress.equals(nodeBase.networkAddress) && this.port.equals(this.port)) {

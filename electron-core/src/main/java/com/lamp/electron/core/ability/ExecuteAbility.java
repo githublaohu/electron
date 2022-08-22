@@ -14,7 +14,7 @@ package com.lamp.electron.core.ability;
 import java.util.List;
 import java.util.Objects;
 
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -32,7 +32,7 @@ public class ExecuteAbility implements Invoker {
 
 	private List<AbstractChainAbility<Object>> abstractChainAbilityList;
 	
-	private AbilityType abilityTypeEnum;
+	private AbilityTypeEnum abilityTypeEnum;
 
 
 	public ExecuteAbility(AbstractChainAbility<Object> abstractChainAbility,ExecuteAbility nextAbility) {

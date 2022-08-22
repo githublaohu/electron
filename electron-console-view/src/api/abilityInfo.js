@@ -13,40 +13,40 @@ var api  = {}
 
 api.insertAbilityInfo = function(data){
     return request({
-        url: '/lamp/electron/abilityInfo/insertAbilityInfo',
+        url: '/abilityInfo/insertAbilityInfo',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.deleteAbilityInfo = function(data){
     return request({
-        url: '/lamp/electron/abilityInfo/deleteAbilityInfo',
+        url: '/abilityInfo/deleteAbilityInfo',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoById = function(data){
     return request({
-        url: '/lamp/electron/abilityInfo/queryAbilityInfoById',
+        url: '/abilityInfo/queryAbilityInfoById',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoByParentId = function(data,page){
     return request({
-        url: '/lamp/electron/abilityInfo/queryAbilityInfoByForm',
+        url: '/abilityInfo/queryAbilityInfoByForm',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoByParentId = function(data,page){
     return request({
-        url: '/lamp/electron/abilityInfo/queryAbilityInfoByParentId',
+        url: '/abilityInfo/queryAbilityInfoByParentId',
         method: 'post',
         data:data
-      }) 
+      })
 }

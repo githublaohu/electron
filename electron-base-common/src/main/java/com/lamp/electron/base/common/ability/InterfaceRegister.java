@@ -14,15 +14,15 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "mock API",abiltiyScope=AbiltiyScope.REGISTER,abiltityBindRelation=OrganizationTypeEnum.INTERFACE)
+@AbilityData(chinaName = "mock API", abilityScope = AbilityScope.REGISTER, abilityBindRelation =OrganizationTypeEnum.INTERFACE)
 public class InterfaceRegister {
 	
 	private List<InterfaceInfo> interfaceInfoList;

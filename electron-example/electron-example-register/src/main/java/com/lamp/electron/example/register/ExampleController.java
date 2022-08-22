@@ -18,30 +18,30 @@ public class ExampleController {
 	private String locadAddress = "register";
 	
 	@PostMapping("addExample")
-	public ExampleInfo addExample(@RequestBody ExampleInfo exampleInfo) {
-		return exampleInfo;
+	public InstanceInfo addExample(@RequestBody InstanceInfo instanceInfo) {
+		return instanceInfo;
 	}
 	
 	@PostMapping("queryExample")
-	public ExampleInfo queryExample() {
+	public InstanceInfo queryExample() {
 		return createExampleInfo();
 	}
 	
 	@GetMapping("queryExampleList")
-	public List<ExampleInfo> queryExampleList(){
-		List<ExampleInfo> list = new ArrayList<ExampleInfo>();
+	public List<InstanceInfo> queryExampleList(){
+		List<InstanceInfo> list = new ArrayList<InstanceInfo>();
 		for(int i = 0; i< 10 ; i++) {
 			list.add(createExampleInfo());
 		}
 		return list;
 	}
 	
-	private ExampleInfo createExampleInfo() {
-		ExampleInfo exampleInfo = new ExampleInfo();
-		exampleInfo.setId(1L);
-		exampleInfo.setName("spring mvc example");
-		exampleInfo.setNetworkAddress(locadAddress);
-		return exampleInfo;
+	private InstanceInfo createExampleInfo() {
+		InstanceInfo instanceInfo = new InstanceInfo();
+		instanceInfo.setId(1L);
+		instanceInfo.setName("spring mvc example");
+		instanceInfo.setNetworkAddress(locadAddress);
+		return instanceInfo;
 	}
 	
 }

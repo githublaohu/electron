@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Objects;
 
 import com.lamp.electron.base.common.ability.Partition;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -25,7 +25,11 @@ import com.lamp.electron.base.common.register.data.NetworkAddress;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
-@AbiltiyAction(abilityType = AbilityType.PARTITION)
+/**
+ * 隔离能力模型
+ * @author jellly
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.PARTITION)
 public class PartitionAbility extends AbstractChainAbility<Partition> {
 
 	@Override
@@ -37,7 +41,7 @@ public class PartitionAbility extends AbstractChainAbility<Partition> {
 				List<NetworkAddress> networkAddressList = abstractElectronBehavior.getNetworkAddressList();
 				List<NetworkAddress> newNetworkAddressList = new ArrayList<>();
 				if (Objects.isNull(partition.getVersion())) {
-					for (NetworkAddress partitionNetworkAddress : partition.getExampleInfoList()) {
+					for (NetworkAddress partitionNetworkAddress : partition.getInstanceInfoList()) {
 						for (NetworkAddress networkAddress : networkAddressList) {
 							if (Objects.equals(networkAddress.networkAddress(),
 									partitionNetworkAddress.networkAddress())
@@ -48,6 +52,7 @@ public class PartitionAbility extends AbstractChainAbility<Partition> {
 						}
 					}
 				} else {
+					// 区分版本
 					String version = partition.getVersion();
 					for (NetworkAddress networkAddress : networkAddressList) {
 						if (Objects.equals(version, networkAddress.version())) {

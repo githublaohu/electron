@@ -45,7 +45,7 @@ public class EtcdClientFactory {
 		EtcdLeaseId etcdLeaseId = etcdLeaseIdMap.get(url);
 		if (Objects.nonNull(etcdLeaseId)) {
 			etcdLeaseId.getAbstractRegisterModel().add(abstractRegisterModel);
-			return etcdLeaseId.getClientWapper();
+			return etcdLeaseId.getClientWrapper();
 		}
 		String address = url;
 		ClientBuilder clientBuilder = Client.builder();
@@ -59,8 +59,8 @@ public class EtcdClientFactory {
 			etcdLeaseId.setUrl(url);
 			etcdLeaseId.getAbstractRegisterModel().add(abstractRegisterModel);
 			etcdLeaseId.setClientBuilder(clientBuilder.endpoints(httpAddress));
-			etcdLeaseId.setClientWapper(new ClientWapper(etcdLeaseId.getClientBuilder().build()));
-			ClientWapper client = etcdLeaseId.getClientWapper();
+			etcdLeaseId.setClientWrapper(new ClientWrapper(etcdLeaseId.getClientBuilder().build()));
+			ClientWrapper client = etcdLeaseId.getClientWrapper();
 			long leaseId = client.getLeaseClient().grant(10L).get().getID();
 			etcdLeaseId.setLeaseId(leaseId);
 			EtcdStreamObserver etcdStreamObserver = new EtcdStreamObserver();
@@ -72,7 +72,7 @@ public class EtcdClientFactory {
 		} catch (Throwable e) {
 			log.error(e.getMessage(), e);
 		}
-		return etcdLeaseId.getClientWapper();
+		return etcdLeaseId.getClientWrapper();
 	}
 
 	public Long getLeaseId(String url) {
@@ -81,7 +81,7 @@ public class EtcdClientFactory {
 
 	private void createLeaseId(EtcdLeaseId etcdLeaseId) {
 		log.warn("renewal failed,renewal of contract. server url {}", etcdLeaseId.getUrl());
-		Client client = etcdLeaseId.getClientWapper();
+		Client client = etcdLeaseId.getClientWrapper();
 		try {
 			long ttl = client.getLeaseClient().timeToLive(etcdLeaseId.getLeaseId(), LeaseOption.DEFAULT).get().getTTl();
 			if (ttl < 1) {
@@ -89,7 +89,7 @@ public class EtcdClientFactory {
 				client.getLeaseClient().keepAlive(leaseId, etcdLeaseId.getEtcdStreamObserver());
 				etcdLeaseId.setLeaseId(leaseId);
 				for (AbstractRegisterModel abstractRegisterModel : etcdLeaseId.abstractRegisterModel) {
-					abstractRegisterModel.reRegister();
+					abstractRegisterModel.deregister();
 				}
 			}
 		} catch (Throwable e) {
@@ -105,7 +105,7 @@ public class EtcdClientFactory {
 
 		private AtomicBoolean renewalLock = new AtomicBoolean();
 
-		private ClientWapper clientWapper;
+		private ClientWrapper clientWrapper;
 
 		private ClientBuilder clientBuilder;
 
@@ -117,11 +117,11 @@ public class EtcdClientFactory {
 
 	}
 
-	class ClientWapper implements Client {
+	class ClientWrapper implements Client {
 
 		private volatile Client client;
 
-		public ClientWapper(Client client) {
+		public ClientWrapper(Client client) {
 			this.client = client;
 		}
 

@@ -4,7 +4,7 @@ server:
     context-path: "/lamp/electron"
  
 electron:
-  registerAddress: 127.0.0.1:2379
+  registerAddress: etcd://127.0.0.1:2379
 
 spring:
   servlet: 

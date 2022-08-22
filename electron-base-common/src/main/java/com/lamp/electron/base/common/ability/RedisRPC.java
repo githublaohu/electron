@@ -12,8 +12,8 @@
 package com.lamp.electron.base.common.ability;
 
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@AbiltiyData(abiltiyScope = AbiltiyScope.RPC, chinaName = "请求redis", abiltityBindRelation = OrganizationTypeEnum.INTERFACE)
+@AbilityData(abilityScope = AbilityScope.RPC, chinaName = "请求redis", abilityBindRelation = OrganizationTypeEnum.INTERFACE)
 public class RedisRPC extends RpcRequestConfig{
 
 	/**

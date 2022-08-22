@@ -19,13 +19,19 @@ import com.lamp.electron.base.common.enums.ability.LoadBalancingEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.register.data.LongRangeWrapper;
 import com.lamp.electron.base.common.register.data.NetworkAddress;
+import com.lamp.electron.rpc.api.AbstractElectronBehavior;
 
+/**
+ * 随机负载均衡模式选择器
+ * @author jellly
+ */
 public class RandomLoadBalancingSelect implements LoadBalancingSelect {
 
 	@Override
 	public NetworkAddress select(ElectronRequest electronRequest, LongRangeWrapper longRangeWrapper,
 			LoadBalancing loadBalancing) {
-		List<NetworkAddress> networkAddressList = longRangeWrapper.getNetworkAddress();
+		AbstractElectronBehavior abstractElectronBehavior = (AbstractElectronBehavior)electronRequest;
+		List<NetworkAddress> networkAddressList = abstractElectronBehavior.getNetworkAddressList();
 		return networkAddressList.get(ThreadLocalRandom.current().nextInt(networkAddressList.size()));
 	}
 

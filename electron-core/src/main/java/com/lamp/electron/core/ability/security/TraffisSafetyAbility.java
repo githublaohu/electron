@@ -11,9 +11,6 @@
  */
 package com.lamp.electron.core.ability.security;
 
-import com.lamp.electron.base.common.ability.TraffisSafety;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;

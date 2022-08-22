@@ -19,7 +19,7 @@ var api  = {}
 
 api.insertOrganizationPower = function(data){
     return request({
-        url: '/lamp/electron/organizationPower/insertOrganizationPower',
+        url: '/organizationPower/insertOrganizationPower',
         method: 'post',
         data:data
       })
@@ -27,7 +27,7 @@ api.insertOrganizationPower = function(data){
 
 api.updateUserPowerByOpId = function(data){
     return request({
-        url: '/lamp/electron/organizationPower/updateUserPowerByOpId',
+        url: '/organizationPower/updateUserPowerByOpId',
         method: 'post',
         data:data
       })
@@ -35,7 +35,7 @@ api.updateUserPowerByOpId = function(data){
 
 api.updateOrganizationPowerStatusByOpId = function(data){
     return request({
-        url: '/lamp/electron/organizationPower/updateOrganizationPowerStatusByOpId',
+        url: '/organizationPower/updateOrganizationPowerStatusByOpId',
         method: 'post',
         data:data
       })
@@ -43,7 +43,7 @@ api.updateOrganizationPowerStatusByOpId = function(data){
 
 api.queryOrganizationPowerByOiId = function(data,page){
     return request({
-        url: '/lamp/electron/organizationPower/queryOrganizationPowerByOiId',
+        url: '/organizationPower/queryOrganizationPowerByOiId',
         method: 'post',
         data:data
       })
@@ -51,7 +51,7 @@ api.queryOrganizationPowerByOiId = function(data,page){
 
 api.insertOrganizationPower = function(data){
     return request({
-        url: '/lamp/electron/organizationPower/insertOrganizationPower',
+        url: '/organizationPower/insertOrganizationPower',
         method: 'post',
         data:data
       })

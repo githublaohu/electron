@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.alibaba.fastjson.JSON;
-import com.lamp.electron.base.common.enums.AbilityType;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.viewmodel.BehaviorOperation;
 import com.lamp.electron.base.common.viewmodel.DataModeBehavior;
@@ -31,7 +31,7 @@ import lombok.Getter;
 
 public class AbilityTypeEnumAnalysis {
 
-	private Map<AbiltiyScope, TreeModel> abiltiyScopeByTreeModel = new HashMap<>();
+	private Map<AbilityScope, TreeModel> abilityScopeByTreeModel = new HashMap<>();
 
 	private List<TreeModel> treeModelList = new ArrayList<>();
 
@@ -40,17 +40,17 @@ public class AbilityTypeEnumAnalysis {
 	
 	public void analysis() {
 
-		for (AbiltiyScope abiltiyScope : AbiltiyScope.values()) {
-			if (abiltiyScope.isTree()) {
+		for (AbilityScope abilityScope : AbilityScope.values()) {
+			if (abilityScope.isTree()) {
 				TreeModel treeModel = new TreeModel();
-				treeModel.setExplain(abiltiyScope.getExplain());
-				treeModel.setLabel(abiltiyScope.getLabel());
-				abiltiyScopeByTreeModel.put(abiltiyScope, treeModel);
+				treeModel.setExplain(abilityScope.getExplain());
+				treeModel.setLabel(abilityScope.getLabel());
+				abilityScopeByTreeModel.put(abilityScope, treeModel);
 				treeModelList.add(treeModel);
 			}
 		}
 
-		for (AbilityType abilityTypeEnum : AbilityType.values()) {
+		for (AbilityTypeEnum abilityTypeEnum : AbilityTypeEnum.values()) {
 			this.treeAbility(abilityTypeEnum);
 			this.viewModel(abilityTypeEnum);
 		}
@@ -58,8 +58,8 @@ public class AbilityTypeEnumAnalysis {
 		this.treeModeJson = JSON.toJSONString(treeModelList);
 	}
 	
-	public void viewModel(AbilityType abilityTypeEnum) {
-		Class<?> clazz = abilityTypeEnum.getAbiltiyObject();
+	public void viewModel(AbilityTypeEnum abilityTypeEnum) {
+		Class<?> clazz = abilityTypeEnum.getAbilityObject();
 		
 		ViewModel viewModel = clazz.getAnnotation(ViewModel.class);
 		
@@ -69,10 +69,10 @@ public class AbilityTypeEnumAnalysis {
 		}
 	}
 	
-	public void treeAbility(AbilityType abilityTypeEnum) {
-		TreeModel treeModel = abiltiyScopeByTreeModel.get(abilityTypeEnum.getAbiltiyScope()[0]);
+	public void treeAbility(AbilityTypeEnum abilityTypeEnum) {
+		TreeModel treeModel = abilityScopeByTreeModel.get(abilityTypeEnum.getAbilityScope()[0]);
 		TreeModel chlidren = new TreeModel();
-		chlidren.setLabel(abilityTypeEnum.getChildName());
+		chlidren.setLabel(abilityTypeEnum.getChinaName());
 		chlidren.setExplain(abilityTypeEnum.getExplain());
 		chlidren.setType(abilityTypeEnum.name());
 		String path = (new StringBuilder()).append(Character.toLowerCase(abilityTypeEnum.getName().charAt(0))).append(abilityTypeEnum.getName().substring(1)).toString();

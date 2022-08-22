@@ -20,7 +20,7 @@ public enum ProtocolConfigEnums {
 	NONE(Object.class, ConfigTypeEnum.NODE, ProtocolEnum.HTTP),
 	HTTP_CLIENT_CONFIG(HttpClientConfig.class, ConfigTypeEnum.CLIENT, ProtocolEnum.HTTP),
 	HTTP_SERVICE_CONFIG(HttpServiceConfig.class, ConfigTypeEnum.SERVICE, ProtocolEnum.HTTP),
-	HTTP_REQUSET_CONFIG(HttpRequestConfig.class, ConfigTypeEnum.REQUSET, ProtocolEnum.HTTP),
+	HTTP_REQUEST_CONFIG(HttpRequestConfig.class, ConfigTypeEnum.REQUSET, ProtocolEnum.HTTP),
 	DUBBO_REQUEST_CONFIG(HttpRequestConfig.class, ConfigTypeEnum.REQUSET, ProtocolEnum.DUBBO),
 	;
 

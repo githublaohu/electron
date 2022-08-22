@@ -101,7 +101,7 @@ export default {
 
   /**
    * 添加组织成员
-   * @params {Object}  data { organizationId，organizationName，organizationTypeEnum，organizationEnglistName，uiId，uiName, opPower }
+   * @params {Object}  data { organizationId，organizationName，organizationTypeEnum，organizationEnglishName，uiId，uiName, opPower }
    */
   addOrganizationMember(data) {
     return request({

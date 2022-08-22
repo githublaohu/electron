@@ -24,7 +24,7 @@ create table user_info(
     create_founder bigint unsigned not null default 0 comment '', 
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
     update_founder bigint unsigned not null default 0 comment '', 
-    is_detele int unsigned not null default 0  comment '数据状态',
+    is_delete int unsigned not null default 0  comment '数据状态',
     primary key(`ui_id`),
     unique key unique_name(`ui_name`),
     unique key unique_email(`ui_email`),
@@ -40,7 +40,7 @@ create table ability_info(
     ai_parent_id  bigint unsigned not null default 0 comment '主id',
     organization_id bigint unsigned not null comment '组织id',
     organization_name  varchar(31) not null comment '组织名',
-    organizationType_enum varchar(31) not null comment '组织名',
+    organization_type_enum varchar(31) not null comment '组织名',
     ai_name varchar(31) not null default '' comment '策略名',
     ai_lable json not null default(json_array()) comment '策略标签',
     ai_ability_type varchar(31) not null comment '策略类型',
@@ -66,7 +66,7 @@ create table ability_relation(
     ai_name varchar(31) not null comment '动作名',
     organization_id bigint unsigned not null comment '组织id',
     organization_name  varchar(31) not null comment '组织名',
-    organization_type varchar(31) not null comment '组织名',
+    organization_type_enum varchar(31) not null comment '组织名',
     ability_type_enum varchar(31) not null comment '动作类型',
     protocel_config_enum varchar(31) not null comment '协议配置类型',
     ar_relation_status int not null default 1 comment '绑定关系[绑定，解绑，记录]',
@@ -75,7 +75,7 @@ create table ability_relation(
     create_founder bigint unsigned not null default 0 comment '', 
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
     update_founder bigint unsigned not null default 0 comment '', 
-    is_detele int unsigned not null default 0  comment '数据状态',
+    is_delete int unsigned not null default 0  comment '数据状态',
     primary key (`ar_id`),
     key  index_ai_id(`ai_id`)
 );
@@ -98,7 +98,7 @@ create table  organization_info(
     create_founder bigint unsigned not null default 0 comment '', 
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
     update_founder bigint unsigned not null default 0 comment '', 
-    is_detele int unsigned not null default 0  comment '数据状态',
+    is_delete int unsigned not null default 0  comment '数据状态',
     primary key (`oi_id`),
     key index_superior(`oi_superior_id`),
     key index_creater_id(`oi_creater_id`),
@@ -119,17 +119,17 @@ create table organization_power(
     create_founder bigint unsigned not null default 0 comment '', 
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
     update_founder bigint unsigned not null default 0 comment '', 
-    is_detele int unsigned not null default 0  comment '数据状态',
+    is_delete int unsigned not null default 0  comment '数据状态',
     primary key (`op_id`),
     key index_ui_id(`ui_id`),
     key index_organization_id(`organization_id`)
 );
 
-create table example_info(
+create table instance_info(
     id bigint unsigned not null auto_increment,
     application_id bigint unsigned not null comment '项目id',
-    application_english_name varchar(31) not null comment '项目英文', 
-    organization_type varchar(31) not null comment '组织类型[ API,实例 两个]',
+    application_english_name varchar(31) not null comment '项目英文',
+    organization_type_enum varchar(31) not null comment '组织类型[ API,实例 两个]',
     network_address int unsigned not null  default 0 comment '网络地址' ,
     port  int unsigned not null  default 0 comment '端口',
     protocol varchar(15) not null default '' comment '协议[http1.0，http2.0, dubbo, grpc......]',
@@ -141,7 +141,7 @@ create table example_info(
     client_version varchar(15) not null default '' comment 'client版本',
     create_time datetime not null default current_timestamp comment '创建时间，上线时间',
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间，下线时间', 
-    is_detele int unsigned not null default 1  comment '数据状态',
+    is_delete int unsigned not null default 1  comment '数据状态',
     primary key (`id`),
      unique key unique_path_version(`network_address`,`protocol`,`create_time`)
 );
@@ -149,8 +149,8 @@ create table example_info(
 create table interface_info(
     id bigint unsigned not null auto_increment,
     application_id bigint unsigned not null comment '项目id',
-    application_english_name varchar(31) not null comment '项目英文', 
-    organization_type varchar(31) not null comment '组织类型[ API,实例 两个]',
+    application_english_name varchar(31) not null comment '项目英文',
+    organization_type_enum varchar(31) not null comment '组织类型[ API,实例 两个]',
     networkAddress int unsigned not null  default 0 comment '网络地址' ,
     port  int unsigned not null  default 0 comment '端口',
     protocol varchar(15) not null default '' comment '协议[http1.0，http2.0, dubbo, grpc......]',
@@ -168,7 +168,7 @@ create table interface_info(
     `explain` varchar(127) not null default '' comment '说明',
     create_time datetime not null default current_timestamp comment '创建时间，上线时间',
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间，下线时间', 
-    is_detele int unsigned not null default 1  comment '数据状态',
+    is_delete int unsigned not null default 1  comment '数据状态',
     primary key (`id`),
     unique key unique_path_version(`path`,`version`,`rpc_type`)
 );
@@ -177,7 +177,7 @@ create table interface_info(
 -- 
 create  table statistic_info(
     id bigint unsigned not null auto_increment,
-    organization_type  varchar(15) not null comment '统计维度',
+    organization_type_enum  varchar(15) not null comment '统计维度',
     application_id bigint unsigned not null comment '项目id',
     application_english_name varchar(31) not null comment '项目英文', 
     organization_id bigint unsigned not null comment '组织id[ 项目，实例，]',
@@ -211,9 +211,9 @@ create table type_metabigint (
     tm_paradimg varchar(255) not null default '' comment '参数值说明',
     tm_explain varchar(511) not null default ''comment '参数值说明',
     tm_version varchar(15) not null default '' comment '版本号',
-    tm_check_expression not null default '' comment '校验表达式',
+    tm_check_expression varchar(63) not null default '' comment '校验表达式',
     create_time datetime not null default current_timestamp comment '创建时间',
     update_time datetime not null default current_timestamp on update current_timestamp comment '更新时间', 
-    is_detele int unsigned not null default 1  comment '数据状态',
+    is_delete int unsigned not null default 1  comment '数据状态',
     primary key (`tm_id`)
 );

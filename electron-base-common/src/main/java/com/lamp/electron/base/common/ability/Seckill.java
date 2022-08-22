@@ -11,14 +11,14 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(abiltiyScope = AbiltiyScope.SECURITY, chinaName = "秒杀",abiltityBindRelation = OrganizationTypeEnum.INTERFACE)
+@AbilityData(abilityScope = AbilityScope.SECURITY, chinaName = "秒杀", abilityBindRelation = OrganizationTypeEnum.INTERFACE)
 public class Seckill {
 
 }

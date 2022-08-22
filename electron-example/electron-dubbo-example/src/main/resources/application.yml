@@ -21,6 +21,6 @@ dubbo:
     register: true
     subscribe: true
 electron:
-    registry: 127.0.0.1:2379
+    registry: etcd://127.0.0.1:2379
     applicationName: test-dubbo
     
