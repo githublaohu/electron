@@ -30,7 +30,7 @@ public class SetupResultAbility extends AbstractAbility<SetupResult> implements 
 	}
 
 	@Override
-	protected void doAddAbilityObject(AbilityRelation abilityRelation, SetupResult abilityObject) {
+	protected void addAbilityObject(AbilityRelation abilityRelation, SetupResult abilityObject) {
 		// TODO Auto-generated method stub
 		
 	}

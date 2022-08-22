@@ -69,7 +69,7 @@ public class RedisRPCAbility extends AbstractAbility<RedisRPC> implements Interf
 	}
 
 	@Override
-	protected void doAddAbilityObject(AbilityRelation abilityRelation, RedisRPC abilityObject) {
+	protected void addAbilityObject(AbilityRelation abilityRelation, RedisRPC abilityObject) {
 		// TODO Auto-generated method stub
 
 	}

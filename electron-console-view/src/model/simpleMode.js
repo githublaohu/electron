@@ -10,6 +10,7 @@
 
 import {request} from './requestModel'
 
+
 // 视图
 //        模型[ 新增，修改，删除，查询列表，查询]
 //        网络[ 新增，修改，删除，查询列表，查询]
@@ -38,18 +39,23 @@ function objectClone(copied){
 
 // 数据模型
 // 修改需要去掉默认值
+// form表达字段，都需要数据行为
 function DataModeBehavior(dataModeBehaviorBuild) {
 
    
-
+    //  字段名
     this.__key;
 
+    // 字段的form类型
     this.__type = "input";
 
+    //  form字段描述
     this.__title;
 
+    // 默认值
     this.__defaultValue;
 
+    // 
     this.__values;
 
     this.__isBehavior = true;
@@ -66,6 +72,7 @@ function DataModeBehavior(dataModeBehaviorBuild) {
 
     this.__rules = [];
 
+    // 取值的表达式
     this.__valueExpression;
 
     this.defaultValue = function (defaultValue) {
@@ -282,18 +289,22 @@ function ModeBehavior(behavior,viewName,viewModel) {
 
     this.isVisible = false;
 
+    // DataModeBehavior
     this.dataModeBehavior = [];
 
     this.rules = {};
 
+    // view form 需要一个formData
     this.formData = {};
 
+    // formData 默认值
     this.defaultFormData = {};
 
     this.__requsetInfo;
 
     this.__vue;
 
+    // RequestInfo
     this.requestModel;
 
     var thiz = this;
@@ -532,6 +543,7 @@ function  BindingView(){
 
 /**
  * 主对象
+ * 
  */
 function ViewModel(viewName) {
 
@@ -823,11 +835,7 @@ function DataModeBehaviorBuild() {
 }
 
 /**
- * 3. 作废与激活
- * 
- * 4. 校验
- * 5. 所有的动作
- * 6. 小事
+ * 从这个对象看起，尤其是build方法
  * @returns 
  */
 function Mode(viewName) {
@@ -891,37 +899,44 @@ function Mode(viewName) {
         this.__beforeSupply = beforesSupply;
         return this;
     }
-
+    
+    // 
     this.afterSupply = function (afterSupply) {
         this.__afterSupply = afterSupply;
         return this;
     }
 
+    // 关闭添加功能
     this.closeAdd = function () {
         this.__viewModel.addModel.isUser = false;
         return this;
     }
 
+    // 关闭修改功能
     this.closeUpdate = function () {
         this.__viewModel.updateModel.isUser = false;
         return this;
     }
 
+    // 关闭分页功能
     this.closePage = function () {
         this.__viewModel.tableView.__isPagination = false;
         return this;
     }
 
+    // 关闭查询form表单
     this.closeQueryForm = function () {
         this.__viewModel.queryFormModel.isUser = false;
         return this;
     }
 
+    // 关闭查询功能
     this.closeQuery = function () {
         this.__viewModel.queryModel.isUser = false;
         return this;
     }
 
+    // 关闭表格
     this.closeTables = function () {
         this.__viewModel.userTables = false;
         return this;
@@ -1008,6 +1023,6 @@ Mode.HierarchyIntercept = HierarchyIntercept
 
 Mode.BindingTree = BindingTree
 
-// module.exports = Mode
+module.exports = Mode
 
-export default  Mode;
+//export default  Mode;

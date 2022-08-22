@@ -25,6 +25,7 @@ public class SeckillAbility extends AbstractChainAbility<Seckill> implements Res
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
+		// 去redis 减一 ，如果返回 大于0 ，就可以，小鱼0就失败
 		return null;
 	}
 

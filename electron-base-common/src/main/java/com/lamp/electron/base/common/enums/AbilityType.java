@@ -13,6 +13,7 @@ package com.lamp.electron.base.common.enums;
 
 import com.lamp.electron.base.common.ability.Alarm;
 import com.lamp.electron.base.common.ability.Authentication;
+import com.lamp.electron.base.common.ability.CacheConfig;
 import com.lamp.electron.base.common.ability.ConditionRouter;
 import com.lamp.electron.base.common.ability.DataInjection;
 import com.lamp.electron.base.common.ability.ErrerResult;
@@ -74,6 +75,7 @@ public enum AbilityType {
 	PAREMVERIFCATION(ParemVerifcation.class),
 	AUTHENTICATION(Authentication.class),
 
+	CACHE(CacheConfig.class),
 	INVOKING(Invoking.class),
 	
 	ERRERRESULT(ErrerResult.class),

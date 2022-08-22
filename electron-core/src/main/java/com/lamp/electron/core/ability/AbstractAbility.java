@@ -33,7 +33,7 @@ public abstract class AbstractAbility<T> implements Ability{
 			this.abilityTypeEnum = abilityRelation.getAbilityTypeEnum();
 			this.organizationTypeEnum = abilityRelation.getOrganizationTypeEnum();
 		}
-		doAddAbilityObject(abilityRelation, (T)abilityRelation.getAbility());
+		addAbilityObject(abilityRelation, (T)abilityRelation.getAbility());
 	}
 	
 	
@@ -42,7 +42,7 @@ public abstract class AbstractAbility<T> implements Ability{
 	} 
 
 	
-	protected  abstract void doAddAbilityObject(AbilityRelation abilityRelation , T abilityObject);
+	protected  abstract void addAbilityObject(AbilityRelation abilityRelation , T abilityObject);
 	
 	
 	protected  abstract void doRemoteAbilityObject(AbilityRelation abilityRelation);

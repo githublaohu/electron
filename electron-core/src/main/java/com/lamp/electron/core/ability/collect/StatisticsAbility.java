@@ -56,6 +56,7 @@ public class StatisticsAbility extends AbstractChainAbility<Statistics> implemen
 		}else {
 			arrayMetric.addException(1);
 		}
+		arrayMetric.getSampleCount();
 		return null;
 	}
 

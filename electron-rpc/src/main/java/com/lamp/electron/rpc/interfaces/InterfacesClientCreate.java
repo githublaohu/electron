@@ -9,37 +9,23 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.rpc.redis;
+package com.lamp.electron.rpc.interfaces;
 
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
-import com.lamp.electron.base.common.invoker.ElectronRequest;
-import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.base.common.perception.Perception;
-import com.lamp.electron.rpc.api.AbstractRpcBase;
+import com.lamp.electron.base.common.register.data.NetworkAddress;
 import com.lamp.electron.rpc.api.RpcHandle;
+import com.lamp.electron.rpc.api.client.RpcClientCreate;
 
-/**
- * 等 ledis
- * @author laohu
- *
- */
-public class RedisClient extends AbstractRpcBase implements Invoker{
+public class InterfacesClientCreate implements RpcClientCreate {
 
-	public RedisClient(Perception<RpcRequestConfig> perception, RpcHandle rpcHandle) {
-		super(perception, rpcHandle);
-		
+	public InterfacesClientCreate(RpcClientCreate rpcConfig) {
 	}
 
 	@Override
-	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
-		
-		return null;
+	public Invoker createClient(RpcHandle rpcHandle, NetworkAddress networkAddress,
+			Perception<RpcRequestConfig> rpcRequestConfig) {
+		return new InterfacesClient(networkAddress, rpcHandle, rpcRequestConfig);
 	}
-
-	@Override
-	protected void init() {
-		
-	}
-
 }

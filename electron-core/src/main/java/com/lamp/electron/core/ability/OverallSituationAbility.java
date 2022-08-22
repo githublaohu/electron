@@ -20,7 +20,7 @@ public abstract class OverallSituationAbility<T> extends AbstractAbility<T> {
 
 	protected Map<String, T> abilityDataMap = new ConcurrentHashMap<>();
 
-	protected void doAddAbilityObject(AbilityRelation abilityRelation, T t) {
+	protected void addAbilityObject(AbilityRelation abilityRelation, T t) {
 		this.addBehavior(abilityRelation,t, abilityDataMap.put(abilityRelation.getOrganizationName(), t));
 
 	}

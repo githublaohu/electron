@@ -10,7 +10,7 @@ export default {
 	 */
   register(data) {
     return request({
-      url: '/userInfo/insertUserInfoByPassword',
+      url: '/lamp/electron/userInfo/insertUserInfoByPassword',
       method: 'post',
       data: data
     })
@@ -22,7 +22,7 @@ export default {
 	 */
   manageLoginOutUser(data) {
     return request({
-      url: '/userInfo/manageAndUpdateUserPasswordByUiId',
+      url: '/lamp/electron/userInfo/manageAndUpdateUserPasswordByUiId',
       method: 'post',
       data: data
     })
@@ -34,7 +34,7 @@ export default {
 	 */
   manageModifyUserPassword(data) {
     return request({
-      url: '/userOperation/changePassword',
+      url: '/lamp/electron/userOperation/changePassword',
       method: 'post',
       data: data
     })
@@ -46,7 +46,7 @@ export default {
 	 */
   modifyUserInfo(data) {
     return request({
-      url: '/userInfo/updateUserInfoByUiId',
+      url: '/lamp/electron/userInfo/updateUserInfoByUiId',
       method: 'post',
       data: data
     })
@@ -58,7 +58,7 @@ export default {
 	 */
   userInfo(data) {
     return request({
-      url: '/userInfo/queryUserInfoById',
+      url: '/lamp/electron/userInfo/queryUserInfoById',
       method: 'post',
       data: data
     })
@@ -82,7 +82,7 @@ export default {
 	 */
   login(data) {
     return request({
-      url: '/userOperation/psswordLogin',
+      url: '/lamp/electron/userOperation/psswordLogin',
       method: 'post',
       data: data
     })
@@ -94,7 +94,7 @@ export default {
 	 */
   logout(data) {
     return request({
-      url: '/userOperation/signOut',
+      url: '/lamp/electron/userOperation/signOut',
       method: 'post'
     })
   },
@@ -105,7 +105,7 @@ export default {
    */
   getUserList(data) {
     return request({
-      url: '/userInfo/queryUserInfoByForm',
+      url: '/lamp/electron/userInfo/queryUserInfoByForm',
       method: 'post',
       data: data
     })

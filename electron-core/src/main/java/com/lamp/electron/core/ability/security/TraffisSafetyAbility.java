@@ -21,6 +21,11 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ErrorAbility;
 import com.lamp.electron.core.ability.extend.PostAbility;
 
+/**
+ * 调用哨兵的代码
+ * @author laohu
+ *
+ */
 @AbiltiyAction(abilityType = AbilityType.TRAFFISSAFETY)
 public class TraffisSafetyAbility extends AbstractChainAbility<TraffisSafety> implements ErrorAbility,PostAbility{
 

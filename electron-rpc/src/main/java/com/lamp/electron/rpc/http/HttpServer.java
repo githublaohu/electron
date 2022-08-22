@@ -135,9 +135,10 @@ public class HttpServer extends AbstractRpcBase implements RpcServer {
 			try {
 
 				if (message instanceof FullHttpRequest) {
-					AbstractAgreementResponse<ChannelHandlerContext> httpAgreementResponse = new HttpAgreementResponse();
+					HttpAgreementResponse httpAgreementResponse = new HttpAgreementResponse();
 					httpAgreementResponse.setAgreemoent(ctx);
-					HttpServer.this.receive(new HttpRequest((FullHttpRequest)message,httpAgreementResponse));
+					httpAgreementResponse.setFullHttpRequest((FullHttpRequest)message);
+					HttpServer.this.receive(new HttpRequest((FullHttpRequest)message,(AbstractAgreementResponse<ChannelHandlerContext>)httpAgreementResponse));
 				} else {
 					boolean release = ReferenceCountUtil.release(message);
 					if (!release) {

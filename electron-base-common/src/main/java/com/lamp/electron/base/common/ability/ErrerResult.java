@@ -16,6 +16,14 @@ import com.lamp.electron.base.common.enums.AbiltiyScope;
 
 import lombok.Data;
 
+/**
+ * json {"code":"" ,message:"",connect:""}
+ * 		 {"{codeKey}":"" ,{messageKey}:"",{connectKey}:""}
+ * templateContent  失败代码：{code}，失败信息：{message}
+ *         失败代码：5000，失败信息：未知
+ * @author laohu
+ *
+ */
 @Data
 @AbiltiyData(abiltiyScope = AbiltiyScope.ERRER, chinaName = "异常返回")
 public class ErrerResult {

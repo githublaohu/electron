@@ -11,8 +11,11 @@
  */
 package com.lamp.electron.base.common.ability;
 
+import java.util.List;
+
 import com.lamp.electron.base.common.annotation.AbiltiyData;
 import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.register.data.NetworkAddress;
 
 import lombok.Data;
 
@@ -21,4 +24,15 @@ import lombok.Data;
 public class HotStandby {
 	
 
+	private List<HotStandbyNodeInfo> hotStandbyNodeInfo;
+	
+	private Integer hotNodeNum;
+	
+	@Data
+	private class HotStandbyNodeInfo{
+		
+		private NetworkAddress networkAddress;
+		
+		private Integer order;
+	}
 }

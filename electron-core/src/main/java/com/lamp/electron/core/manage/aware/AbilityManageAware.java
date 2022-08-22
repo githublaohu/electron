@@ -9,9 +9,10 @@
  *MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  *See the Mulan PubL v2 for more details.
  */
-package com.lamp.electron.core.ability.route;
+package com.lamp.electron.core.manage.aware;
 
-public class GrayScaleAbility {
 
-	
+public interface AbilityManageAware {
+
+	public void setInterfaceManage();
 }

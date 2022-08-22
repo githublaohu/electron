@@ -1,3 +1,4 @@
+drop table if EXISTS  user_info;
 create table user_info(
     ui_id bigint  unsigned not null auto_increment,
     ui_name varchar(31) not null comment '用户名',
@@ -30,6 +31,9 @@ create table user_info(
     unique key unique_phone(`ui_phone`),
     unique key unique_id_card_type(`ui_id_card`,`ui_id_type`)
 );
+
+-- 超级用户SQL语句
+
 
 create table ability_info(
     ai_id  bigint unsigned not null auto_increment,
@@ -188,7 +192,7 @@ create  table statistic_info(
     downstream_service_error int unsigned not null default 0 comment '下游请求量，异常数',
     downstream_service_out_time int unsigned not null default 0 comment '下游超时数',
     downstream_request_average_time int unsigned not null default 0 comment '平均时间，这个平均时间', 
-    primary key()
+    primary key(`id`)
 );
 
 create table type_metabigint (
