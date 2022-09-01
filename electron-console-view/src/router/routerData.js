@@ -174,7 +174,7 @@ router = [
     },
     {
       path: 'interface',
-      component: () => import('@/views/interface/index'),
+      component: () => import('@/views/interface/index.vue'),
       name: 'index',
       meta: {
         title: '接口',

@@ -3,7 +3,7 @@ package com.lamp.electron.console;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
@@ -42,8 +42,8 @@ public class EntityJsonDataUtils {
 		AbilityRelation abilityRelation = new AbilityRelation();
 		abilityRelation.setAiId(1L);
 		abilityRelation.setAiName("hello");
-		abilityRelation.setAbilityTypeEnum(AbilityType.CONFIG);
-		abilityRelation.setProtocelConfigEnum(ProtocolConfigEnums.NONE);
+		abilityRelation.setAbilityTypeEnum(AbilityTypeEnum.CONFIG);
+		abilityRelation.setProtocolConfigEnum(ProtocolConfigEnums.NONE);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationId(1L);
 		abilityRelation.setOrganizationName("1号");

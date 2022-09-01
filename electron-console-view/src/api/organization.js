@@ -15,7 +15,7 @@ export default api;
 
 api.queryOrganizationInfoByUserId = function(data,page){
   return request({
-    url: '/organization/queryOrganizationInfoByUserId',
+    url: '/lamp/electron/organization/queryOrganizationInfoByUserId',
     method: 'post',
     data:data
   })
@@ -27,7 +27,7 @@ api.queryOrganizationInfoByUserId = function(data,page){
  */
 api.queryOrganizationInfoByOiId = function(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByOiId',
+      url: '/lamp/electron/organization/queryOrganizationInfoByOiId',
       method: 'post',
       data:data
     })
@@ -39,7 +39,7 @@ api.queryOrganizationInfoByOiId = function(data) {
    */
 api.queryOrganizationInfoByTypeAndSuperior = function(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByOiId',
+      url: '/lamp/electron/organization/queryOrganizationInfoByOiId',
       method: 'post',
       data:data
     })
@@ -63,7 +63,7 @@ api.updateOwnerById = function(data) {
  */
 api.updateExplainById  = function(data){
     return request({
-      url: '/organization/updateExplainById',
+      url: '/lamp/electron/organization/updateExplainById',
       method: 'post',
       data:data
     })
@@ -75,7 +75,7 @@ api.updateExplainById  = function(data){
  */
 api.deleteOrganizationById  = function(data){
     return request({
-      url: '/organization/deleteOrganizationById',
+      url: '/lamp/electron/organization/deleteOrganizationById',
       method: 'post',
       data:data
     })
@@ -87,7 +87,7 @@ api.deleteOrganizationById  = function(data){
  */
 api.insertOrganizationInfo = function (data){
     return request({
-      url: '/organization/insertOrganizationInfo',
+      url: '/lamp/electron/organization/insertOrganizationInfo',
       method: 'post',
       data:data
     })

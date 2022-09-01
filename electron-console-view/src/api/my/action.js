@@ -10,7 +10,7 @@ export default {
    */
   addAction(data) {
     return request({
-      url: '/abilityInfo/insertAbilityInfo',
+      url: '/lamp/electron/abilityInfo/insertAbilityInfo',
       method: 'post',
       data: data
     })
@@ -22,7 +22,7 @@ export default {
    */
   deleteAction(data) {
     return request({
-      url: '/abilityInfo/deleteAbilityInfo',
+      url: '/lamp/electron/abilityInfo/deleteAbilityInfo',
       method: 'post',
       data: data
     })
@@ -34,7 +34,7 @@ export default {
    */
   querySingleAction(data) {
     return request({
-      url: '/abilityInfo/queryAbilityInfoById',
+      url: '/lamp/electron/abilityInfo/queryAbilityInfoById',
       method: 'post',
       data: data
     })
@@ -46,7 +46,7 @@ export default {
    */
   queryBindAction(data) {
     return request({
-      url: '/abilityRelation/queryAbilityRelationListByOrganizationId',
+      url: '/lamp/electron/abilityRelation/queryAbilityRelationListByOrganizationId',
       method: 'post',
       data: data
     })
@@ -58,7 +58,7 @@ export default {
    */
   queryUnBindAction(data) {
     return request({
-      url: '/abilityInfo/queryAbilityInfoByForm',
+      url: '/lamp/electron/abilityInfo/queryAbilityInfoByForm',
       method: 'post',
       data: data
     })

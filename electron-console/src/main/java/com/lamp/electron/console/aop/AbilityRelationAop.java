@@ -136,7 +136,7 @@ public class AbilityRelationAop {
 	}
 
 	private Object createAbilityObject(List<AbilityInfo> abilityInfoList, AbilityInfo parentAbilityInfo) {
-		String data = parentAbilityInfo.getAiData();
+		String data = parentAbilityInfo.getAiData().toString();
 		JSONObject jsonObject = StringUtils.isEmpty(data) ? new JSONObject() : JSON.parseObject(data);
 
 		
@@ -156,7 +156,7 @@ public class AbilityRelationAop {
 			}
 			JSONArray jsonArray = new JSONArray();
 			for (AbilityInfo abilityInfo : abilityInfoList) {
-				jsonArray.add(JSON.parseObject(abilityInfo.getAiData()));
+				jsonArray.add(JSON.parseObject(abilityInfo.getAiData().toString()));
 			}
 			jsonObject.put(childDataName, jsonArray);
 		}

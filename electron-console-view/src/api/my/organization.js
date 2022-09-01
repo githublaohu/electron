@@ -10,7 +10,7 @@ export default {
    */
   addOrganization(data) {
     return request({
-      url: '/organization/insertOrganizationInfo',
+      url: '/lamp/electron/organization/insertOrganizationInfo',
       method: 'post',
       data: data
     })
@@ -22,7 +22,7 @@ export default {
    */
   modifyOrganization(data) {
     return request({
-      url: '/organization/updateExplainById',
+      url: '/lamp/electron/organization/updateExplainById',
       method: 'post',
       data: data
     })
@@ -34,7 +34,7 @@ export default {
    */
   modifyOrganizationOwner(data) {
     return request({
-      url: '/organization/insertOrganizationInfo',
+      url: '/lamp/electron/organization/insertOrganizationInfo',
       method: 'post',
       data: data
     })
@@ -46,7 +46,7 @@ export default {
    */
   queryOrganization(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByOiId',
+      url: '/lamp/electron/organization/queryOrganizationInfoByOiId',
       method: 'post',
       data: data
     })
@@ -58,7 +58,7 @@ export default {
    */
   getOrganizationList(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByForm',
+      url: '/lamp/electron/organization/queryOrganizationInfoByForm',
       method: 'post',
       data: data
     })
@@ -70,7 +70,7 @@ export default {
    */
   querySubOrganization(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByTypeAndSuperior',
+      url: '/lamp/electron/organization/queryOrganizationInfoByTypeAndSuperior',
       method: 'post',
       data: data
     })
@@ -82,7 +82,7 @@ export default {
    */
   addSubOrganization(data) {
     return request({
-      url: '/organization/insertOrganizationInfo',
+      url: '/lamp/electron/organization/insertOrganizationInfo',
       method: 'post',
       data: data
     })
@@ -93,7 +93,7 @@ export default {
    */
   userOrganization(data) {
     return request({
-      url: '/organization/queryOrganizationInfoByUserId',
+      url: '/lamp/electron/organization/queryOrganizationInfoByUserId',
       method: 'post',
       data: data
     })
@@ -105,7 +105,7 @@ export default {
    */
   addOrganizationMember(data) {
     return request({
-      url: '/organization/insertOrganizationUserPower',
+      url: '/lamp/electron/organization/insertOrganizationUserPower',
       method: 'get'
     })
   },
@@ -116,7 +116,7 @@ export default {
    */
   deleteOrganizationMember(data) {
     return request({
-      url: '/organization/updateUserPowerByOpId',
+      url: '/lamp/electron/organization/updateUserPowerByOpId',
       method: 'get',
       data: data
     })
@@ -128,7 +128,7 @@ export default {
    */
   modifyOrganizationAuthority(data) {
     return request({
-      url: '/organization/updateOrganizationPowerStatusByOpId',
+      url: '/lamp/electron/organization/updateOrganizationPowerStatusByOpId',
       method: 'get',
       data: data
     })
@@ -140,7 +140,7 @@ export default {
    */
   queryOrganizationMember(data) {
     return request({
-      url: '/organizationPower/queryOrganizationPowerByOiId',
+      url: '/lamp/electron/organizationPower/queryOrganizationPowerByOiId',
       method: 'post',
       data: data
     })

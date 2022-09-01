@@ -13,7 +13,7 @@ var api  = {}
 
 api.insertAbilityInfo = function(data){
     return request({
-        url: '/abilityInfo/insertAbilityInfo',
+        url: '/lamp/electron/abilityInfo/insertAbilityInfo',
         method: 'post',
         data:data
       })
@@ -29,7 +29,7 @@ api.deleteAbilityInfo = function(data){
 
 api.queryAbilityInfoById = function(data){
     return request({
-        url: '/abilityInfo/queryAbilityInfoById',
+        url: '/lamp/electron/abilityInfo/queryAbilityInfoById',
         method: 'post',
         data:data
       })
@@ -37,7 +37,7 @@ api.queryAbilityInfoById = function(data){
 
 api.queryAbilityInfoByParentId = function(data,page){
     return request({
-        url: '/abilityInfo/queryAbilityInfoByForm',
+        url: '/lamp/electron/abilityInfo/queryAbilityInfoByForm',
         method: 'post',
         data:data
       })
@@ -45,7 +45,7 @@ api.queryAbilityInfoByParentId = function(data,page){
 
 api.queryAbilityInfoByParentId = function(data,page){
     return request({
-        url: '/abilityInfo/queryAbilityInfoByParentId',
+        url: '/lamp/electron/abilityInfo/queryAbilityInfoByParentId',
         method: 'post',
         data:data
       })

@@ -66,7 +66,7 @@ public class EntityUtils {
 		List<JSONObject> jsonList = new ArrayList<>(abilityInfoList.size());
 		for (AbilityInfo abilityInfo : abilityInfoList) {
 			JSONObject json = (JSONObject) JSONObject.toJSON(abilityInfo);
-			json.putAll(JSON.parseObject(abilityInfo.getAiData()));
+			json.putAll(JSON.parseObject(abilityInfo.getAiData().toString()));
 			jsonList.add(json);
 		}
 		return jsonList;

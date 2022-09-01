@@ -2,7 +2,7 @@ import SimpleModeClass from '../../simpleMode'
 import abilityModel from '../abilityModel'
 
 var simpleMode = new SimpleModeClass("loadBalancing");
-
+simpleMode.primaryKey(abilityModel.primaryKey())
 simpleMode.setRequestInfo(abilityModel.requestInfos());
 simpleMode.afterSupply(abilityModel.afterSupply());
 simpleMode.beforesSupply(abilityModel.beforeSupply());

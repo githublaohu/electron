@@ -27,6 +27,7 @@ public enum AbilityScope {
 	SURROUND("","",false),
 	CONFIG("配置",""),
 	REGISTER("注册","可以注册实例信息，静态资源"),
+	INVOK("执行","执行调用"),
 	RESULT("结果处理",""),
 	;
 	

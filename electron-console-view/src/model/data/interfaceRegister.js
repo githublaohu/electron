@@ -8,11 +8,12 @@ simpleMode.addModelRequestInfo("/userInfo/addMode");
 simpleMode.updateModelRequestInfo("/userInfo/queryMode");
 simpleMode.queryFormModelRequestInfo("/lamp/electron/abilityInfo/queryAbilityInfoByForm");
 
-var beforeSupply = [];
+var beforeSupply = []; 
 
 var aiId = simpleMode.getDataModeBehaviorBuild();
 
 aiId.title("能力id").key("aiId").valueExpression("");
+simpleMode.primaryKey(aiId);
 beforeSupply.push(aiId);
 
 var aiParentId = simpleMode.getDataModeBehaviorBuild();

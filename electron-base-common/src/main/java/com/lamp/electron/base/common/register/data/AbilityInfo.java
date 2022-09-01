@@ -50,7 +50,7 @@ public class AbilityInfo extends BaseEntity {
 	/**
 	 * 能力数据
 	 */
-	private String aiData;
+	private Object aiData;
 
 	/**
 	 * 能力说明

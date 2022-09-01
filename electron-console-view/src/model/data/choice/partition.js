@@ -2,7 +2,7 @@ import SimpleModeClass from '../../simpleMode'
 import abilityModel from '../abilityModel'
 
 var simpleMode = new SimpleModeClass("partition");
-
+simpleMode.primaryKey(abilityModel.primaryKey())
 simpleMode.setRequestInfo(abilityModel.requestInfos());
 simpleMode.afterSupply(abilityModel.afterSupply());
 simpleMode.beforesSupply(abilityModel.beforeSupply());
@@ -24,7 +24,7 @@ simpleMode.dataModeBehaviorBuild().title("是否是静态资源").key("isResourc
 
 var slaveSimpleMode = new SimpleModeClass("partitionInfo");
 
-
+slaveSimpleMode.primaryKey(abilityModel.primaryKey())
 slaveSimpleMode.setRequestInfo(abilityModel.requestInfos());
 slaveSimpleMode.afterSupply(abilityModel.afterSupply());
 slaveSimpleMode.beforesSupply(abilityModel.beforeSupply());

@@ -2,7 +2,7 @@ import axios from '@/common/utils/request'
 
 
 
-export function request(requestInfo) {
+export function httpRequest(requestInfo) {
     return axios.request(requestInfo)
 }
 

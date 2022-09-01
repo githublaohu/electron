@@ -3,6 +3,7 @@ import abilityModel from '../abilityModel'
 
 var simpleMode = new SimpleModeClass("errorResult");
 
+simpleMode.primaryKey(abilityModel.primaryKey())
 simpleMode.setRequestInfo(abilityModel.requestInfos());
 simpleMode.afterSupply(abilityModel.afterSupply());
 simpleMode.beforesSupply(abilityModel.beforeSupply());

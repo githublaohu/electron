@@ -164,7 +164,19 @@
               
                 </el-drawer>
         </el-drawer>
-
+        <el-drawer title="子项详情" :visible.sync="slaveModel.queryModel.isVisible" :direction="direction" size="30%">
+                <el-row>
+                        <el-col :span="8">
+                                <div class="filter-input">
+                                        <div v-for="(item , index) in slaveModel.queryModel.dataModeBehavior" :key="index">
+                                                <div class="filter-input" >
+                                                        <span>{{item.__title}}：{{slaveModel.queryModel.formData[item.__key]}}</span>
+                                                </div>
+                                        </div>
+                                </div>
+                        </el-col>
+                </el-row>
+        </el-drawer >
         </div>
 </template>
 

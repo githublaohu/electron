@@ -54,32 +54,32 @@ updateTime.title("修改时间").key("update_time").isColumn().isHide(true).addB
         .updateBehavior().isDisabled().dataModeBehaviorBuild();
 afterSupply.push(updateTime);
 
-
-var hierarchyIntercept = SimpleModeClass.HierarchyIntercept()
-
 var requestInfos = [];
 var requestInfo = simpleMode.getRequestInfo();
 requestInfo.modelName = "addModel";
-requestInfo.url = "/abilityInfo/insertAbilityInfo";
-requestInfo.dataIntercept = hierarchyIntercept;
+requestInfo.url = "/lamp/electron/abilityInfo/insertAbilityInfo";
 requestInfos.push(requestInfo);
 
 requestInfo = simpleMode.getRequestInfo();
 requestInfo.modelName = "updateModel";
-requestInfo.url = "";
-requestInfo.dataIntercept = hierarchyIntercept;
+requestInfo.url = "/lamp/electron/abilityInfo/updateAbilityInfo";
 requestInfos.push(requestInfo);
 
 requestInfo = simpleMode.getRequestInfo();
 requestInfo.modelName = "queryFormModel";
-requestInfo.url = "/abilityInfo/queryAbilityInfoByForm";
-requestInfo.dataIntercept = hierarchyIntercept;
+requestInfo.url = "/lamp/electron/abilityInfo/queryAbilityInfoByForm";
 requestInfos.push(requestInfo);
+
+requestInfo = simpleMode.getRequestInfo();
+requestInfo.modelName = "deleteModel";
+requestInfo.url = "/lamp/electron/abilityInfo/deleteAbilityInfo";
+
 
 function AbilityModel(afterSupplyArray,beforeSupplyArray){
     this.__afterSupply = afterSupplyArray;
     this.__beforeSupply = beforeSupplyArray;
     this.__requestInfos;
+    this.__primaryKey;
 
     this.__clone = function(cloniyc){
         var newClone = []
@@ -101,9 +101,13 @@ function AbilityModel(afterSupplyArray,beforeSupplyArray){
         return  this.__clone(this.__requestInfos);
        // return  this.__clone(this.__requestInfos);
     }
+    this.primaryKey = function(){
+        return this.__primaryKey.clone();
+    }
 }
 
 var abilityModel = new AbilityModel(afterSupply , beforeSupply);
 
 abilityModel.__requestInfos =  requestInfos;
+abilityModel.__primaryKey = aiId
 export default  abilityModel;

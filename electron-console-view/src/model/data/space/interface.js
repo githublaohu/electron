@@ -4,7 +4,7 @@ import SimpleModeClass from '../../simpleMode'
 var simpleMode = new SimpleModeClass("interface");
 
 
-simpleMode.queryFormModelRequestInfo("/instanceAndInterface/queryNodeBaseListByFrom");
+simpleMode.queryFormModelRequestInfo("/lamp/electron/instanceAndInterface/queryNodeBaseListByFrom");
 
 simpleMode.closeAdd();
 simpleMode.closeUpdate();
