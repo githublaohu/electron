@@ -31,7 +31,7 @@ function ViewModel(viewName) {
 
     this.activationModel = new ModeBehavior("activation",viewName,this);
 
-    this.primaryKey;
+    this.primaryKey = null;
 
     this.tableView = new TableView();
 
@@ -47,7 +47,7 @@ function ViewModel(viewName) {
 
     this.slaveName;
 
-    this.slaveModel;
+    this.slaveModel = null;
 
     this.vue = function(vue){
         this.__vue = vue ;
@@ -72,7 +72,9 @@ function ViewModel(viewName) {
         viewModel.requestModel = this.requestModel;
         viewModel.slaveName = this.slaveName;
         viewModel.bindingView= this.bindingView.clone();
-        viewModel.primaryKey = this.primaryKey.clone();
+        if (this.primaryKey != null){
+         viewModel.primaryKey = this.primaryKey.clone();
+        }
         if( this.slaveModel  != null){
             viewModel.slaveModel = this.slaveModel.clone();
         }

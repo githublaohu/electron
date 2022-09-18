@@ -30,7 +30,7 @@ public class AlarmAbility extends AbstractChainAbility<Alarm> {
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
-		
+		// 发RocketMQ
 		return null;
 	}
 

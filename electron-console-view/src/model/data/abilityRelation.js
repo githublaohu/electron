@@ -4,9 +4,9 @@ import modelManage from '../modelManage'
 
 var simpleMode = new SimpleModeClass("abilityRelation");
 
-simpleMode.addModelRequestInfo("/abilityRelation/bindAbilityRelation");
-simpleMode.updateModelRequestInfo("/abilityRelation/unbindAbilityRelation");
-simpleMode.queryFormModelRequestInfo("/abilityRelation/queryAbilityRelationListByOrganizationId");
+simpleMode.addModelRequestInfo("/lamp/electron/abilityRelation/bindAbilityRelation");
+simpleMode.updateModelRequestInfo("/lamp/electron/abilityRelation/unbindAbilityRelation");
+simpleMode.queryFormModelRequestInfo("/lamp/electron/abilityRelation/queryAbilityRelationListByOrganizationId");
 
 simpleMode.closeUpdate();
 simpleMode.closeQuery();

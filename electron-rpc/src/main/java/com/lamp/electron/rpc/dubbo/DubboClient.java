@@ -14,6 +14,7 @@ package com.lamp.electron.rpc.dubbo;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.service.GenericService;
 
 import com.lamp.electron.base.common.invoker.ElectronRequest;
@@ -56,7 +57,7 @@ public class DubboClient extends AbstractRpcBase implements Invoker {
 				interfaceInfo.getParameterNameArray(), parameters);
 		future.whenComplete((retValue, exception) -> {
 			// TODO electronResponse 没有创建 需要创建
-			this.callback(electronRequest, electronRequest.electronResponse(Objects.isNull(exception)?HttpResponseStatus.OK:HttpResponseStatus.INTERNAL_SERVER_ERROR, null, retValue, exception), invoker);
+			this.callback(electronRequest, electronRequest.electronResponse(Objects.isNull(exception)?HttpResponseStatus.OK:HttpResponseStatus.INTERNAL_SERVER_ERROR, RpcContext.getContext().getAttachments(), retValue, exception), invoker);
 		});
 		return ElectronResponse.ANSY_RESPONSE;
 	}

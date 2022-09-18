@@ -13,6 +13,7 @@ import com.lamp.electron.rpc.api.RpcHandle;
 
 public class InterfacesClient implements Invoker{
 
+	
 	private RpcHandle rpcHandle;
 	
 	public InterfacesClient( NetworkAddress networkAddress, RpcHandle rpcHandle,
@@ -22,8 +23,9 @@ public class InterfacesClient implements Invoker{
 	
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
-
-		return null;
+		
+		
+		return ElectronResponse.ANSY_RESPONSE;
 	}
 	
 	

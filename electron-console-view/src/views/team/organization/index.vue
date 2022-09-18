@@ -34,7 +34,7 @@ export default {
       default: null
     },
     view: {
-      type: String,
+      type: Object,
       default: null
     }
   },

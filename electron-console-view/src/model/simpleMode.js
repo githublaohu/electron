@@ -320,6 +320,7 @@ function Mode(viewName) {
     this.createDataModeBehavior = function (behavior, modeBehavior) {
         if(behavior == null || behavior == undefined){
             console.log(modeBehavior);
+            return;
         }
         if(behavior.isUser == false){
             return;
