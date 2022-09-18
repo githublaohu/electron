@@ -16,11 +16,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
@@ -108,17 +104,19 @@ public class DefaultRegisterFactory implements RegisterFactory{
 	@Override
 	@SuppressWarnings("unchecked")
 	public void createMonitorObjectTo(List<RegisterServer<?>> registerServerList) throws Exception {
-		List<RegisterServer<Object>> list = new ArrayList<>();
-		registerServerList.forEach(t -> list.add( (RegisterServer<Object>)t) );
-		createMonitorObject(list, this.register, this.prefix);
+		int len = registerServerList.size();
+		if (len > 0){
+			List<RegisterServer<Object>> list = new ArrayList<>(len);
+			registerServerList.forEach(t -> list.add( (RegisterServer<Object>)t) );
+			createMonitorObject(list, this.register, this.prefix);
+		}
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void createMonitorObject(RegisterServer<?> registerServerList) throws Exception {
-		List<RegisterServer<Object>> list = new ArrayList<>();
-		list.add((RegisterServer<Object>) registerServerList);
-		createMonitorObject(list, this.register, this.prefix);
+		List<RegisterServer<Object>> services= Collections.singletonList((RegisterServer<Object>) registerServerList);
+		createMonitorObject(services, this.register, this.prefix);
 	}
 
 	@Override
