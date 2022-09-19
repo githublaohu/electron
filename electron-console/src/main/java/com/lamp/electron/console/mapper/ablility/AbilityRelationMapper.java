@@ -55,7 +55,7 @@ public interface AbilityRelationMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "arId", keyColumn = "ar_id")
 	@Insert({ INSERT_SQL,
 			"(ai_id,ai_name,ability_type_enum,organization_id,organization_name,organization_type_enum,protocel_config_enum,ar_explain)",
-			"values(#{aiId},#{aiName},#{abilityTypeEnum},#{organizationId},#{organizationName},#{organizationTypeEnum},#{protocelConfigEnum},#{arExplain})" })
+			"values(#{aiId},#{aiName},#{abilityTypeEnum},#{organizationId},#{organizationName},#{organizationTypeEnum},#{protocolConfigEnum},#{arExplain})" })
 	public Integer insertAbilityRelation(AbilityRelation abilityRelation);
 
 }
