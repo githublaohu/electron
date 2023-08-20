@@ -72,7 +72,7 @@ public class OrganizationServiceImpl implements OrganizationInfoService {
 	}
 	
 	@Override
-	public OrganizationInfo queryOrganizationInfoByUiId(OrganizationInfo organizationInfo) {
+	public OrganizationInfo queryOrganizationInfoByOiId(OrganizationInfo organizationInfo) {
 		return organizationMapper.queryOrganizationInfoById(organizationInfo);
 	}
 

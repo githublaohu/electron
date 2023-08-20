@@ -16,7 +16,7 @@ import java.util.List;
 import com.lamp.electron.console.entity.user.UserInfo;
 import com.lamp.electron.console.entity.user.UserLoginRecord;
 
-public interface UserInfoServce {
+public interface UserInfoService {
 
 
 	/**

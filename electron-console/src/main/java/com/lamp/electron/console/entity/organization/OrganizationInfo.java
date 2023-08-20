@@ -21,6 +21,8 @@ import com.lamp.electron.console.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Map;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class OrganizationInfo extends BaseEntity {
@@ -53,7 +55,7 @@ public class OrganizationInfo extends BaseEntity {
 	/**
 	 * 机构标签
 	 */
-	private String oiLabel;
+	private String oiTag;
 
 	/**
 	 * 组织说明

@@ -54,8 +54,9 @@ public class NodeBase extends RegisterBase implements NetworkAddress {
 	
 	private Invoker invoker;
 	
-	private String gaterDate;
+	private String gatherData;
 
+	//todo 有Getter不需要下面几个方法
 
 	@Override
 	public String networkAddress() {

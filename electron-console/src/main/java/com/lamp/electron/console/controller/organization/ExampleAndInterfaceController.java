@@ -32,7 +32,7 @@ public class ExampleAndInterfaceController {
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseById")
@@ -42,7 +42,7 @@ public class ExampleAndInterfaceController {
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseListByOiId")
@@ -52,7 +52,7 @@ public class ExampleAndInterfaceController {
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryNodeBaseListByFrom")
@@ -63,7 +63,7 @@ public class ExampleAndInterfaceController {
 	/**
 	 * 直接读etcd
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryOnLineExampleByOiName")
@@ -74,7 +74,7 @@ public class ExampleAndInterfaceController {
 	/**
 	 * 直接读etcd
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	@PostMapping("/queryOnLineCodeExample")

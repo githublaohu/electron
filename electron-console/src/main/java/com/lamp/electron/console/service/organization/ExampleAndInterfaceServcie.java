@@ -27,7 +27,7 @@ public interface ExampleAndInterfaceServcie {
 
 	/**
 	 * 修改
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public Integer updateNodeBase(InterfaceInfo interfaceInfo);
@@ -37,21 +37,21 @@ public interface ExampleAndInterfaceServcie {
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public NodeBase queryNodeBaseById(InterfaceInfo interfaceInfo);
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public List<NodeBase> queryNodeBaseListByOiId(InterfaceInfo interfaceInfo);
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public List<NodeBase> queryNodeBaseListByFrom(InterfaceInfo interfaceInfo);

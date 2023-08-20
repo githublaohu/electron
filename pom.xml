@@ -36,7 +36,7 @@
 		<jetcd.vision>0.5.4</jetcd.vision>
 		<consul.vision>1.4.5</consul.vision>
 		<eureka.vision>1.10.7</eureka.vision>
-		<lombok.version>1.18.0</lombok.version>
+		<lombok.version>1.18.28</lombok.version>
 		<revision>0.0.1-SNAPSHOT</revision>
 	</properties>
 

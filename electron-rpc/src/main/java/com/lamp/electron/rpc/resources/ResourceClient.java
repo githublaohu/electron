@@ -25,6 +25,7 @@ public class ResourceClient implements Invoker {
 	
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
+		//todo 空实现？ 没有继承AbstractRpcBase
 		return this.electronResponse;
 	}
 

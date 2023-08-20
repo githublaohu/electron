@@ -142,7 +142,7 @@ public abstract class AbstractGather {
 		exampleInfo.setProtocol(protocol);
 		exampleInfo.setVersion(electronProperties.getVersion());
 		exampleInfo.setOrganizationTypeEnum(OrganizationTypeEnum.EXAMPLE);
-		exampleInfo.setGaterDate(new Date().toString());
+		exampleInfo.setGatherData(new Date().toString());
 		ExampleRegister exampleRegister = registerServerFocusCall.createExampleRegister();
 		exampleRegister.register(exampleInfo);
 	}

@@ -31,14 +31,14 @@ import com.lamp.electron.console.entity.user.UserInfo;
 import com.lamp.electron.console.entity.user.UserLoginRecord;
 import com.lamp.electron.console.model.dto.UserBaseDTO;
 import com.lamp.electron.console.security.SessionFactory;
-import com.lamp.electron.console.service.user.UserInfoServce;
+import com.lamp.electron.console.service.user.UserInfoService;
 
 @RestController
 @RequestMapping("/userOperation")
 public class UserOperationController {
 
 	@Autowired
-	private UserInfoServce userInfoSerice;
+	private UserInfoService userInfoSerice;
 
 	/**
 	 * 目前只有账户密码登录
@@ -112,7 +112,7 @@ public class UserOperationController {
 	/**
 	 * 直接修改密码
 	 * 
-	 * @param userInfo
+	 * @param userBaseDTO
 	 * @return
 	 */
 	@PostMapping("/changePassword")

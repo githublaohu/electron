@@ -12,6 +12,7 @@
 package com.lamp.electron.console.controller.user;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -24,14 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lamp.electron.console.entity.user.UserInfo;
 import com.lamp.electron.console.entity.user.UserInfo.InsertUserInfoByPassword;
-import com.lamp.electron.console.service.user.UserInfoServce;
+import com.lamp.electron.console.service.user.UserInfoService;
 
 @RestController
 @RequestMapping("/userInfo")
 public class UserInfoController {
 
 	@Autowired
-	private UserInfoServce userInfoSerice;
+	private UserInfoService userInfoSerice;
 
 	@PostMapping("/insertUserInfoByPassword")
 	public void insertUserInfoByPassword(@RequestBody @Validated(InsertUserInfoByPassword.class) UserInfo userInfo) {
@@ -43,6 +44,7 @@ public class UserInfoController {
 
 	}
 
+	@PostMapping("/insertUserInfoByEmail")
 	public void insertUserInfoByEmail(UserInfo userInfo) {
 		// 创建链接地址
 		String uiSalt = UUID.randomUUID().toString().replace("-", "") + userInfo.getUiName().substring(2, 3);
@@ -69,16 +71,28 @@ public class UserInfoController {
 	 */
 	@PostMapping("/updateUserInfoByUiId")
 	public void updateUserInfoByUiId(@RequestBody UserInfo userInfo) {
+		UserInfo newUserInfo = userInfoSerice.queryUserInfoByLogin(userInfo);
+		if (Objects.isNull(newUserInfo)) {
+
+		}
 
 	}
 
 	@PostMapping("/queryUserInfoById")
 	public UserInfo queryUserInfoById(@RequestBody UserInfo userInfo) {
-		return userInfoSerice.queryUserInfoByUiId(userInfo);
+		UserInfo queryUserInfo = userInfoSerice.queryUserInfoByUiId(userInfo);
+		if (Objects.isNull(queryUserInfo)) {
+
+		}
+		return queryUserInfo;
 	}
 
 	@PostMapping("/queryUserInfoByForm")
 	public List<UserInfo> queryUserInfoByForm(@RequestBody UserInfo userInfo) {
-		return userInfoSerice.queryUserInfoByForm(userInfo);
+		List<UserInfo> queryUserInfos = userInfoSerice.queryUserInfoByForm(userInfo);
+		if (Objects.isNull(queryUserInfos) || queryUserInfos.size() < 1) {
+
+		}
+		return queryUserInfos;
 	}
 }

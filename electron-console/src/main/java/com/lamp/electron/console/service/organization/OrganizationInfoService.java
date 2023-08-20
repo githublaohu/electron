@@ -25,7 +25,7 @@ public interface OrganizationInfoService {
 	 * @param organizationInfo
 	 * @return
 	 */
-	OrganizationInfo queryOrganizationInfoByUiId(OrganizationInfo organizationInfo);
+	OrganizationInfo queryOrganizationInfoByOiId(OrganizationInfo organizationInfo);
 	
 	/**
 	 * 查询下属组织
