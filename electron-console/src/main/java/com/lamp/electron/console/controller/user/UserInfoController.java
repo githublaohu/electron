@@ -38,7 +38,7 @@ public class UserInfoController {
 	public void insertUserInfoByPassword(@RequestBody @Validated(InsertUserInfoByPassword.class) UserInfo userInfo) {
 		String uiSalt = UUID.randomUUID().toString().replace("-", "") + userInfo.getUiName().substring(2, 3);
 		userInfo.setUiSalt(uiSalt.substring(3));
-		String uiSaltPassword = DigestUtils.md5Hex(uiSalt + userInfo.getUiPassword());
+		String uiSaltPassword = DigestUtils.md5Hex(userInfo.getUiSalt() + userInfo.getUiPassword());
 		userInfo.setUiSaltPassword(uiSaltPassword);
 		userInfoSerice.insertUserInfo(userInfo);
 
@@ -84,6 +84,7 @@ public class UserInfoController {
 		if (Objects.isNull(queryUserInfo)) {
 
 		}
+		queryUserInfo.setUiPassword("");
 		return queryUserInfo;
 	}
 

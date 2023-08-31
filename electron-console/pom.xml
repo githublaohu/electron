@@ -7,13 +7,14 @@
 	<parent>
 		<groupId>cn.lampup</groupId>
 		<artifactId>electron</artifactId>
-		<version>${revision}</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>electron</groupId>
 	<artifactId>electron-console</artifactId>
-	<name>console</name>
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
@@ -21,7 +22,7 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>electron</groupId>
+			<groupId>cn.lampup</groupId>
 			<artifactId>electron-common</artifactId>
 			<exclusions>
 				<exclusion>
@@ -63,7 +64,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.2.6</version>
+			<version>1.2.18</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.githublaohu</groupId>
@@ -122,7 +123,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<fork>true</fork>
+					<!--3.0.0版本无fork配置-->
 				</configuration>
 			</plugin>
 		</plugins>

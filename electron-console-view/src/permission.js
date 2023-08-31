@@ -18,6 +18,7 @@ router.beforeEach(async(to, from, next) => {
       if (store.getters.roles.length === 0) {
         try {
           await store.dispatch('GetInfo')
+          console.log('Print log in permission.js')
           // 判断当前用户是否已经设置路由
           getRouterData(router, to)
           next()

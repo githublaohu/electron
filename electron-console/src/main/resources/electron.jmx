@@ -40,8 +40,8 @@
             <stringProp name="Argument.value">9991</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="romeee" elementType="Argument">
-            <stringProp name="Argument.name">romeee</stringProp>
+          <elementProp name="remote" elementType="Argument">
+            <stringProp name="Argument.name">remote</stringProp>
             <stringProp name="Argument.value">120.78.148.188</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -62,15 +62,15 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="账户密码登录" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="账户密码登录" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;uiName&quot;: &quot;1111111&quot;,&#xd;
-    &quot;uiPassword&quot;:&quot;1231111&quot;&#xd;
+    &quot;uiName&quot;: &quot;electronAdmin&quot;,&#xd;
+    &quot;uiPassword&quot;:&quot;electronAdmin&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -264,8 +264,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;uiName&quot;: &quot;1111111&quot;,&#xd;
-    &quot;uiPassword&quot;:&quot;1231111&quot;&#xd;
+    &quot;uiName&quot;: &quot;electronAdmin&quot;,&#xd;
+    &quot;uiPassword&quot;:&quot;electronAdmin&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -515,7 +515,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询自己的组织" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询自己的组织" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>

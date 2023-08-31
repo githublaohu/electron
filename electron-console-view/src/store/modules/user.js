@@ -58,6 +58,7 @@ const user = {
 				uiId: state.userId,
 			}).then(res => {
 			  const data = res.data
+        console.log('user data is => ',data)
 			  // if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
 			  //   commit('SET_ROLES', data.roles)
 			  // } else {
