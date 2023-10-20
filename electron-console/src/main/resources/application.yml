@@ -15,7 +15,7 @@ spring:
     name: lamp-electron
   datasource:
     name: vp_coupon
-    url: jdbc:mysql://120.78.148.188:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://101.42.236.13:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
     username: lampup
     password: Lampup@123
     # using druid data source
