@@ -3,6 +3,7 @@ import abilityModel from '../abilityModel'
 
 var simpleMode = new SimpleModeClass("conditionRouter");
 
+simpleMode.primaryKey(abilityModel.primaryKey())
 simpleMode.setRequestInfo(abilityModel.requestInfos());
 simpleMode.afterSupply(abilityModel.afterSupply());
 simpleMode.beforesSupply(abilityModel.beforeSupply());
@@ -11,7 +12,7 @@ simpleMode.closeUpdate();
 
 var slaveSimpleMode = new SimpleModeClass("conditionInfo");
 
-
+slaveSimpleMode.primaryKey(abilityModel.primaryKey())
 slaveSimpleMode.setRequestInfo(abilityModel.requestInfos());
 slaveSimpleMode.afterSupply(abilityModel.afterSupply());
 slaveSimpleMode.beforesSupply(abilityModel.beforeSupply());

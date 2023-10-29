@@ -19,6 +19,7 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 
 public class InvokingAbility extends AbstractChainAbility<Invoking> {
 
+	@Override
 	public boolean isNotAbilityObject() {
 		return false;
 	}

@@ -16,15 +16,15 @@ api.insertAbilityInfo = function(data){
         url: '/lamp/electron/abilityInfo/insertAbilityInfo',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.deleteAbilityInfo = function(data){
     return request({
-        url: '/lamp/electron/abilityInfo/deleteAbilityInfo',
+        url: '/abilityInfo/deleteAbilityInfo',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoById = function(data){
@@ -32,7 +32,7 @@ api.queryAbilityInfoById = function(data){
         url: '/lamp/electron/abilityInfo/queryAbilityInfoById',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoByParentId = function(data,page){
@@ -40,7 +40,7 @@ api.queryAbilityInfoByParentId = function(data,page){
         url: '/lamp/electron/abilityInfo/queryAbilityInfoByForm',
         method: 'post',
         data:data
-      }) 
+      })
 }
 
 api.queryAbilityInfoByParentId = function(data,page){
@@ -48,5 +48,5 @@ api.queryAbilityInfoByParentId = function(data,page){
         url: '/lamp/electron/abilityInfo/queryAbilityInfoByParentId',
         method: 'post',
         data:data
-      }) 
+      })
 }

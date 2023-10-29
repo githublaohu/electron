@@ -49,7 +49,7 @@ public class UserInfoController {
 		// 创建链接地址
 		String uiSalt = UUID.randomUUID().toString().replace("-", "") + userInfo.getUiName().substring(2, 3);
 		userInfo.setUiSalt(uiSalt);
-		String uiSaltPassword = DigestUtils.md5Hex(uiSalt + userInfo.getUiEmail());
+		String uiSaltPassword = DigestUtils.md5Hex(userInfo.getUiSalt() + userInfo.getUiEmail());
 		userInfo.setUiSaltPassword(uiSaltPassword);
 		userInfoSerice.insertUserInfo(userInfo);
 	}

@@ -20,6 +20,11 @@ import com.lamp.electron.base.common.perception.Perception;
 import com.lamp.electron.rpc.api.AbstractRpcBase;
 import com.lamp.electron.rpc.api.RpcHandle;
 
+/**
+ * 等 ledis
+ * @author laohu
+ *
+ */
 public class RedisClient extends AbstractRpcBase implements Invoker{
 
 	public RedisClient(Perception<RpcRequestConfig> perception, RpcHandle rpcHandle) {

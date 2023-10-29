@@ -12,19 +12,20 @@
 package com.lamp.electron.core.ability.security;
 
 import com.lamp.electron.base.common.ability.Seckill;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ResultAbility;
 
-@AbiltiyAction(abilityType = AbilityType.SECKILL)
+@AbilityAction(abilityType = AbilityTypeEnum.SEC_KILL)
 public class SeckillAbility extends AbstractChainAbility<Seckill> implements ResultAbility {
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
+		// 去redis 减一 ，如果返回 大于0 ，就可以，小鱼0就失败
 		return null;
 	}
 

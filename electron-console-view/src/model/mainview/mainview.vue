@@ -135,7 +135,7 @@
                                 </el-table>
                         </el-col>
                 </el-row>
-                <el-drawer  v-if="slaveModel" title="添加" :visible.sync="slaveModel.addModel.isVisible" :direction="direction" :append-to-body="true">
+                <el-drawer  v-if="slaveModel != null" title="添加" :visible.sync="slaveModel.addModel.isVisible" :direction="direction" :append-to-body="true">
                         <el-form :rules="slaveModel.addModel.rules" :model="slaveModel.addModel.formData" :ref="slaveModel.addModel.refsName"  size="small" label-width="100px" label-position="left" >
                                 <div  v-for="(item , index) in slaveModel.addModel.dataModeBehavior" :key="index"  v-if ="item.__isHide == false">
                                         <div v-if="item.__if ==null">
@@ -164,7 +164,19 @@
               
                 </el-drawer>
         </el-drawer>
-
+        <el-drawer title="子项详情" v-if="slaveModel != null" :visible.sync="slaveModel.queryModel.isVisible" :direction="direction" size="30%">
+                <el-row>
+                        <el-col :span="8">
+                                <div class="filter-input">
+                                        <div v-for="(item , index) in slaveModel.queryModel.dataModeBehavior" :key="index">
+                                                <div class="filter-input" >
+                                                        <span>{{item.__title}}：{{slaveModel.queryModel.formData[item.__key]}}</span>
+                                                </div>
+                                        </div>
+                                </div>
+                        </el-col>
+                </el-row>
+        </el-drawer >
         </div>
 </template>
 

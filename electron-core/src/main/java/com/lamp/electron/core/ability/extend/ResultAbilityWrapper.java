@@ -15,6 +15,9 @@ import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
 
+/**
+ * @author jellly
+ */
 public class ResultAbilityWrapper extends AbstractChainAbilityWrapper {
 
 	private ResultAbility resultAbility;

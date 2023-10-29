@@ -16,10 +16,14 @@ import com.lamp.electron.register.api.RegisterModel;
 import com.lamp.electron.register.api.RegisterObjectFactory;
 import com.lamp.electron.register.api.RegisterServer;
 
+/**
+ * Eureka注册工厂
+ * @author jellly
+ */
 public class EurekaRegisterObjectFactory implements RegisterObjectFactory {
 
 	@Override
-	public String registerCentreName() {
+	public String registerCenterName() {
 		return "eureka";
 	}
 

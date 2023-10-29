@@ -23,7 +23,7 @@ api.queryOrganizationInfoByUserId = function(data,page){
 
 /**
  * 通过id查询组织信息
- * @param {*} data 
+ * @param {*} data
  */
 api.queryOrganizationInfoByOiId = function(data) {
     return request({
@@ -35,7 +35,7 @@ api.queryOrganizationInfoByOiId = function(data) {
 
   /**
    * 查询下属组织
-   * @param {*} data 
+   * @param {*} data
    */
 api.queryOrganizationInfoByTypeAndSuperior = function(data) {
     return request({
@@ -51,7 +51,7 @@ api.queryOrganizationInfoByTypeAndSuperior = function(data) {
  */
 api.updateOwnerById = function(data) {
     return request({
-      url: '/lamp/electron/organization/updateOwnerById',
+      url: '/organization/updateOwnerById',
       method: 'post',
       data:data
     })
@@ -59,7 +59,7 @@ api.updateOwnerById = function(data) {
 
   /**
  * 修改组织说明
- * @param {} data 
+ * @param {} data
  */
 api.updateExplainById  = function(data){
     return request({
@@ -71,7 +71,7 @@ api.updateExplainById  = function(data){
 
   /**
  * 作废组织
- * @param {} data 
+ * @param {} data
  */
 api.deleteOrganizationById  = function(data){
     return request({
@@ -83,7 +83,7 @@ api.deleteOrganizationById  = function(data){
 
 /**
  * 添加组织
- * @param {} data 
+ * @param {} data
  */
 api.insertOrganizationInfo = function (data){
     return request({

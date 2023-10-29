@@ -36,7 +36,7 @@ public class CurrencyRegisterServer implements InvocationHandler {
 				if ("register".equals(method.getName())) {
 					registerModel.register(args[0]);
 				} else {
-					registerModel.unRegister(args[0]);
+					registerModel.deregister(args[0]);
 				}
 			}
 		} catch (Exception e) {

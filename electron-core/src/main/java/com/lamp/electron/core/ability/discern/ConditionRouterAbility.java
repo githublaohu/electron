@@ -19,8 +19,8 @@ import org.apache.commons.lang3.StringUtils;
 import com.lamp.electron.base.common.ability.ConditionRouter;
 import com.lamp.electron.base.common.ability.ConditionRouter.Condition;
 import com.lamp.electron.base.common.ability.ConditionRouter.Rewrite;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.DataSpot;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.core.ability.OverallSituationAbility;
@@ -31,11 +31,14 @@ import com.lamp.electron.core.ability.OverallSituationAbility;
  * @author laohu
  *
  */
-@AbiltiyAction(abilityType = AbilityType.CONDITIONROUTE)
+@AbilityAction(abilityType = AbilityTypeEnum.CONDITION_ROUTER)
 public class ConditionRouterAbility extends OverallSituationAbility<ConditionRouter> {
 
 	public String discern(ElectronRequest electronRequest) {
 		for (Entry<String, ConditionRouter> e : this.abilityDataMap.entrySet()) {
+			if (e.getValue().getConditions() == null) {
+				continue;
+			}
 			for (Condition condition : e.getValue().getConditions()) {
 				if (condition.getDataSpot() == DataSpot.URL) {
 					if (!electronRequest.path().startsWith(condition.getKey())) {

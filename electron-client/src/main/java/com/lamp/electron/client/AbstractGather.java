@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.lamp.electron.base.common.register.server.InstanceRegister;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,9 +28,8 @@ import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 import com.lamp.electron.base.common.enums.ProtocolEnum;
 import com.lamp.electron.base.common.metadate.TypeMetadate;
 import com.lamp.electron.base.common.register.RegisterServerFocusCall;
-import com.lamp.electron.base.common.register.data.ExampleInfo;
+import com.lamp.electron.base.common.register.data.InstanceInfo;
 import com.lamp.electron.base.common.register.data.InterfaceInfo;
-import com.lamp.electron.base.common.register.server.ExampleRegister;
 import com.lamp.electron.base.common.service.ServiceSign;
 
 public abstract class AbstractGather {
@@ -113,10 +113,10 @@ public abstract class AbstractGather {
 	private InterfaceInfo doCreateInterface(String path, Method method) {
 		InterfaceInfo interfaceInfo = new InterfaceInfo();
 		interfaceInfo.setClassName(method.getDeclaringClass().getName());
-		interfaceInfo.setServierSign(ServiceSign.getIdentification(method.getDeclaringClass()));
+		interfaceInfo.setServerSign(ServiceSign.getIdentification(method.getDeclaringClass()));
 		interfaceInfo.setMethodName(method.getName());
 		interfaceInfo.setPath(path);
-		interfaceInfo.setOrganizationEnglistName(electronProperties.getApplicationName());
+		interfaceInfo.setOrganizationEnglishName(electronProperties.getApplicationName());
 		interfaceInfo.setApplicationEnglishName(electronProperties.getApplicationName());
 		interfaceInfo.setApplicationName(electronProperties.getApplicationName());
 		interfaceInfo.setNetworkAddress(networkAddress);
@@ -132,18 +132,18 @@ public abstract class AbstractGather {
 			return;
 		}
 		registerServerFocusCall.createInterfaceRegister().batchRegister(interfaceInfoList);
-		ExampleInfo exampleInfo = new ExampleInfo();
-		exampleInfo.setApplicationEnglishName(electronProperties.getApplicationName());
-		exampleInfo.setApplicationName(electronProperties.getApplicationName());
-		exampleInfo.setName(electronProperties.getApplicationName());
-		exampleInfo.setNetworkAddress(networkAddress);
-		exampleInfo.setPort(port.toString());
-		exampleInfo.setRPCType(RPCType);
-		exampleInfo.setProtocol(protocol);
-		exampleInfo.setVersion(electronProperties.getVersion());
-		exampleInfo.setOrganizationTypeEnum(OrganizationTypeEnum.EXAMPLE);
-		exampleInfo.setGatherData(new Date().toString());
-		ExampleRegister exampleRegister = registerServerFocusCall.createExampleRegister();
-		exampleRegister.register(exampleInfo);
+		InstanceInfo instanceInfo = new InstanceInfo();
+		instanceInfo.setApplicationEnglishName(electronProperties.getApplicationName());
+		instanceInfo.setApplicationName(electronProperties.getApplicationName());
+		instanceInfo.setName(electronProperties.getApplicationName());
+		instanceInfo.setNetworkAddress(networkAddress);
+		instanceInfo.setPort(port.toString());
+		instanceInfo.setRPCType(RPCType);
+		instanceInfo.setProtocol(protocol);
+		instanceInfo.setVersion(electronProperties.getVersion());
+		instanceInfo.setOrganizationTypeEnum(OrganizationTypeEnum.INSTANCE);
+		instanceInfo.setGatherDate(new Date().toString());
+		InstanceRegister instanceRegister = registerServerFocusCall.createInstanceRegister();
+		instanceRegister.register(instanceInfo);
 	}
 }

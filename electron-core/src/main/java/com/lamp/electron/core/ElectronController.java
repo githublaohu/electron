@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.lamp.electron.base.common.register.ElectronPrefixFactory;
 import com.lamp.electron.base.common.register.data.ContainerInfo;
-import com.lamp.electron.base.common.register.server.CodeExampleRegister;
+import com.lamp.electron.base.common.register.server.CodeInstanceRegister;
 import com.lamp.electron.base.common.register.server.ContainerRegister;
 import com.lamp.electron.core.container.ContainerConfig;
 import com.lamp.electron.core.container.ElectronContainer;
@@ -42,7 +42,7 @@ public class ElectronController {
 	private ElectronConfig electronConfig;
 	
 	@SuppressWarnings("unused")
-	private CodeExampleRegister codeExampleRegister;
+	private CodeInstanceRegister codeInstanceRegister;
 	
 	@SuppressWarnings("unused")
 	private ContainerRegister containerRegister;
@@ -61,9 +61,9 @@ public class ElectronController {
 		ContainerInfoRegister containersRegister = new ContainerInfoRegister();
 		registerFactory.createMonitorObject(containersRegister);
 		// 实例注册
-		codeExampleRegister = registerFactory.createRegisterObject(CodeExampleRegister.class);
+		codeInstanceRegister = registerFactory.createRegisterObject(CodeInstanceRegister.class);
 		// 容器注册
-		containerRegister   = registerFactory.createRegisterObject(ContainerRegister.class);
+		containerRegister = registerFactory.createRegisterObject(ContainerRegister.class);
 		// 初始化报警功能
 		
 		
@@ -84,7 +84,7 @@ public class ElectronController {
 
 			}
 		} catch (Exception e) {
-			log.error("容器创建失败，容易信息是{}", containerConfig, e);
+			log.error("容器创建失败，容器信息是{}", containerConfig, e);
 		}
 	}
 
@@ -101,7 +101,7 @@ public class ElectronController {
 		}
 
 		@Override
-		public int unRegister(ContainerInfo t) {
+		public int deregister(ContainerInfo t) {
 
 			return 0;
 		}

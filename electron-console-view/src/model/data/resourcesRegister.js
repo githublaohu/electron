@@ -3,6 +3,7 @@ import abilityModel from './abilityModel'
 
 var simpleMode = new SimpleModeClass("resourcesRegister");
 
+simpleMode.primaryKey(abilityModel.primaryKey())
 simpleMode.setRequestInfo(abilityModel.requestInfos());
 simpleMode.afterSupply(abilityModel.afterSupply());
 simpleMode.beforesSupply(abilityModel.beforeSupply());
@@ -15,7 +16,7 @@ simpleMode.dataModeBehaviorBuild().title("Ico").key("faviconIco").isColumn().upd
 
 var slaveSimpleMode = new SimpleModeClass("resourcesInfo");
 
-
+slaveSimpleMode.primaryKey(abilityModel.primaryKey())
 slaveSimpleMode.setRequestInfo(abilityModel.requestInfos());
 slaveSimpleMode.afterSupply(abilityModel.afterSupply());
 slaveSimpleMode.beforesSupply(abilityModel.beforeSupply());

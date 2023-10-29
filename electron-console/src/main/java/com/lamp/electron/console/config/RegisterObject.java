@@ -50,21 +50,21 @@ public class RegisterObject {
 			// 创建默认容器
 			RegisterServerFocusCall registerServerFocusCall = new RegisterServerFocusCall(registerAddress,
 					EnvironmentalBase.DEFAULT_ENVIROMENTAL_NAME);
-			this.regisetServer(registerServerFocusCall);
+			this.registerServer(registerServerFocusCall);
 			prefixRegisterServerFocusCallMap.put(EnvironmentalBase.DEFAULT_ENVIROMENTAL_NAME, registerServerFocusCall);
 			// 读取所有容器
 			
 			
 			// 创建所有中心
 		} catch (Exception e) {
-
+			log.error("Register Server error,  {}", e);
 		}
 
 	}
 
-	private void regisetServer(RegisterServerFocusCall registerServerFocusCall) {
+	private void registerServer(RegisterServerFocusCall registerServerFocusCall) {
 		try {
-			registerServerFocusCall.regisetServer(registerServerList);
+			registerServerFocusCall.registerServer(registerServerList);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}

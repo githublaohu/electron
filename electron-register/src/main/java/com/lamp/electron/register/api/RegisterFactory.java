@@ -13,6 +13,10 @@ package com.lamp.electron.register.api;
 
 import java.util.List;
 
+/**
+ * 注册工厂
+ * @author jellly
+ */
 public interface RegisterFactory {
 
 	public <T> T createRegisterObject(Class<?> clazz) ;

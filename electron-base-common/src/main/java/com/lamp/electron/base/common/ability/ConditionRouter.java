@@ -13,14 +13,14 @@ package com.lamp.electron.base.common.ability;
 
 import java.util.List;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.DataSpot;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "条件路由",abiltiyScope=AbiltiyScope.DISCERN, overallSituation = true , childDataName = "conditions")
+@AbilityData(chinaName = "条件路由", abilityScope = AbilityScope.DISCERN, overallSituation = true , childDataName = "conditions")
 public class ConditionRouter {
 	
 	private List<Condition> conditions;
@@ -43,6 +43,6 @@ public class ConditionRouter {
 	}
 	
 	public enum Rewrite{
-		UNCHANGED,DETELE_KEY,REWRITE_KEY;
+		UNCHANGED, DELETE_KEY,REWRITE_KEY;
 	}
 }

@@ -35,10 +35,15 @@ public class AbilityRelationServiceImpl implements AbilityRelationService {
 
 	@Override
 	public Integer bindAbilityRelation(AbilityRelation abilityRelation) {
-		// 增加绑定次数
-
-		// 修改绑定
+		//  copy，增加绑定次数记录
 		if (Objects.nonNull(abilityRelation.getArId())) {
+			abilityRelation = abilityRelationMapper.queryAbilityRelationById(abilityRelation);
+			if (Objects.isNull(abilityRelation)) {
+				throw new RuntimeException("不存在该能力数据");
+			} else if (abilityRelation.getArRelationStatus() == 2) {
+				//已绑定
+				abilityRelationMapper.updateAbilityInfoStatus(abilityRelation, 1);
+			}
 			return abilityRelationMapper.copyAbilityRelation(abilityRelation);
 		}
 		// 上锁 实例上上锁
@@ -54,7 +59,7 @@ public class AbilityRelationServiceImpl implements AbilityRelationService {
 		// 修改绑定次数
 
 		// 修改绑定状态
-		return abilityRelationMapper.updateAbilityInfoStatus(abilityRelation);
+		return abilityRelationMapper.updateAbilityInfoStatus(abilityRelation, 2);
 	}
 
 	@Override

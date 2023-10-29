@@ -12,8 +12,8 @@
 package com.lamp.electron.core.ability.rpc;
 
 import com.lamp.electron.base.common.ability.ResourcesRegister;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.register.data.AbilityRelation;
 import com.lamp.electron.core.ability.OverallSituationAbility;
 import com.lamp.electron.core.manage.InterfaceManage;
@@ -25,7 +25,7 @@ import com.lamp.electron.core.manage.aware.InterfaceAware;
  * @author laohu
  *
  */
-@AbiltiyAction(abilityType = AbilityType.RESOURCESRESGISTER)
+@AbilityAction(abilityType = AbilityTypeEnum.RESOURCES_REGISTER)
 public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister> implements InterfaceAware {
 
 	String defaultPath;
@@ -35,7 +35,8 @@ public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister>
 		defaultPath = defaultPath.substring(0, defaultPath.lastIndexOf('/')) + "/resources";
 	}
 
-	protected void addBehavior(AbilityRelation abilityRelation, ResourcesRegister t, ResourcesRegister oldValue) {
+	@Override
+    protected void addBehavior(AbilityRelation abilityRelation, ResourcesRegister t, ResourcesRegister oldValue) {
 		
 		// 获得本地地址
 
@@ -56,6 +57,7 @@ public class ResourcesAbility extends OverallSituationAbility<ResourcesRegister>
 		// LongRangeWrapper
 	}
 
+	@Override
 	protected void deleteBehavior(AbilityRelation abilityRelation, ResourcesRegister t) {
 
 	}

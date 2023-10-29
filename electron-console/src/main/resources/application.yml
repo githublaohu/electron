@@ -4,7 +4,7 @@ server:
     context-path: "/lamp/electron"
  
 electron:
-  registerAddress: 127.0.0.1:2379
+  registerAddress: etcd://127.0.0.1:2379
 
 spring:
   servlet: 
@@ -15,7 +15,10 @@ spring:
     name: lamp-electron
   datasource:
     name: vp_coupon
-    url: jdbc:mysql://101.42.236.13:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+#    url: jdbc:mysql://127.0.0.1:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+#    username: root
+#    password: Ab123123@
+    url: jdbc:mysql://124.223.198.143:3306/electron?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
     username: lampup
     password: Lampup@123
     # using druid data source

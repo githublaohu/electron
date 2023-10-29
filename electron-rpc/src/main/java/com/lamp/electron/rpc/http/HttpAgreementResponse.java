@@ -21,12 +21,22 @@ import com.lamp.electron.rpc.api.AbstractAgreementResponse;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpHeaderValues;
+import io.netty.util.ReferenceCountUtil;
 
 public class HttpAgreementResponse extends AbstractAgreementResponse<ChannelHandlerContext>{
 
+	private FullHttpRequest fullHttpRequest;
+	
+	
+	public void setFullHttpRequest(FullHttpRequest fullHttpRequest) {
+		this.fullHttpRequest = fullHttpRequest;
+	}
+	
 	@Override
 	public void reply(ElectronResponse electronResponse, ElectronRequest electronRequest) {
+		ReferenceCountUtil.release(fullHttpRequest);
 		ChannelFuture	channelFuture= t.writeAndFlush(electronResponse.original());
 		if(Objects.isNull(electronRequest.data(DataSpot.HEADER, HttpHeaderValues.KEEP_ALIVE.toString()))) {
 			channelFuture.addListener(ChannelFutureListener.CLOSE);

@@ -3,7 +3,7 @@
 	<appender name="console"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level%logger{36} - %msg%n</pattern>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-6level%logger{36} - %msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -20,7 +20,8 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="com.lamp.electron.core.ability.ExecuteAbility" level="trace"/>
+<!--	<logger name="com.lamp.electron.core.ability.ExecuteAbility" level="trace"/>-->
+	<logger name="com.lamp.electron" level="debug" />
 	<root level="info">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />

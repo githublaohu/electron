@@ -11,6 +11,12 @@
  */
 package com.lamp.electron.core.ability.route;
 
+/**
+ * 灰度能力
+ * TODO
+ * @author jellly
+ */
 public class GrayScaleAbility {
 
+	
 }

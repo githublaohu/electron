@@ -12,6 +12,7 @@
 package com.lamp.electron.console.controller.ability;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ import com.lamp.electron.console.service.ability.AbilityInfoService;
 import com.lamp.electron.console.utils.EntityUtils;
 
 @RestController
-@RequestMapping("/abilityInfo")
+	@RequestMapping("/abilityInfo")
 public class AbilityInfoController {
 
 	@Autowired
@@ -56,7 +57,9 @@ public class AbilityInfoController {
 	
 	@PostMapping("/queryAbilityInfoByForm")
 	public Object queryAbilityInfoByForm(@RequestBody AbilityInfo abilityInfo) {
-		return abilityInfoService.queryAbilityInfoByType(abilityInfo);
+		List<AbilityInfo> list = abilityInfoService.queryAbilityInfoByType(abilityInfo);
+		//list.forEach(value -> value.setAiData(JSON.parseObject(value.getAiData().toString())));
+		return EntityUtils.abilityInfo(list);
 	}
 	
 	@PostMapping("/queryAbilityInfoByParentId")

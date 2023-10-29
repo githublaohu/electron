@@ -34,7 +34,7 @@ export default {
       default: null
     },
     view: {
-      type: String,
+      type: Object,
       default: null
     }
   },
@@ -255,7 +255,7 @@ export default {
               value: 'INTERFACE'
             }, {
               label: '接口',
-              value: 'EXAMPLE'
+              value: 'INSTANCE'
             }, {
               label: '实例接口',
               value: 'INTERFACE_EXAMPLE'

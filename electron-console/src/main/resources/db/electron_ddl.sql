@@ -1,3 +1,4 @@
+drop table if EXISTS  user_info;
 create table user_info(
     ui_id bigint  unsigned not null auto_increment,
     ui_name varchar(31) not null comment '用户名',
@@ -31,12 +32,15 @@ create table user_info(
     unique key unique_id_card_type(`ui_id_card`,`ui_id_type`)
 );
 
+-- 超级用户SQL语句
+
+
 create table ability_info(
     ai_id  bigint unsigned not null auto_increment,
     ai_parent_id  bigint unsigned not null default 0 comment '父id',
     organization_id bigint unsigned not null comment '组织id',
     organization_name  varchar(31) not null comment '组织名',
-    organizationType_enum varchar(31) not null comment '组织名',
+    organization_type_enum varchar(31) not null comment '组织名',
     ai_name varchar(31) not null default '' comment '策略名',
     ai_lable json not null default(json_array()) comment '策略标签',
     ai_ability_type varchar(31) not null comment '策略类型',
@@ -61,7 +65,7 @@ create table ability_relation(
     ai_name varchar(31) not null comment '动作名',
     organization_id bigint unsigned not null comment '组织id',
     organization_name  varchar(31) not null comment '组织名',
-    organization_type varchar(31) not null comment '组织名',
+    organization_type_enum varchar(31) not null comment '组织名',
     ability_type_enum varchar(31) not null comment '动作类型',
     protocel_config_enum varchar(31) not null comment '协议配置类型',
     ar_relation_status int not null default 1 comment '绑定关系[绑定，解绑，记录]',
@@ -120,11 +124,11 @@ create table organization_power(
     key index_organization_id(`organization_id`)
 );
 
-create table example_info(
+create table instance_info(
     id bigint unsigned not null auto_increment,
     application_id bigint unsigned not null comment '项目id',
-    application_english_name varchar(31) not null comment '项目英文', 
-    organization_type varchar(31) not null comment '组织类型[ API,实例 两个]',
+    application_english_name varchar(31) not null comment '项目英文',
+    organization_type_enum varchar(31) not null comment '组织类型[ API,实例 两个]',
     network_address int unsigned not null  default 0 comment '网络地址' ,
     port  int unsigned not null  default 0 comment '端口',
     protocol varchar(15) not null default '' comment '协议[http1.0，http2.0, dubbo, grpc......]',
@@ -144,8 +148,8 @@ create table example_info(
 create table interface_info(
     id bigint unsigned not null auto_increment,
     application_id bigint unsigned not null comment '项目id',
-    application_english_name varchar(31) not null comment '项目英文', 
-    organization_type varchar(31) not null comment '组织类型[ API,实例 两个]',
+    application_english_name varchar(31) not null comment '项目英文',
+    organization_type_enum varchar(31) not null comment '组织类型[ API,实例 两个]',
     networkAddress int unsigned not null  default 0 comment '网络地址' ,
     port  int unsigned not null  default 0 comment '端口',
     protocol varchar(15) not null default '' comment '协议[http1.0，http2.0, dubbo, grpc......]',
@@ -172,7 +176,7 @@ create table interface_info(
 -- 
 create  table statistic_info(
     id bigint unsigned not null auto_increment,
-    organization_type  varchar(15) not null comment '统计维度',
+    organization_type_enum  varchar(15) not null comment '统计维度',
     application_id bigint unsigned not null comment '项目id',
     application_english_name varchar(31) not null comment '项目英文', 
     organization_id bigint unsigned not null comment '组织id[ 项目，实例，]',

@@ -25,9 +25,11 @@ public class ResourcesRegisterAbility extends OverallSituationAbility<ResourcesR
 		this.interfaceManage = interfaceManage;
 	}
 
-	protected void addBehavior(ResourcesRegister t, ResourcesRegister oldValue) {
+	@Override
+    protected void addBehavior(ResourcesRegister t, ResourcesRegister oldValue) {
 	}
 
+	@Override
 	protected void deleteBehavior(ResourcesRegister t) {
 
 	}

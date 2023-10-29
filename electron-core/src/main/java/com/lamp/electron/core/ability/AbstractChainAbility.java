@@ -32,7 +32,7 @@ public abstract class AbstractChainAbility<T> extends AbstractAbility<T> impleme
 
 	protected Map<Long, T> abilityObjectMap;
 
-	protected void doAddAbilityObject(AbilityRelation abilityRelation, T abilityObject) {
+	protected void addAbilityObject(AbilityRelation abilityRelation, T abilityObject) {
 		if (abilityRelation.getAbilityTypeEnum().isManyBind()) {
 			if (Objects.isNull(abilityObjectMap)) {
 				abilityObjectMap = new ConcurrentHashMap<>();
@@ -44,6 +44,7 @@ public abstract class AbstractChainAbility<T> extends AbstractAbility<T> impleme
 		}
 	}
 
+	@Override
 	protected void doRemoteAbilityObject(AbilityRelation abilityRelation) {
 		if (abilityRelation.getAbilityTypeEnum().isManyBind()) {
 			if (Objects.nonNull(abilityObjectMap)) {

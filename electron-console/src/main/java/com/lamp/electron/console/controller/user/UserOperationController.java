@@ -41,7 +41,7 @@ public class UserOperationController {
 	private UserInfoService userInfoSerice;
 
 	/**
-	 * 目前只有账户密码登录
+	 * 目前只有账户密码登录wa
 	 * 
 	 * @param userInfo
 	 * @return
@@ -57,7 +57,7 @@ public class UserOperationController {
 		if (!Objects.equals(uiSaltPassword, newUserInfo.getUiSaltPassword())) {
 			return new ResultObject<UserInfo>(20000, "用户或者密码输入错误");
 		}
-		// 生成tocket
+		// 生成token
 		newUserInfo.setUiToken("lamp " + UUID.randomUUID().toString());
 		// 修改userInfo,记录登录日志
 		UserLoginRecord userLoginRecord = new UserLoginRecord();

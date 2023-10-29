@@ -135,7 +135,7 @@ router = [
   },
 
   {
-    hidden: true,
+    // hidden: true,
     path: '/team',
     component: Layout,
     name: 'user',
@@ -154,6 +154,52 @@ router = [
         }
       }
     ]
+  },
+  {
+    path: '/example',
+    component: Layout,
+    name: 'example',
+    meta: {
+      title: '实例&接口',
+      icon: 'el-icon-star-off'
+    },
+    children: [{
+      path: '',
+      component: () => import('@/views/example/index'),
+      name: 'index',
+      meta: {
+        title: '实例',
+        icon: 'el-icon-star-off'
+      }
+    },
+    {
+      path: 'interface',
+      component: () => import('@/views/interface/index.vue'),
+      name: 'index',
+      meta: {
+        title: '接口',
+        icon: 'el-icon-magic-stick'
+      }
+    }
+    ]
+  },
+  {
+    path: '/organization-authority',
+    component: Layout,
+    name: 'team',
+    meta: {
+      title: '组织权限',
+      icon: 'el-icon-school'
+    },
+    children: [{
+      path: '',
+      component: () => import('@/views/organization-authority/index'),
+      name: 'index',
+      meta: {
+        title: '组织权限',
+        icon: 'el-icon-school'
+      }
+    }]
   }
 ]
 adminRouter.push(...router)
@@ -316,6 +362,7 @@ const myRoutes = [{
     }]
   }
 ]
+
 export {
   myRoutes
 }

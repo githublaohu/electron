@@ -12,12 +12,16 @@
 package com.lamp.electron.base.common.register.data;
 
 import com.lamp.electron.base.common.basedata.RegisterBase;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.enums.ProtocolConfigEnums;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * 路由策略实体
+ * @author jellly
+ */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class AbilityRelation extends RegisterBase {
@@ -40,12 +44,12 @@ public class AbilityRelation extends RegisterBase {
 	/**
 	 * 动作类型
 	 */
-	private AbilityType abilityTypeEnum;
+	private AbilityTypeEnum abilityTypeEnum;
 
 	/**
 	 * 协议配置类型
 	 */
-	private ProtocolConfigEnums protocelConfigEnum;
+	private ProtocolConfigEnums protocolConfigEnum;
 
 	/**
 	 * 策略内容

@@ -11,15 +11,15 @@
  */
 package com.lamp.electron.base.common.ability;
 
-import com.lamp.electron.base.common.annotation.AbiltiyData;
-import com.lamp.electron.base.common.enums.AbiltiyScope;
+import com.lamp.electron.base.common.annotation.AbilityData;
+import com.lamp.electron.base.common.enums.AbilityScope;
 import com.lamp.electron.base.common.enums.OrganizationTypeEnum;
 
 import lombok.Data;
 
 @Data
-@AbiltiyData(chinaName = "统计", abiltityBindRelation = { OrganizationTypeEnum.INTERFACE,
-		OrganizationTypeEnum.APPLICATION }, abiltiyScope = { AbiltiyScope.COLLECT })
+@AbilityData(chinaName = "统计", abilityBindRelation = { OrganizationTypeEnum.INTERFACE,
+		OrganizationTypeEnum.APPLICATION }, abilityScope = { AbilityScope.COLLECT })
 public class Statistics {
 
 }

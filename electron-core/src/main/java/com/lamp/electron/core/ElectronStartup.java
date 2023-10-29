@@ -49,6 +49,7 @@ public class ElectronStartup {
 	public static ElectronController createBrokerController(String[] args) {
 		String rootPath = ElectronStartup.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		try {
+			// 	读取配置文件electron.yaml
 			ElectronConfig electronConfig = readYaml(rootPath + "electron.yaml");
 	
 			File configFile = new File(rootPath+"config");

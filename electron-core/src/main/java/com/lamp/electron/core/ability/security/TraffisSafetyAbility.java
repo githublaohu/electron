@@ -11,9 +11,9 @@
  */
 package com.lamp.electron.core.ability.security;
 
-import com.lamp.electron.base.common.ability.TraffisSafety;
-import com.lamp.electron.base.common.annotation.AbiltiyAction;
-import com.lamp.electron.base.common.enums.AbilityType;
+import com.lamp.electron.base.common.ability.TrafficSafety;
+import com.lamp.electron.base.common.annotation.AbilityAction;
+import com.lamp.electron.base.common.enums.AbilityTypeEnum;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
 import com.lamp.electron.base.common.invoker.Invoker;
@@ -21,8 +21,13 @@ import com.lamp.electron.core.ability.AbstractChainAbility;
 import com.lamp.electron.core.ability.extend.ErrorAbility;
 import com.lamp.electron.core.ability.extend.PostAbility;
 
-@AbiltiyAction(abilityType = AbilityType.TRAFFISSAFETY)
-public class TraffisSafetyAbility extends AbstractChainAbility<TraffisSafety> implements ErrorAbility,PostAbility{
+/**
+ * 调用哨兵的代码
+ * @author laohu
+ *
+ */
+@AbilityAction(abilityType = AbilityTypeEnum.TRAFFIC_SAFETY)
+public class TraffisSafetyAbility extends AbstractChainAbility<TrafficSafety> implements ErrorAbility,PostAbility{
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
