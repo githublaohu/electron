@@ -49,9 +49,9 @@ public class ElectronConsoleApplication {
             SpringApplication.run(ElectronConsoleApplication.class, args);
             UserInfo userInfo = new UserInfo();
             userInfo.setUiId(1L);
-            userInfo.setUiNickname("testestettt");
+            userInfo.setUiNickname("admin");
             SessionFactory.getInstance().setCache("lamp de23af25-ff12-4890-aaa8-2342816c20b3", userInfo);
-            log.error("ElectronConsoleApplication 启动成功");
+            log.info("ElectronConsoleApplication 启动成功");
         } catch (Exception e) {
             log.error(e.getMessage(),e);
         }

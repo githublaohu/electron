@@ -24,6 +24,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -59,7 +61,7 @@ public class OrganizationInfo extends BaseEntity {
 	/**
 	 * 机构标签
 	 */
-	private String oiLabel;
+	private String oiTag;
 
 	/**
 	 * 组织说明

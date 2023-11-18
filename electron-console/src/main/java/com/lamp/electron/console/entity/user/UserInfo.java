@@ -15,12 +15,14 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class UserInfo {
 
@@ -134,6 +136,10 @@ public class UserInfo {
 	private String uiExtend;
 
 	public static interface InsertUserInfoByPassword {
+	}
+
+	public UserInfo(Long uiId) {
+		this.uiId = uiId;
 	}
 
 }

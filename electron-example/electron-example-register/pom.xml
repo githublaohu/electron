@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>cn.lampup</groupId>
 		<artifactId>electron-example</artifactId>
-		<version>${revision}</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>electron-example-register</artifactId>
 	<name>${project.artifactId}</name>
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>com.alibaba.boot</groupId>
 			<artifactId>nacos-discovery-spring-boot-starter</artifactId>
-			<version>0.2.10</version>
+			<version>0.2.12</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.logging.log4j</groupId>
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>io.github.githublaohu</groupId>
 			<artifactId>dubbo-springmvc</artifactId>
-			<version>0.0.6</version>
+			<version>0.1.4</version>
 			<type>pom</type>
 			<exclusions>
 				<exclusion>
@@ -46,6 +46,12 @@
 					<artifactId>slf4j-api</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

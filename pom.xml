@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.lampup</groupId>
 	<artifactId>electron</artifactId>
-	<version>${revision}</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>electron-rpc</module>
@@ -32,35 +32,38 @@
 			-Djava.net.preferIPv4Stack=true -XX:MetaspaceSize=64m
 			-XX:MaxMetaspaceSize=128m
 		</argline>
+		<revision>0.0.1-SNAPSHOT</revision>
+		<spring-boot.version>2.1.7.RELEASE</spring-boot.version>
 		<jetcd-core.version>0.0.2</jetcd-core.version>
 		<jetcd.vision>0.5.4</jetcd.vision>
 		<consul.vision>1.4.5</consul.vision>
 		<eureka.vision>1.10.7</eureka.vision>
-		<lombok.version>1.18.0</lombok.version>
-		<revision>0.0.1-SNAPSHOT</revision>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<lombok.version>1.18.28</lombok.version>
+
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>electron</groupId>
+				<groupId>cn.lampup</groupId>
 				<artifactId>electron-base-common</artifactId>
-				<version>${revision}</version>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-				<groupId>electron</groupId>
+				<groupId>cn.lampup</groupId>
 				<artifactId>electron-common</artifactId>
-				<version>${revision}</version>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-				<groupId>electron</groupId>
+				<groupId>cn.lampup</groupId>
 				<artifactId>electron-rpc</artifactId>
-				<version>${revision}</version>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-				<groupId>electron</groupId>
+				<groupId>cn.lampup</groupId>
 				<artifactId>electron-register</artifactId>
-				<version>${revision}</version>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<!-- register -->
 
@@ -123,15 +126,16 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<!--<version>${maven_source_version}</version>-->
+						<version>${maven-source-plugin.version}</version>
 						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
+<!--							<execution>-->
+<!--								<id>attach-sources</id>-->
+<!--								<goals>-->
+<!--									<goal>jar</goal>-->
+<!--								</goals>-->
+<!--							</execution>-->
 						</executions>
 					</plugin>
 					<plugin>
@@ -206,33 +210,33 @@
 						</archive>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jdeps-plugin</artifactId>
-					<version>3.0.0</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>jdkinternals</goal>
-								<goal>test-jdkinternals</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+<!--				<plugin>-->
+<!--					<groupId>org.apache.maven.plugins</groupId>-->
+<!--					<artifactId>maven-jdeps-plugin</artifactId>-->
+<!--					<version>3.0.0</version>-->
+<!--					<executions>-->
+<!--						<execution>-->
+<!--							<goals>-->
+<!--								<goal>jdkinternals</goal>-->
+<!--								<goal>test-jdkinternals</goal>-->
+<!--							</goals>-->
+<!--						</execution>-->
+<!--					</executions>-->
+<!--				</plugin>-->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.0.1</version>
+					<version>${maven-source-plugin.version}</version>
 					<configuration>
 						<attach>true</attach>
 					</configuration>
 					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<goals>
-								<goal>jar-no-fork</goal>
-							</goals>
-						</execution>
+<!--						<execution>-->
+<!--							<id>attach-sources</id>-->
+<!--							<goals>-->
+<!--								<goal>jar-no-fork</goal>-->
+<!--							</goals>-->
+<!--						</execution>-->
 					</executions>
 				</plugin>
 				<plugin>
@@ -263,16 +267,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
 				<configuration>
 					<attach>true</attach>
 				</configuration>
 				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
+<!--					<execution>-->
+<!--						<phase>compile</phase>-->
+<!--						<goals>-->
+<!--							<goal>jar</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
 				</executions>
 			</plugin>
 		</plugins>

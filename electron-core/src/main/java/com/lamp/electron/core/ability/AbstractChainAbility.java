@@ -36,9 +36,9 @@ public abstract class AbstractChainAbility<T> extends AbstractAbility<T> impleme
 		if (abilityRelation.getAbilityTypeEnum().isManyBind()) {
 			if (Objects.isNull(abilityObjectMap)) {
 				abilityObjectMap = new ConcurrentHashMap<>();
-				abilityObjectCollection = abilityObjectMap.values();
 			}
 			abilityObjectMap.put(abilityRelation.getArId(), abilityObject);
+			abilityObjectCollection = abilityObjectMap.values();
 		} else {
 			this.abilityObject = abilityObject;
 		}

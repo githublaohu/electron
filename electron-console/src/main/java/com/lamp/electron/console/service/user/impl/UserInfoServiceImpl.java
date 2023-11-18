@@ -21,12 +21,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lamp.electron.console.entity.user.UserInfo;
 import com.lamp.electron.console.entity.user.UserLoginRecord;
 import com.lamp.electron.console.mapper.user.UserInfoMapper;
-import com.lamp.electron.console.service.user.UserInfoServce;
+import com.lamp.electron.console.service.user.UserInfoService;
 import com.lamp.electron.console.utils.EntityUtils;
 
 @Service
 @Transactional
-public class UserInfoServeImpl implements UserInfoServce{
+public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private UserInfoMapper userInfoMapper;

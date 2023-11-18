@@ -7,8 +7,8 @@ module.exports = {
       "devServerConfig":{
         "proxy": {
           "/": {
-            //"target": "http://120.78.148.188:9990/lamp/electron/",
-            "target": "http://127.0.0.1:9991",
+            "target": "http://101.42.236.13:9991/lamp/electron/",
+            // "target": "http://101.42.236.13:9991/lamp/electron/",
             "pathRewrite": {
               "^/": ""
             },

@@ -14,6 +14,8 @@ package com.lamp.electron.console.controller.organization;
 import java.util.List;
 import java.util.Objects;
 
+import com.lamp.decoration.core.result.ResultObject;
+import com.lamp.electron.console.service.user.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +35,9 @@ public class OrganizationInfoController {
 	@Autowired
 	private OrganizationInfoService organizationInfoService;
 
+	@Autowired
+	private UserInfoService userInfoService;
+
 	@PostMapping("/queryOrganizationInfoByUserId")
 	public List<OrganizationInfo> queryOrganizationInfoByUserId(){
 		SessionFactory sessionFactory = SessionFactory.getInstance();
@@ -44,7 +49,7 @@ public class OrganizationInfoController {
 	
 	@PostMapping("/queryOrganizationInfoByOiId")
 	public OrganizationInfo queryOrganizationInfoByOiId(@RequestBody OrganizationInfo organizationInfo) {
-		return organizationInfoService.queryOrganizationInfoByUiId(organizationInfo);
+		return organizationInfoService.queryOrganizationInfoByOiId(organizationInfo);
 	}
 	
 	@PostMapping("/queryOrganizationInfoByForm")
@@ -71,6 +76,10 @@ public class OrganizationInfoController {
 	 */
 	@PostMapping("/updateOwnerById")
 	public Integer updateOwnerById(@RequestBody OrganizationInfo organizationInfo) {
+		UserInfo ownerUserInfo = userInfoService.queryUserInfoByUiId(new UserInfo(organizationInfo.getOiOwnerId()));
+		if (Objects.isNull(ownerUserInfo)) {
+			throw new RuntimeException("拥有人用户不存在或已被删除 ", null);
+		}
 		return organizationInfoService.updateOwnerById(organizationInfo);
 	}
 
@@ -92,8 +101,13 @@ public class OrganizationInfoController {
 	 * @return
 	 */
 	@PostMapping("/deleteOrganizationById")
-	public Integer deleteOrganizationById(@RequestBody OrganizationInfo organizationInfo) {
-		return organizationInfoService.deleteOrganizationById(organizationInfo);
+	public ResultObject<Integer> deleteOrganizationById(@RequestBody OrganizationInfo organizationInfo) {
+		Integer deleteResult = organizationInfoService.deleteOrganizationById(organizationInfo);
+		if (deleteResult > 0) {
+			return new ResultObject<Integer>(200, "作废组织成功！");
+		} else {
+			return new ResultObject<Integer>(20000, "作废组织失败，请检查是否有子组织！");
+		}
 	}
 
 	/**

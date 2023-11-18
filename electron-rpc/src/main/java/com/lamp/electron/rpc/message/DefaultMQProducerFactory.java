@@ -58,7 +58,7 @@ public class DefaultMQProducerFactory {
 			if (Objects.nonNull(producer)) {
 				return producer;
 			}
-			producer = new DefaultMQProducer("electron_" + networkAddress.name() + "_produecer");
+			producer = new DefaultMQProducer("electron_" + networkAddress.name() + "_producer");
 			producer.setNamesrvAddr(networkAddress.networkAddress());
 			try {
 				producer.start();

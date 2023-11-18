@@ -52,7 +52,7 @@ public interface OrganizationInfoMapper {
 	static String TABLE_SQL = "organization_info";
 
 	static String INSET_SQL = "insert into " + TABLE_SQL
-			+ "(oi_superior_id,oi_name,oi_english_name,oi_type,oi_explain,oi_creater_id,oi_creater_name,oi_owner_id,oi_owner_name)values";
+			+ "(oi_superior_id,oi_name,oi_english_name,oi_type,oi_tag,oi_explain,oi_creater_id,oi_creater_name,oi_owner_id,oi_owner_name) values";
 
 	static String UPDATE_SQL = "update " + TABLE_SQL + " set ";
 
@@ -87,7 +87,7 @@ public interface OrganizationInfoMapper {
 	@Update(UPDATE_SQL + "oi_owner_id = #{oiOwnerId} , oi_owner_name = #{oiOwnerName} where oi_id = #{oiId}")
 	Integer updateOwnerById(OrganizationInfo organizationInfo);
 
-	@Update(UPDATE_SQL + "oi_explain = #{oiExplain} where oi_id = #{oiId}")
+	@Update(UPDATE_SQL + "oi_explain = #{oiExplain},oi_tag = #{oiTag} where oi_id = #{oiId}")
 	Integer updateExplainById(OrganizationInfo organizationInfo);
 	
 	@Update(UPDATE_SQL + "oi_subordinate_num = oi_subordinate_num+(#{oiSubordinateNum}) where oi_id = #{oiSuperiorId}")
@@ -97,7 +97,7 @@ public interface OrganizationInfoMapper {
 	Integer deleteOrganizationById(OrganizationInfo organizationInfo);
 
 	@Insert(INSET_SQL
-			+ "(#{oiSuperiorId},#{oiName},#{oiEnglishName},#{oiType},#{oiExplain},#{oiCreaterId},#{oiCreaterName},#{oiOwnerId},#{oiOwnerName})")
+			+ "(#{oiSuperiorId},#{oiName},#{oiEnglishName},#{oiType},#{oiTag},#{oiExplain},#{oiCreaterId},#{oiCreaterName},#{oiOwnerId},#{oiOwnerName})")
 	@Options(useGeneratedKeys = true, keyProperty = "oiId")
 	Integer insertOrganizationInfo(OrganizationInfo organizationInfo);
 

@@ -37,21 +37,21 @@ public interface InstanceAndInterfaceServcie {
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public NodeBase queryNodeBaseById(InterfaceInfo interfaceInfo);
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public List<NodeBase> queryNodeBaseListByOiId(InterfaceInfo interfaceInfo);
 
 	/**
 	 * 
-	 * @param nodeBase
+	 * @param interfaceInfo
 	 * @return
 	 */
 	public List<NodeBase> queryNodeBaseListByFrom(InterfaceInfo interfaceInfo);

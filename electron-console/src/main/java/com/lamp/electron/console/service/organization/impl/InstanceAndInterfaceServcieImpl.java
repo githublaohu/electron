@@ -53,9 +53,9 @@ public class InstanceAndInterfaceServcieImpl implements InstanceAndInterfaceServ
 		if (Objects.isNull(nodeBase.getVersion())) {
 			nodeBase.setVersion("0.0.1");
 		}
-		if (Objects.isNull(nodeBase.getGaterDate())) {
+		if (Objects.isNull(nodeBase.getGatherData())) {
 			SimpleDateFormat dateFm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			nodeBase.setGaterDate(dateFm.format(new Date()));
+			nodeBase.setGatherData(dateFm.format(new Date()));
 		}
 		if (nodeBase.getApplicationId() == null) {
 			nodeBase.setApplicationId(1L);

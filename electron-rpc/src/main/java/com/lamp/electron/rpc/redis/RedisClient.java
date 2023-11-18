@@ -11,6 +11,7 @@
  */
 package com.lamp.electron.rpc.redis;
 
+import com.lamp.electron.base.common.ability.RedisRPC;
 import com.lamp.electron.base.common.ability.config.RpcRequestConfig;
 import com.lamp.electron.base.common.invoker.ElectronRequest;
 import com.lamp.electron.base.common.invoker.ElectronResponse;
@@ -33,7 +34,10 @@ public class RedisClient extends AbstractRpcBase implements Invoker{
 
 	@Override
 	public ElectronResponse run(ElectronRequest electronRequest, ElectronResponse electronResponse, Invoker invoker) {
-		
+
+		RedisRPC redisRPC = getRequestConfig();
+
+
 		return null;
 	}
 
